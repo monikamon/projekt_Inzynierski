@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.monika.inzynierka">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".StatisticsActivity"
+            android:label="@string/app_stat_screem"></activity>
+        <activity android:name=".ExpenseActivity" />
+        <activity android:name=".DetailsActivity" />
+        <activity android:name=".AddExpenseActivity" />
+        <activity android:name=".ConstrantExpenseActivity" />
+        <activity android:name=".KategoryActivity" />
+        <activity android:name=".AddProduktActivity" />
+        <activity android:name=".ChoosePhotoAction"></activity>
+    </application>
+
+</manifest>
