@@ -6,27 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".ChoosePhotoAction">
 
-    <Button
-        android:id="@+id/ChoosePictureFromGaleryButton"
-        android:layout_width="180dp"
-        android:layout_height="103dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:text="Wybierz zdjęcie z galerii"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="368dp"
+        android:layout_height="381dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
 
-    <Button
-        android:id="@+id/TakeAPhotoButton"
-        android:layout_width="169dp"
-        android:layout_height="91dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="8dp"
-        android:text="Zrób zdjęcie"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ChoosePictureFromGaleryButton" />
+        <Button
+            android:id="@+id/TakeAPhotoButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Zrób zdjęcie" />
+
+        <Button
+            android:id="@+id/ChoosePictureFromGaleryButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wybierz zdjęcie z galerii" />
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
