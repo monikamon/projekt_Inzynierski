@@ -16,24 +16,26 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/AcceptButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/imageButton2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="142dp"
                 android:layout_weight="1"
                 app:srcCompat="@android:drawable/sym_def_app_icon" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -41,6 +43,7 @@
                     android:id="@+id/ChooseKategoryButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="chooseCategory"
                     android:text="Wybierz Kategorię" />
 
                 <EditText
@@ -62,21 +65,42 @@
             </LinearLayout>
         </LinearLayout>
 
-        <Button
-            android:id="@+id/ReceiptPhotoButton"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Dodaj Zdjęcie paragonu" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/AddProductButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Dodaj produkt" />
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="179dp"
+                android:layout_height="match_parent" />
 
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="207dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/ConstrantExpense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Stały wydatek" />
+
+                <Button
+                    android:id="@+id/AddReceiptPhotoButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="addPhotoReceipt"
+                    android:text="Dodaj zdjęcie paragonu" />
+
+                <Button
+                    android:id="@+id/AddProduktButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="addProduct"
+                    android:text="Dodaj produkt" />
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -96,6 +120,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="36dp"
         android:layout_marginBottom="8dp"
+        android:onClick="backToExpense"
         android:text="Anuluj"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

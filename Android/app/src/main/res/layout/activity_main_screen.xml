@@ -22,6 +22,7 @@
             android:id="@+id/displayExpenseButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="showExpense"
             android:text="@string/wy_wietl_wydatki"
             tools:layout_editor_absoluteX="32dp"
             tools:layout_editor_absoluteY="136dp" />
@@ -30,6 +31,7 @@
             android:id="@+id/displayStatisticsButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="showStatistics"
             android:text="@string/wy_wietl_statystyk"
             tools:layout_editor_absoluteX="32dp" />
 

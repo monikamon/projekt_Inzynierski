@@ -21,9 +21,7 @@
         <activity android:name=".ExpenseActivity" />
         <activity android:name=".DetailsActivity" />
         <activity android:name=".AddExpenseActivity" />
-        <activity android:name=".ConstrantExpenseActivity" />
         <activity android:name=".KategoryActivity" />
-        <activity android:name=".AddProduktActivity" />
         <activity android:name=".ChoosePhotoAction"></activity>
     </application>
 

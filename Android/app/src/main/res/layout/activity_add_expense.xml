@@ -8,47 +8,86 @@
 
     <LinearLayout
         android:layout_width="368dp"
-        android:layout_height="369dp"
+        android:layout_height="296dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/ProductName"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Nazwa produktu"
-            android:inputType="textMultiLine" />
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/ProductPrize"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Cena"
-            android:inputType="numberDecimal" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="358dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@android:drawable/sym_def_app_icon" />
 
-        <EditText
-            android:id="@+id/guaranteeDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Data Gwarancji"
-            android:inputType="date" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Wydatek stały" />
+                <EditText
+                    android:id="@+id/ProductName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Nazwa Produktu"
+                    android:inputType="textMultiLine" />
+
+                <EditText
+                    android:id="@+id/ProductPrize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Cena"
+                    android:inputType="numberDecimal" />
+
+                <EditText
+                    android:id="@+id/GuarrantyDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Data Gwarancji"
+                    android:inputType="date" />
+            </LinearLayout>
+        </LinearLayout>
 
         <Button
-            android:id="@+id/ProductPhoto"
+            android:id="@+id/AddProductPictureButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Zdjęcie produktu" />
-
+            android:onClick="addPhoto"
+            android:text="Dodaj zdjęcie produktu" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/AcceptButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="30dp"
+        android:text="Zatwierdź"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/CancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="30dp"
+        android:onClick="backToDetails"
+        android:text="Anuluj"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
