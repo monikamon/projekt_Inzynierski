@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailsActivity">
+    tools:context=".ShowDetailsActivity">
 
     <LinearLayout
         android:layout_width="368dp"
@@ -81,8 +81,9 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <android.support.v7.widget.RecyclerView
-                android:layout_width="179dp"
+            <ListView
+                android:id="@+id/ListOfProducts"
+                android:layout_width="185dp"
                 android:layout_height="match_parent" />
 
             <LinearLayout
@@ -103,11 +104,6 @@
                     android:onClick="addProduct"
                     android:text="Dodaj produkt" />
 
-                <Button
-                    android:id="@+id/CheckInfoAboutProduct"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Sprawdź informacje o produkcie " />
             </LinearLayout>
 
         </LinearLayout>

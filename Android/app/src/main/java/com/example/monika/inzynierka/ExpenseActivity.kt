@@ -27,7 +27,7 @@ class ExpenseActivity : AppCompatActivity() {
         listOfExpenses.adapter = adapter
 
         listOfExpenses.setOnItemClickListener{ adapterView, view, i, l ->
-            val intent = Intent(this, listOfExpenses::class.java)
+            val intent = Intent(this, ShowDetailsActivity::class.java)
             startActivity(intent)
         }
 
@@ -52,4 +52,5 @@ class ExpenseActivity : AppCompatActivity() {
         val intent = Intent(this, ChoosePhotoAction::class.java)
         startActivity(intent)
     }
+
 }
