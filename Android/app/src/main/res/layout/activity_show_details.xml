@@ -102,6 +102,12 @@
                     android:layout_height="wrap_content"
                     android:onClick="addProduct"
                     android:text="Dodaj produkt" />
+
+                <Button
+                    android:id="@+id/CheckInfoAboutProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sprawdź informacje o produkcie " />
             </LinearLayout>
 
         </LinearLayout>

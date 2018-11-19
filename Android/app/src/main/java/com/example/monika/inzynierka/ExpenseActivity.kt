@@ -25,6 +25,13 @@ class ExpenseActivity : AppCompatActivity() {
 
         val adapter =  ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,listItems)
         listOfExpenses.adapter = adapter
+
+        listOfExpenses.setOnItemClickListener{ adapterView, view, i, l ->
+            val intent = Intent(this, listOfExpenses::class.java)
+            startActivity(intent)
+        }
+
+
     }
 
     //jak naciśnięcie się na strzałkę u góry, to jest powrót
