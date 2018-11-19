@@ -19,6 +19,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ListView
+        android:id="@+id/listOfExpenses"
         android:layout_width="0dp"
         android:layout_height="420dp"
         app:layout_constraintEnd_toEndOf="parent"
