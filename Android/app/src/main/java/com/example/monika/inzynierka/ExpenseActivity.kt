@@ -13,6 +13,8 @@ class ExpenseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_expense)
 
+        //ustawienie strzałki u góry, aby była znakiem na powrót
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         //zainicjowanie listy dupiatymi elementami
         val listItems = ArrayList<String>(25)
@@ -23,6 +25,13 @@ class ExpenseActivity : AppCompatActivity() {
 
         val adapter =  ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,listItems)
         listOfExpenses.adapter = adapter
+    }
+
+    //jak naciśnięcie się na strzałkę u góry, to jest powrót
+    override fun onSupportNavigateUp():Boolean{
+
+        finish()
+        return true
     }
 
     fun addExpense(view: View){
