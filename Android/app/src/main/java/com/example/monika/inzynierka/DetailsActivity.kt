@@ -1,5 +1,7 @@
 package com.example.monika.inzynierka
 
+import Dialog.CategoryDialog
+import Dialog.PhotoDialog
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -30,8 +32,8 @@ class DetailsActivity : AppCompatActivity() {
 
     fun addPhotoReceipt(view: View){
 
-        val intent = Intent(this, ChoosePhotoAction::class.java)
-        startActivity(intent)
+        val dialog = CategoryDialog()
+        dialog.show(supportFragmentManager, "dialog1")
     }
 
     fun chooseCategory(view: View){
@@ -40,8 +42,4 @@ class DetailsActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun backToExpense(view: View){
-
-        finish()
-    }
 }

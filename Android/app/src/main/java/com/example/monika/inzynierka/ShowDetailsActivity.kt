@@ -52,10 +52,6 @@ class ShowDetailsActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun backToExpense(view: View){
-
-        finish()
-    }
 
 
 }

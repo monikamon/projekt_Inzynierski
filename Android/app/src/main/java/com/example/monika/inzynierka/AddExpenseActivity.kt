@@ -1,8 +1,10 @@
 package com.example.monika.inzynierka
 
+import Dialog.PhotoDialog
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.view.View
 import kotlinx.android.synthetic.main.activity_add_expense.*
 
@@ -15,11 +17,9 @@ class AddExpenseActivity : AppCompatActivity() {
         //ustawienie strzałki u góry, aby była znakiem na powrót
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        CancelButton.setOnClickListener{backToDetails()}
 
 
-        //ustawienie aby dany text nie był do edycji tylko do oglądania
-        //ProductName.isEnabled=false
+
     }
 
     //jak naciśnie się na strzałkę u góry, to jest powrót
@@ -31,12 +31,11 @@ class AddExpenseActivity : AppCompatActivity() {
 
     fun addPhoto(view: View){
 
-        val intent = Intent(this, ChoosePhotoAction::class.java)
-        startActivity(intent)
+        val dialog = PhotoDialog()
+        dialog.show(supportFragmentManager, "dialog1")
+
     }
 
-    fun backToDetails(){
 
-       finish()
-    }
+
 }

@@ -15,7 +15,7 @@ class ShowExpenseActivity : AppCompatActivity() {
         //ustawienie strzałki u góry, aby była znakiem na powrót
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        CancelButton.setOnClickListener{backToDetails()}
+        //CancelButton.setOnClickListener{backToDetails()}
 
         //ustawienie aby dany text nie był do edycji tylko do oglądania, jest zablokowany
         ProductName.isEnabled=false
@@ -30,8 +30,4 @@ class ShowExpenseActivity : AppCompatActivity() {
         return true
     }
 
-    fun backToDetails(){
-
-       finish()
-    }
 }

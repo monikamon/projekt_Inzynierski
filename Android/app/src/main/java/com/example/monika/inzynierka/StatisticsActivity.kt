@@ -4,7 +4,6 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.monika.inzynierka.R.id.CancelButton
 
 class StatisticsActivity : AppCompatActivity() {
 
@@ -15,11 +14,9 @@ class StatisticsActivity : AppCompatActivity() {
         //ustawienie strzałki u góry, aby była znakiem na powrót
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-
-        //możliwe, że tu jeszcze czegoś brakuje, trzeba sprawdzić :)
     }
 
-
+//naciśnięcie strzałki wywołuje zamknięcie okna i powrót do okna poprzednio otwartego
     override fun onSupportNavigateUp():Boolean{
 
         finish()
