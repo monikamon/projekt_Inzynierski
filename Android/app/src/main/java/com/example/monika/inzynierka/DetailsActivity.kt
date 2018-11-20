@@ -10,6 +10,16 @@ class DetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
+
+        //ustawienie strzałki u góry, aby była znakiem na powrót
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+    }
+
+    //jak naciśnie się na strzałkę u góry, to jest powrót
+    override fun onSupportNavigateUp():Boolean{
+
+        finish()
+        return true
     }
 
     fun addProduct(view: View){
@@ -32,7 +42,6 @@ class DetailsActivity : AppCompatActivity() {
 
     fun backToExpense(view: View){
 
-        val intent = Intent(this, ExpenseActivity::class.java)
-        startActivity(intent)
+        finish()
     }
 }

@@ -54,8 +54,7 @@ class ShowDetailsActivity : AppCompatActivity() {
 
     fun backToExpense(view: View){
 
-        val intent = Intent(this, ExpenseActivity::class.java)
-        startActivity(intent)
+        finish()
     }
 
 
