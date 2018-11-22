@@ -27,6 +27,7 @@
                 android:layout_width="358dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:contentDescription="@string/zdjecie"
                 app:srcCompat="@android:drawable/sym_def_app_icon" />
 
             <LinearLayout
@@ -41,24 +42,27 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:enabled="true"
-                    android:hint="Nazwa Produktu"
-                    android:inputType="textMultiLine" />
+                    android:hint="@string/nazwa_produktu"
+                    android:inputType="textMultiLine"
+                    android:autofillHints="" tools:targetApi="o"/>
 
                 <EditText
                     android:id="@+id/ProductPrize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Cena"
-                    android:inputType="numberDecimal" />
+                    android:hint="@string/cena"
+                    android:inputType="numberDecimal"
+                    android:importantForAutofill="no" tools:targetApi="o"/>
 
                 <EditText
                     android:id="@+id/GuarrantyDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Data Gwarancji"
-                    android:inputType="date" />
+                    android:hint="@string/data_gwarancji"
+                    android:inputType="date"
+                    android:autofillHints="" tools:targetApi="o"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -67,7 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="addPhoto"
-            android:text="Dodaj zdjęcie produktu" />
+            android:text="@string/dodaj_zdj_cie_produktu" />
     </LinearLayout>
 
     <Button
@@ -76,7 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginBottom="30dp"
-        android:text="Zatwierdź"
+        android:text="@string/zatwierd"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

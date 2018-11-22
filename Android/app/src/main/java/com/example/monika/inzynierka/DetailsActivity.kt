@@ -32,14 +32,14 @@ class DetailsActivity : AppCompatActivity() {
 
     fun addPhotoReceipt(view: View){
 
-        val dialog = CategoryDialog()
+        val dialog = PhotoDialog()
         dialog.show(supportFragmentManager, "dialog1")
     }
 
     fun chooseCategory(view: View){
 
-        val intent = Intent(this, KategoryActivity::class.java)
-        startActivity(intent)
+        val dialog = CategoryDialog()
+        dialog.show(supportFragmentManager, "dialog2")
     }
 
 }

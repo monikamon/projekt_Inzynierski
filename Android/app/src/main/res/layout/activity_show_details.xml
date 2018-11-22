@@ -31,6 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="142dp"
                 android:layout_weight="1"
+                android:contentDescription="@string/zdjecie"
                 app:srcCompat="@android:drawable/sym_def_app_icon" />
 
             <LinearLayout
@@ -44,7 +45,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_weight="1"
-                    android:text="Data zakupu:"
+                    android:text="@string/data_zakupu"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -53,15 +54,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Data zakupu"
-                    android:inputType="date" />
+                    android:hint="@string/data_zakupu"
+                    android:inputType="date"
+                    android:autofillHints=""
+                    android:importantForAutofill="no" tools:targetApi="o"/>
 
                 <TextView
                     android:id="@+id/TextPrize"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_weight="1"
-                    android:text="Kwota:"
+                    android:text="@string/kwota"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -70,8 +73,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Kwota"
-                    android:inputType="numberDecimal" />
+                    android:hint="@string/kwota"
+                    android:inputType="numberDecimal"
+                    android:autofillHints=""
+                    android:importantForAutofill="no" tools:targetApi="o"/>
 
             </LinearLayout>
         </LinearLayout>
@@ -95,14 +100,14 @@
                     android:id="@+id/ConstrantExpense"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Stały wydatek" />
+                    android:text="@string/sta_y_wydatek" />
 
                 <Button
                     android:id="@+id/AddProduktButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick="addProduct"
-                    android:text="Dodaj produkt" />
+                    android:text="@string/dodaj_produkt" />
 
             </LinearLayout>
 
@@ -116,7 +121,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginBottom="8dp"
-        android:text="Zatwierdź"
+        android:text="@string/zatwierd"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

@@ -23,13 +23,13 @@
             android:id="@+id/TakeAPhotoButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Zrób zdjęcie" />
+            android:text="@string/zr_b_zdj_cie" />
 
         <Button
             android:id="@+id/ChoosePictureFromGaleryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Wybierz zdjęcie z galerii" />
+            android:text="@string/wybierz_zdj_cie_z_galerii" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

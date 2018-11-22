@@ -27,6 +27,7 @@
                 android:layout_width="358dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:contentDescription="@string/zdjecie"
                 app:srcCompat="@android:drawable/sym_def_app_icon" />
 
             <LinearLayout
@@ -39,7 +40,7 @@
                     android:id="@+id/TextProductName"
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
-                    android:text="Nazwa produktu"
+                    android:text="@string/nazwa_produktu"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     tools:layout_editor_absoluteX="265dp"
@@ -50,14 +51,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Nazwa Produktu"
-                    android:inputType="textMultiLine" />
+                    android:hint="@string/nazwa_produktu"
+                    android:inputType="textMultiLine"
+                    android:autofillHints="" tools:targetApi="o"/>
 
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Cena Produktu"
+                    android:text="@string/cena"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     tools:layout_editor_absoluteX="186dp"
@@ -68,8 +70,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Cena"
-                    android:inputType="numberDecimal" />
+                    android:hint="@string/cena"
+                    android:inputType="numberDecimal"
+                    android:importantForAutofill="no" tools:targetApi="o"/>
 
             </LinearLayout>
         </LinearLayout>
@@ -84,7 +87,7 @@
                 android:layout_width="187dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
-                android:text="Data Gwarancji:"
+                android:text="@string/data_gwarancji"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -94,8 +97,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Data Gwarancji"
-                android:inputType="textPersonName" />
+                android:hint="@string/data_gwarancji"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName|date" />
         </LinearLayout>
 
     </LinearLayout>
@@ -106,7 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginBottom="30dp"
-        android:text="Zatwierdź"
+        android:text="@string/zatwierd"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

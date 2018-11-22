@@ -3,4 +3,21 @@
     <string name="wy_wietl_wydatki">Wyświetl wydatki</string>
     <string name="wy_wietl_statystyk">Wyświetl statystykę</string>
     <string name="app_stat_screem">Statystyki</string>
+    <string name="zatwierd">Zatwierdź</string>
+    <string name="dodaj_zdj_cie_produktu">Dodaj zdjęcie produktu</string>
+    <string name="data_gwarancji">Data Gwarancji</string>
+    <string name="cena">Cena</string>
+    <string name="nazwa_produktu">Nazwa Produktu</string>
+    <string name="zr_b_zdj_cie">Zrób zdjęcie</string>
+    <string name="wybierz_zdj_cie_z_galerii">Wybierz zdjęcie z galerii</string>
+    <string name="dodaj_produkt">Dodaj produkt</string>
+    <string name="dodaj_zdj_cie_paragonu">Dodaj zdjęcie paragonu</string>
+    <string name="sta_y_wydatek">Stały wydatek</string>
+    <string name="kwota">Kwota</string>
+    <string name="data_zakupu">Data zakupu</string>
+    <string name="wybierz_kategori">Wybierz Kategorię</string>
+    <string name="dodaj_wydatek">Dodaj wydatek</string>
+    <string name="dodaj_kategori">Dodaj Kategorię</string>
+    <string name="powr_t">Powrót</string>
+    <string name="zdjecie">zdjecie</string>
 </resources>
