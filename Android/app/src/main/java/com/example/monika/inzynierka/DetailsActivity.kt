@@ -3,6 +3,7 @@ package com.example.monika.inzynierka
 import Dialog.CategoryDialog
 import Dialog.PhotoDialog
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -15,6 +16,8 @@ class DetailsActivity : AppCompatActivity() {
 
         //ustawienie strzałki u góry, aby była znakiem na powrót
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+
     }
 
     //jak naciśnie się na strzałkę u góry, to jest powrót
@@ -32,7 +35,9 @@ class DetailsActivity : AppCompatActivity() {
 
     fun addPhotoReceipt(view: View){
 
+
         val dialog = PhotoDialog()
+        dialog.pm=packageManager
         dialog.show(supportFragmentManager, "dialog1")
     }
 

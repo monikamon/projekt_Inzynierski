@@ -30,6 +30,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/wybierz_zdj_cie_z_galerii" />
+
+        <Button
+            android:id="@+id/CancelButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/anuluj" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

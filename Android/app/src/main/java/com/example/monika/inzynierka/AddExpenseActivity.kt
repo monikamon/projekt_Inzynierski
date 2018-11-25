@@ -32,6 +32,7 @@ class AddExpenseActivity : AppCompatActivity() {
     fun addPhoto(view: View){
 
         val dialog = PhotoDialog()
+        dialog.pm=packageManager
         dialog.show(supportFragmentManager, "dialog1")
 
     }
