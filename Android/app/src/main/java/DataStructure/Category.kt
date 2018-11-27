@@ -5,15 +5,24 @@ import java.io.Serializable
 class Category: Serializable{
 
     var name:String
-    var receipt:Int //chyba nie, potem zmienię XD
-    var receiptSum:Double
 
-    constructor(name:String, receipt:Int, receiptSum:Double){
+    val list = ArrayList<Expense>()
+
+
+    constructor(name:String){
 
         this.name=name
-        this.receipt=receipt
-        this.receiptSum=receiptSum
     }
 
-    val list = arrayListOf<Receipt>()
+    fun getExpenseSum():Double{
+
+        var sum:Double=0.0
+        for(i in list) {
+
+            sum += i.prise
+        }
+
+        return sum
+    }
+
 }

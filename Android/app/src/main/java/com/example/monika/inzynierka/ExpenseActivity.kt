@@ -1,5 +1,6 @@
 package com.example.monika.inzynierka
 
+import DataStructure.Data
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -17,10 +18,11 @@ class ExpenseActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         //zainicjowanie listy dupiatymi elementami
-        val listItems = ArrayList<String>(25)
+        val listItems = ArrayList<String>(0)
 
-        for (i in 0 until 25) {
-            listItems.add("Wydatek: " +i)
+        var blabla=intent.getSerializableExtra("Dane")as Data
+        for (i in 0 until blabla.expenseList.size) {
+            listItems.add("Wydatek: " +blabla.expenseList.get(i).shoppingDate)
         }
 
         val adapter =  ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,listItems)

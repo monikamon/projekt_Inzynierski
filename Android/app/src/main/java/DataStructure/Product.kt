@@ -1,16 +1,17 @@
 package DataStructure
 
+import android.graphics.Bitmap
 import java.io.Serializable
 import java.util.*
 
 class Product: Serializable{
 
-    var guarrantyDate:String
+    var guarrantyDate:String?
     var name:String
     var prise:Double
-    var photoPicture:Int //chyba nie int, ale komu to przeszkadza, bo miżna zmienić :P
+    var photoPicture:Bitmap?
 
-    constructor(guarrantyDate:String, name:String, prise:Double, photoPicture:Int){
+    constructor(name:String, prise:Double, guarrantyDate:String?=null, photoPicture:Bitmap?=null){
 
         this.guarrantyDate=guarrantyDate
         this.name=name
