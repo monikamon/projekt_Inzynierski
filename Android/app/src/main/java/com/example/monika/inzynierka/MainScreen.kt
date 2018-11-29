@@ -23,6 +23,8 @@ class MainScreen : AppCompatActivity() {
              var elem= Expense()
             elem.shoppingDate=i.toString()
             data.expenseList.add(elem)
+            elem.prise=(i+3453/1000).toDouble()
+            data.expenseList.add(elem)
 
         }
 

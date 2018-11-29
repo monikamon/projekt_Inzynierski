@@ -7,6 +7,7 @@ class ConstrantExpense: Expense,  Serializable{
 
 
     //dziedziczy po receipt
+    //data do której należy zapłacić dany wydatek (co ile się płaci)
     var timeToPayExpense: ConstrantExpenseTime
 
     //wywołanie konstruktora tej klasy i klasy nadrzędnej

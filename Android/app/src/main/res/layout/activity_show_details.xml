@@ -53,11 +53,13 @@
                     android:id="@+id/ShoppingDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:autofillHints=""
                     android:ems="10"
                     android:hint="@string/data_zakupu"
+                    android:importantForAutofill="no"
                     android:inputType="date"
-                    android:autofillHints=""
-                    android:importantForAutofill="no" tools:targetApi="o"/>
+                    android:textColor="@android:color/black"
+                    tools:targetApi="o" />
 
                 <TextView
                     android:id="@+id/TextPrize"
@@ -72,11 +74,13 @@
                     android:id="@+id/ShoppingPrize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:autofillHints=""
                     android:ems="10"
                     android:hint="@string/kwota"
+                    android:importantForAutofill="no"
                     android:inputType="numberDecimal"
-                    android:autofillHints=""
-                    android:importantForAutofill="no" tools:targetApi="o"/>
+                    android:textColor="@android:color/black"
+                    tools:targetApi="o" />
 
             </LinearLayout>
         </LinearLayout>

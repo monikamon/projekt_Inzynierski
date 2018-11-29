@@ -13,12 +13,14 @@ open class Expense: Serializable{
     var receiptPhoto:Bitmap?
     var prise:Double
 
+    //konstruktor bezargumentowy
     constructor(){
 
         this.shoppingDate=""
         this.receiptPhoto=null
         this.prise=0.0
     }
+
     constructor(shoppingDate:String, prise:Double, receiptPhoto:Bitmap?=null){
 
         this.shoppingDate=shoppingDate

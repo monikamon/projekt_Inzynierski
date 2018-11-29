@@ -1,17 +1,29 @@
 package com.example.monika.inzynierka
 
+import DataStructure.Expense
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.activity_show_details.*
+import kotlinx.android.synthetic.main.activity_show_expense.view.*
 
 class ShowDetailsActivity : AppCompatActivity() {
+
+
+    var writeExpense: Expense= Expense()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_details)
+
+
+        //TODO tylko dla testu
+        writeExpense.prise=13.99
+        writeExpense.shoppingDate="06.12.2018"
+        //---------------------------------------------------------------------------
+
 
         //ustawienie strzałki u góry, aby była znakiem na powrót
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
@@ -36,6 +48,11 @@ class ShowDetailsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+
+        //TODO wypisywanie na danej pozycji tego tego
+        ShoppingPrize.setText(writeExpense.prise.toString())
+        ShoppingDate.setText(writeExpense.shoppingDate.toString())
+        //-------------------------------------------------------------------------------
 
     }
 
