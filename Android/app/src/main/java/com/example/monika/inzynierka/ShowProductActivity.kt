@@ -4,6 +4,9 @@ import DataStructure.Product
 import DataStructure.Expense
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_show_product.*
 
 class ShowProductActivity : AppCompatActivity() {
@@ -35,6 +38,12 @@ class ShowProductActivity : AppCompatActivity() {
 
 
         //TODO wypisywanie na danej pozycji tego tego
+
+        if(writeProduct.photoPicture!=null){
+
+            ProductPhoto.setImageBitmap(writeProduct.photoPicture)
+        }
+
         ProductPrize.setText(writeProduct.prise.toString())
         ProductName.setText(writeProduct.name)
         ProductGuarrantyDate.setText(writeProduct.guarrantyDate)
@@ -45,10 +54,35 @@ class ShowProductActivity : AppCompatActivity() {
 
     }
 
-    //jak naciśnie się na strzałkę u góry, to jest powrót
-    override fun onSupportNavigateUp():Boolean{
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
 
-        finish()
+        menuInflater.inflate(R.menu.edit_delete, menu)
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.itemId) {
+
+            R.id.editButton->{
+                Toast.makeText(this,"EDIT CLICKED",Toast.LENGTH_LONG).show()
+            }
+
+            R.id.deleteButton->{
+                //TODO nie dziala bo nie ma refernecji tylko kopia listy
+                expense.listOfProducts.remove(writeProduct)
+                finish()
+                Toast.makeText(this,"DELETE CLICKED",Toast.LENGTH_LONG).show()
+            }
+
+            //jak naciśnie się na strzałkę u góry, to jest powrót
+            android.R.id.home -> {
+                finish()
+            }
+
+        }
+
         return true
     }
 

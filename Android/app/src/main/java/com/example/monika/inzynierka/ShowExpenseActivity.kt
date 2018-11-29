@@ -32,7 +32,6 @@ class ShowExpenseActivity : AppCompatActivity() {
         }
         //---------------------------------------------------------------------------
 
-
         //ustawienie strzałki u góry, aby była znakiem na powrót
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
@@ -40,6 +39,21 @@ class ShowExpenseActivity : AppCompatActivity() {
         ShoppingDate.isEnabled=false
         ShoppingPrize.isEnabled=false
         ConstrantExpense.isEnabled=false
+
+        ListOfProducts.setOnItemClickListener{ adapterView, view, i, l ->
+            val intent = Intent(this, ShowProductActivity::class.java)
+            intent.putExtra("ExpenseData", showExpense)
+            intent.putExtra("ProductId", i)
+            startActivity(intent)
+        }
+    }
+
+    fun refresh(){
+
+        if(showExpense.receiptPhoto!=null){
+
+            ReceiptPhoto.setImageBitmap(showExpense.receiptPhoto)
+        }
 
         //sprawdzenie, czy coś jest wybranej klasy
         if(showExpense is ConstrantExpense){
@@ -57,19 +71,14 @@ class ShowExpenseActivity : AppCompatActivity() {
         val adapter =  ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,listItems)
         ListOfProducts.adapter = adapter
 
-        ListOfProducts.setOnItemClickListener{ adapterView, view, i, l ->
-            val intent = Intent(this, ShowProductActivity::class.java)
-            intent.putExtra("ExpenseData", showExpense)
-            intent.putExtra("ProductId", i)
-            startActivity(intent)
-        }
-
-
-        //TODO wypisywanie na danej pozycji tego tego
+        //wypisywanie na danej pozycji tego tego
         ShoppingPrize.setText(showExpense.price.toString())
-        ShoppingDate.setText(showExpense.shoppingDate.toString())
-        //-------------------------------------------------------------------------------
+        ShoppingDate.setText(showExpense.shoppingDate)
+    }
 
+    override fun onResume() {
+        super.onResume()
+        refresh()
     }
 
     //jak naciśnie się na strzałkę u góry, to jest powrót

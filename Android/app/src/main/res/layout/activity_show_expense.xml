@@ -7,7 +7,7 @@
     tools:context=".ShowExpenseActivity">
 
     <LinearLayout
-        android:layout_width="368dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="9dp"
@@ -27,7 +27,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imageButton2"
+                android:id="@+id/ReceiptPhoto"
                 android:layout_width="match_parent"
                 android:layout_height="142dp"
                 android:layout_weight="1"
@@ -53,11 +53,9 @@
                     android:id="@+id/ShoppingDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:autofillHints=""
                     android:ems="10"
                     android:hint="@string/data_zakupu"
-                    android:importantForAutofill="no"
-                    android:inputType="date"
+                    android:inputType="none"
                     android:textColor="@android:color/black"
                     tools:targetApi="o" />
 
@@ -74,11 +72,9 @@
                     android:id="@+id/ShoppingPrize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:autofillHints=""
                     android:ems="10"
                     android:hint="@string/kwota"
-                    android:importantForAutofill="no"
-                    android:inputType="numberDecimal"
+                    android:inputType="none"
                     android:textColor="@android:color/black"
                     tools:targetApi="o" />
 

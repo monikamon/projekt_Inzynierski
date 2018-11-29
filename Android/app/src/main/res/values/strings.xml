@@ -21,4 +21,6 @@
     <string name="powr_t">Powrót</string>
     <string name="zdjecie">zdjecie</string>
     <string name="anuluj">anuluj</string>
+    <string name="edytuj">Edytuj</string>
+    <string name="delete">Usuń</string>
 </resources>

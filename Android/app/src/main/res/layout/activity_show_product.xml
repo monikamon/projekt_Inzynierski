@@ -23,7 +23,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/ProductPhoto"
                 android:layout_width="358dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -50,10 +50,11 @@
                     android:id="@+id/ProductName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:autofillHints=""
                     android:ems="10"
                     android:hint="@string/nazwa_produktu"
                     android:inputType="textMultiLine"
-                    android:autofillHints="" tools:targetApi="o"/>
+                    tools:targetApi="o" />
 
                 <TextView
                     android:id="@+id/textView3"
@@ -103,15 +104,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/AcceptButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginBottom="30dp"
-        android:text="@string/zatwierd"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
