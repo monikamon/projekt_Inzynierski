@@ -19,7 +19,7 @@ class Category: Serializable{
         var sum:Double=0.0
         for(i in list) {
 
-            sum += i.prise
+            sum += i.price
         }
 
         return sum

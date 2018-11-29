@@ -4,75 +4,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddExpenseActivity">
+    tools:context=".ShowExpenseActivity">
 
     <LinearLayout
         android:layout_width="368dp"
-        android:layout_height="296dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="9dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="1dp"
         android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/AcceptButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="159dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="358dp"
-                android:layout_height="match_parent"
+                android:id="@+id/imageButton2"
+                android:layout_width="match_parent"
+                android:layout_height="142dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/zdjecie"
                 app:srcCompat="@android:drawable/sym_def_app_icon" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/TextProductName"
+                    android:id="@+id/TextDataExpense"
                     android:layout_width="match_parent"
-                    android:layout_height="32dp"
-                    android:text="@string/nazwa_produktu"
+                    android:layout_height="35dp"
+                    android:layout_weight="1"
+                    android:text="@string/data_zakupu"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    tools:layout_editor_absoluteX="265dp"
-                    tools:layout_editor_absoluteY="371dp" />
+                    android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/ProductName"
+                    android:id="@+id/ShoppingDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:autofillHints=""
                     android:ems="10"
-                    android:hint="@string/nazwa_produktu"
-                    android:inputType="textMultiLine"
-                    android:autofillHints="" tools:targetApi="o"/>
+                    android:hint="@string/data_zakupu"
+                    android:importantForAutofill="no"
+                    android:inputType="date"
+                    android:textColor="@android:color/black"
+                    tools:targetApi="o" />
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/TextPrize"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/cena"
+                    android:layout_height="35dp"
+                    android:layout_weight="1"
+                    android:text="@string/kwota"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    tools:layout_editor_absoluteX="186dp"
-                    tools:layout_editor_absoluteY="350dp" />
+                    android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/ProductPrize"
+                    android:id="@+id/ShoppingPrize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:autofillHints=""
                     android:ems="10"
-                    android:hint="@string/cena"
+                    android:hint="@string/kwota"
+                    android:importantForAutofill="no"
                     android:inputType="numberDecimal"
-                    android:importantForAutofill="no" tools:targetApi="o"/>
+                    android:textColor="@android:color/black"
+                    tools:targetApi="o" />
 
             </LinearLayout>
         </LinearLayout>
@@ -82,24 +90,31 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/TextGuarrantyDate"
-                android:layout_width="187dp"
-                android:layout_height="35dp"
-                android:layout_weight="1"
-                android:text="@string/data_gwarancji"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+            <ListView
+                android:id="@+id/ListOfProducts"
+                android:layout_width="185dp"
+                android:layout_height="match_parent" />
 
-            <EditText
-                android:id="@+id/ProductGuarrantyDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="@string/data_gwarancji"
-                android:importantForAutofill="no"
-                android:inputType="textPersonName|date" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/ConstrantExpense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sta_y_wydatek" />
+
+                <Button
+                    android:id="@+id/AddProduktButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="addProduct"
+                    android:text="@string/dodaj_produkt" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>
@@ -108,8 +123,8 @@
         android:id="@+id/AcceptButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/zatwierd"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

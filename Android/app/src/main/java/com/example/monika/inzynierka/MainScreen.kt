@@ -5,11 +5,7 @@ import DataStructure.Expense
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.AlarmClock.EXTRA_MESSAGE
-import android.provider.ContactsContract
 import android.view.View
-import android.widget.EditText
-import com.example.monika.inzynierka.R.layout.activity_statistics
 
 class MainScreen : AppCompatActivity() {
 
@@ -23,7 +19,7 @@ class MainScreen : AppCompatActivity() {
              var elem= Expense()
             elem.shoppingDate=i.toString()
             data.expenseList.add(elem)
-            elem.prise=(i+3453/1000).toDouble()
+            elem.price=(i+3453/1000).toDouble()
             data.expenseList.add(elem)
 
         }
@@ -40,7 +36,7 @@ class MainScreen : AppCompatActivity() {
 
     fun showExpense(view: View){
 
-        val intent=Intent(this, ExpenseActivity::class.java)
+        val intent=Intent(this, ProductActivity::class.java)
         intent.putExtra("Dane", data)
         startActivity(intent)
     }

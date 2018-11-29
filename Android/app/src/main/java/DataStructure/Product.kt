@@ -11,6 +11,13 @@ class Product: Serializable{
     var prise:Double
     var photoPicture:Bitmap?
 
+    constructor(){
+
+        this.guarrantyDate=null
+        this.name=""
+        this.prise=0.0
+        this.photoPicture=null
+    }
     constructor(name:String, prise:Double, guarrantyDate:String?=null, photoPicture:Bitmap?=null){
 
         this.guarrantyDate=guarrantyDate
