@@ -34,8 +34,7 @@ class ShowExpenseActivity : AppCompatActivity() {
 
         ListOfProducts.setOnItemClickListener{ adapterView, view, i, l ->
             val intent = Intent(this, ShowProductActivity::class.java)
-            intent.putExtra("ExpenseData", showExpense)
-            intent.putExtra("ProductId", i)
+            intent.putExtra("product", list.get(i))
             startActivity(intent)
         }
     }
@@ -84,7 +83,8 @@ class ShowExpenseActivity : AppCompatActivity() {
 
     fun addProduct(view: View){
 
-        val intent = Intent(this, AddExpenseActivity::class.java)
+        val intent = Intent(this, AddProductActivity::class.java)
+        intent.putExtra("ExpanseName", showExpense)
         startActivity(intent)
     }
 

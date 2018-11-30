@@ -30,7 +30,7 @@ class StatisticsActivity : AppCompatActivity() {
 
     fun addExpense(view: View){
 
-        val intent = Intent (this, AddExpenseActivity::class.java)
+        val intent = Intent (this, AddProductActivity::class.java)
         startActivity(intent)
     }
 

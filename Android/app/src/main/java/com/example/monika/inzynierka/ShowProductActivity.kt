@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import com.example.monika.inzynierka.DataStructure.DatabaseRoom
 import kotlinx.android.synthetic.main.activity_show_product.*
 
 class ShowProductActivity : AppCompatActivity() {
@@ -14,22 +15,15 @@ class ShowProductActivity : AppCompatActivity() {
 
     var writeProduct: Product= Product()
 
-    //pobranie paczki danych i rzutownaie na klasę Expense
-    var expense:Expense = Expense()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_product)
 
-        expense=intent.getSerializableExtra("ExpenseData") as Expense
-
-        var productId=intent.getIntExtra("ProductId", -1)
-//        writeProduct=expense.listOfProducts.get(productId)
+        writeProduct = intent.getSerializableExtra("product") as Product
 
         //ustawienie strzałki u góry, aby była znakiem na powrót
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-
-        //CancelButton.setOnClickListener{backToDetails()}
 
         //ustawienie aby dany text nie był do edycji tylko do oglądania, jest zablokowany
         ProductName.isEnabled=false
@@ -37,7 +31,7 @@ class ShowProductActivity : AppCompatActivity() {
         ProductGuarrantyDate.isEnabled=false
 
 
-        //TODO wypisywanie na danej pozycji tego tego
+        //wypisywanie na danej pozycji tego tego
 
         if(writeProduct.getBitmapPhoto()!=null){
 
@@ -70,9 +64,7 @@ class ShowProductActivity : AppCompatActivity() {
             }
 
             R.id.deleteButton->{
-                //TODO nie dziala bo nie ma refernecji tylko kopia listy
-                //TODO change
-              //  expense.listOfProducts.remove(writeProduct)
+                DatabaseRoom.getAppDataBase()!!.productDAO().delete(writeProduct)
                 finish()
                 Toast.makeText(this,"DELETE CLICKED",Toast.LENGTH_LONG).show()
             }
