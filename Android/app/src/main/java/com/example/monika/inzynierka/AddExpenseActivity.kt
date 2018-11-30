@@ -1,12 +1,9 @@
 package com.example.monika.inzynierka
 
-import Dialog.PhotoDialog
-import android.content.Intent
+import com.example.monika.inzynierka.Dialog.PhotoDialog
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
 import android.view.View
-import kotlinx.android.synthetic.main.activity_add_expense.*
 
 class AddExpenseActivity : AppCompatActivity() {
 

@@ -1,8 +1,8 @@
 package com.example.monika.inzynierka
 
-import DataStructure.ConstrantExpense
-import DataStructure.Expense
-import DataStructure.Product
+import com.example.monika.inzynierka.DataStructure.ConstrantExpense
+import com.example.monika.inzynierka.DataStructure.Expense
+import com.example.monika.inzynierka.DataStructure.Product
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -25,11 +25,12 @@ class ShowExpenseActivity : AppCompatActivity() {
         showExpense.shoppingDate="06.12.2018"
 
 
-        for (i in 0 until 8) {
-            var product=Product()
-            product.name=(i*647/3).toString()
-            showExpense.listOfProducts.add(product)
-        }
+        //TODO change
+//        for (i in 0 until 8) {
+//            var product=Product()
+//            product.name=(i*647/3).toString()
+//            showExpense.listOfProducts.add(product)
+//        }
         //---------------------------------------------------------------------------
 
         //ustawienie strzałki u góry, aby była znakiem na powrót
@@ -50,9 +51,9 @@ class ShowExpenseActivity : AppCompatActivity() {
 
     fun refresh(){
 
-        if(showExpense.receiptPhoto!=null){
+        if(showExpense.getBitmapPhoto()!=null){
 
-            ReceiptPhoto.setImageBitmap(showExpense.receiptPhoto)
+            ReceiptPhoto.setImageBitmap(showExpense.getBitmapPhoto())
         }
 
         //sprawdzenie, czy coś jest wybranej klasy
@@ -64,9 +65,10 @@ class ShowExpenseActivity : AppCompatActivity() {
         //zainicjowanie listy mniej dupiatymi elementami
         val listItems = ArrayList<String>()
 
-        for (element in showExpense.listOfProducts) {
-            listItems.add(element.name)
-        }
+        //TODO change
+//        for (element in showExpense.listOfProducts) {
+//            listItems.add(element.name)
+//        }
 
         val adapter =  ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,listItems)
         ListOfProducts.adapter = adapter

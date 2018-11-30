@@ -1,6 +1,5 @@
 package com.example.monika.inzynierka
 
-import DataStructure.Data
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -20,10 +19,11 @@ class ProductActivity : AppCompatActivity() {
         //zainicjowanie listy dupiatymi elementami
         val listItems = ArrayList<String>(0)
 
-        var blabla=intent.getSerializableExtra("Dane")as Data
-        for (i in 0 until blabla.expenseList.size) {
-            listItems.add("Wydatek: " +blabla.expenseList.get(i).shoppingDate)
-        }
+        //TODO  change
+        //var blabla=intent.getSerializableExtra("Dane")as Data
+       // for (i in 0 until blabla.expenseList.size) {
+        //    listItems.add("Wydatek: " +blabla.expenseList.get(i).shoppingDate)
+        //}
 
         val adapter =  ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,listItems)
         listOfExpenses.adapter = adapter

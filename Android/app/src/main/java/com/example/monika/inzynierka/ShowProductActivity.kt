@@ -1,7 +1,7 @@
 package com.example.monika.inzynierka
 
-import DataStructure.Product
-import DataStructure.Expense
+import com.example.monika.inzynierka.DataStructure.Product
+import com.example.monika.inzynierka.DataStructure.Expense
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -24,7 +24,7 @@ class ShowProductActivity : AppCompatActivity() {
         expense=intent.getSerializableExtra("ExpenseData") as Expense
 
         var productId=intent.getIntExtra("ProductId", -1)
-        writeProduct=expense.listOfProducts.get(productId)
+//        writeProduct=expense.listOfProducts.get(productId)
 
         //ustawienie strzałki u góry, aby była znakiem na powrót
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
@@ -39,9 +39,9 @@ class ShowProductActivity : AppCompatActivity() {
 
         //TODO wypisywanie na danej pozycji tego tego
 
-        if(writeProduct.photoPicture!=null){
+        if(writeProduct.getBitmapPhoto()!=null){
 
-            ProductPhoto.setImageBitmap(writeProduct.photoPicture)
+            ProductPhoto.setImageBitmap(writeProduct.getBitmapPhoto())
         }
 
         ProductPrize.setText(writeProduct.prise.toString())
@@ -71,7 +71,8 @@ class ShowProductActivity : AppCompatActivity() {
 
             R.id.deleteButton->{
                 //TODO nie dziala bo nie ma refernecji tylko kopia listy
-                expense.listOfProducts.remove(writeProduct)
+                //TODO change
+              //  expense.listOfProducts.remove(writeProduct)
                 finish()
                 Toast.makeText(this,"DELETE CLICKED",Toast.LENGTH_LONG).show()
             }

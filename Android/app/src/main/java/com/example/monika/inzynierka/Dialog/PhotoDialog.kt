@@ -1,4 +1,4 @@
-package Dialog
+package com.example.monika.inzynierka.Dialog
 
 import android.Manifest
 import android.content.Intent

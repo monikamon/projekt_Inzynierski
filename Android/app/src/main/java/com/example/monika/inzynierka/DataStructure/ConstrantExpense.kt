@@ -1,10 +1,11 @@
-package DataStructure
+package com.example.monika.inzynierka.DataStructure
 
+import android.arch.persistence.room.Entity
 import android.graphics.Bitmap
 import java.io.Serializable
 
+@Entity(tableName = "constrantExpenses")
 class ConstrantExpense: Expense,  Serializable{
-
 
     //dziedziczy po receipt
     //data do której należy zapłacić dany wydatek (co ile się płaci)
@@ -19,6 +20,8 @@ class ConstrantExpense: Expense,  Serializable{
     constructor():super(){
 
         this.timeToPayExpense=ConstrantExpenseTime.EVERYDAY
+
+
     }
 
 }

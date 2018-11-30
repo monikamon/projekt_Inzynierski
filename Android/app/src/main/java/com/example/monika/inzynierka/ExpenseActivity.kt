@@ -1,7 +1,7 @@
 package com.example.monika.inzynierka
 
-import Dialog.CategoryDialog
-import Dialog.PhotoDialog
+import com.example.monika.inzynierka.Dialog.CategoryDialog
+import com.example.monika.inzynierka.Dialog.PhotoDialog
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
