@@ -26,18 +26,22 @@ open class Expense: Serializable,BitMapChanger{
 
     var price:Double
 
+    var expenseName:String
+
     //konstruktor bezargumentowy
     constructor(){
 
         this.shoppingDate=""
         this.price=0.0
+        this.expenseName=""
     }
 
-    constructor(shoppingDate:String, prise:Double, receiptPhoto:Bitmap?=null){
+    constructor(shoppingDate:String, prise:Double, expenseName:String, receiptPhoto:Bitmap?=null){
 
         this.shoppingDate=shoppingDate
         this.setBitmapPhoto(receiptPhoto)
         this.price=prise
+        this.expenseName=expenseName
     }
 
 

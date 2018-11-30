@@ -20,7 +20,7 @@
         </activity>
         <activity android:name=".StatisticsActivity"
             android:label="@string/app_stat_screem"></activity>
-        <activity android:name=".ProductActivity" />
+        <activity android:name=".ListExpenseActivity" />
         <activity android:name=".ExpenseActivity" />
         <activity android:name=".AddExpenseActivity" />
         <activity android:name=".KategoryActivity" />

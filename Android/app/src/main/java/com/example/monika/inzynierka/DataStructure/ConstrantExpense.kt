@@ -12,7 +12,7 @@ class ConstrantExpense: Expense,  Serializable{
     var timeToPayExpense: ConstrantExpenseTime
 
     //wywołanie konstruktora tej klasy i klasy nadrzędnej
-    constructor(timeToPayExpense: ConstrantExpenseTime, shoppingDate:String, prise:Double, receiptPhoto: Bitmap?=null):super(shoppingDate, prise, receiptPhoto){
+    constructor(timeToPayExpense: ConstrantExpenseTime, shoppingDate:String, prise:Double, expenseName:String, receiptPhoto: Bitmap?=null):super(shoppingDate, prise, expenseName, receiptPhoto){
 
         this.timeToPayExpense=timeToPayExpense
     }

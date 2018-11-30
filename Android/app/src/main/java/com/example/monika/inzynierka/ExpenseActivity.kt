@@ -16,7 +16,6 @@ class ExpenseActivity : AppCompatActivity() {
         //ustawienie strzałki u góry, aby była znakiem na powrót
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-
     }
 
     //jak naciśnie się na strzałkę u góry, to jest powrót
@@ -33,7 +32,6 @@ class ExpenseActivity : AppCompatActivity() {
     }
 
     fun addPhotoReceipt(view: View){
-
 
         val dialog = PhotoDialog()
         dialog.pm=packageManager

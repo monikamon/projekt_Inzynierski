@@ -23,10 +23,10 @@ abstract class DatabaseRoom:RoomDatabase(){
     companion object {
         private var INSTANCE: DatabaseRoom? = null
 
-        fun getAppDataBase(context: Context): DatabaseRoom? {
+        fun getAppDataBase(context: Context?=null): DatabaseRoom? {
             if (INSTANCE == null){
                 synchronized(DatabaseRoom::class){
-                    INSTANCE = Room.databaseBuilder(context.applicationContext, DatabaseRoom::class.java, "DatabaseRoom").build()
+                    INSTANCE = Room.databaseBuilder(context!!.applicationContext, DatabaseRoom::class.java, "DatabaseRoom").allowMainThreadQueries().build()
                 }
             }
             return INSTANCE

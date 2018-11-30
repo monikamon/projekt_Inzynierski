@@ -12,7 +12,7 @@ interface ProductDAO {
     fun getAll(): List<Product>
 
     @Query("SELECT * FROM products WHERE expenseId=:expenseId")
-    fun getExpanseFromExpense(expenseId: Int): List<Product>
+    fun getProductFromExpense(expenseId: Int): List<Product>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(product: Product) : Long

@@ -8,30 +8,21 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
+import com.example.monika.inzynierka.DataStructure.DatabaseRoom
 import kotlinx.android.synthetic.main.activity_show_expense.*
 
 class ShowExpenseActivity : AppCompatActivity() {
 
 
+    var db : DatabaseRoom = DatabaseRoom.getAppDataBase()!!
     var showExpense: Expense= Expense()
+    var list:ArrayList<Product> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_expense)
 
-
-        //TODO tylko dla testu
-        showExpense.price=13.99
-        showExpense.shoppingDate="06.12.2018"
-
-
-        //TODO change
-//        for (i in 0 until 8) {
-//            var product=Product()
-//            product.name=(i*647/3).toString()
-//            showExpense.listOfProducts.add(product)
-//        }
-        //---------------------------------------------------------------------------
+        showExpense=intent.getSerializableExtra("EXPANSE")as Expense
 
         //ustawienie strzałki u góry, aby była znakiem na powrót
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
@@ -64,11 +55,12 @@ class ShowExpenseActivity : AppCompatActivity() {
 
         //zainicjowanie listy mniej dupiatymi elementami
         val listItems = ArrayList<String>()
+        list.clear()
+        list.addAll(db.productDAO().getProductFromExpense(showExpense.id!!))
 
-        //TODO change
-//        for (element in showExpense.listOfProducts) {
-//            listItems.add(element.name)
-//        }
+        for (element in list) {
+            listItems.add(element.name)
+        }
 
         val adapter =  ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,listItems)
         ListOfProducts.adapter = adapter
