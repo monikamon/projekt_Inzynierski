@@ -33,6 +33,12 @@ class AddExpenseActivity : AppCompatActivity(), returnPhotoInterface {
             if(b){
 
                 //TODO trzeba zrobić
+                howOftenToPay.visibility=View.VISIBLE
+                constrantExpenseSpinner.visibility= View.VISIBLE
+            }else{
+                howOftenToPay.visibility=View.GONE
+                constrantExpenseSpinner.visibility= View.GONE
+
             }
         }
     }

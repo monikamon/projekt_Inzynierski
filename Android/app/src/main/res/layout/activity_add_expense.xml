@@ -47,7 +47,7 @@
                     android:autofillHints=""
                     android:ems="10"
                     android:hint="@string/nazwa_wydatku"
-                    android:inputType="date"
+                    android:inputType="text"
                     tools:targetApi="o" />
 
                 <TextView
@@ -108,7 +108,7 @@
                     android:id="@+id/howOftenToPay"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:text="TextView"
+                    android:text="@string/stala_wplata_czas"
                     tools:text="@string/stala_wplata_czas" />
 
                 <Spinner
