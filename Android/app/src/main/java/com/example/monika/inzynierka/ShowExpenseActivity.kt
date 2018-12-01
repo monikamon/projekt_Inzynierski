@@ -11,6 +11,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import com.example.monika.inzynierka.DataStructure.ConstrantExpenseTime
 import com.example.monika.inzynierka.DataStructure.tools.DatabaseRoom
 import kotlinx.android.synthetic.main.activity_show_expense.*
 
@@ -33,8 +34,9 @@ class ShowExpenseActivity : AppCompatActivity() {
         //ustawienie aby dany text nie był do edycji tylko do oglądania, jest zablokowany
         ShoppingDate.isEnabled=false
         ShoppingPrize.isEnabled=false
-        checkConstrantExpense.isEnabled=false
         categoryName.isEnabled=false
+        displayEnum.isEnabled=false
+        checkConstrantExpense.isEnabled=true
 
         ListOfProducts.setOnItemClickListener{ adapterView, view, i, l ->
             val intent = Intent(this, ShowProductActivity::class.java)
@@ -72,10 +74,30 @@ class ShowExpenseActivity : AppCompatActivity() {
         //sprawdzenie, czy coś jest wybranej klasy
         if(showExpense is ConstrantExpense){
             //ustawienie wartości checkboxa na true!
-            checkConstrantExpense.isSelected=true
+            checkConstrantExpense.isChecked=true
         }
 
 
+
+        if(checkConstrantExpense.isChecked){
+
+            howOftenToPayShow.visibility=View.VISIBLE
+            displayEnum.visibility= View.VISIBLE
+
+            when((showExpense as ConstrantExpense).timeToPayExpense){
+                ConstrantExpenseTime.EVERYDAY->displayEnum.setText(getString(R.string.everyday))
+                ConstrantExpenseTime.EVERY_WEEK->displayEnum.setText(getString(R.string.every_week))
+                ConstrantExpenseTime.EVERY_MONTH->displayEnum.setText(getString(R.string.every_month))
+                ConstrantExpenseTime.EVERY_TWO_MONTHS->displayEnum.setText(getString(R.string.every_two_months))
+                ConstrantExpenseTime.EVERY_THREE_MONTHS->displayEnum.setText(getString(R.string.every_three_months))
+                ConstrantExpenseTime.EVERY_SIX_MONTHS->displayEnum.setText(getString(R.string.every_six_months))
+                ConstrantExpenseTime.EVERY_YEAR->displayEnum.setText(getString(R.string.every_year))
+            }
+        }else{
+            howOftenToPayShow.visibility=View.GONE
+            displayEnum.visibility= View.GONE
+
+        }
 
 
         //zainicjowanie listy mniej dupiatymi elementami

@@ -66,6 +66,7 @@
                     android:layout_height="35dp"
                     android:layout_weight="1"
                     android:text="@string/data_zakupu"
+                    android:textAlignment="viewStart"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -73,6 +74,7 @@
                     android:id="@+id/ShoppingDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:ems="10"
                     android:hint="@string/data_zakupu"
                     android:inputType="none"
@@ -89,12 +91,14 @@
 
             <ListView
                 android:id="@+id/ListOfProducts"
-                android:layout_width="185dp"
-                android:layout_height="match_parent" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
@@ -119,7 +123,23 @@
                     android:id="@+id/checkConstrantExpense"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="false"
                     android:text="@string/sta_y_wydatek" />
+
+                <TextView
+                    android:id="@+id/howOftenToPayShow"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:text="@string/stala_wplata_czas"
+                    android:textColor="@android:color/black"
+                    android:visibility="visible"
+                    tools:text="@string/stala_wplata_czas" />
+
+                <EditText
+                    android:id="@+id/displayEnum"
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:textColor="@android:color/black" />
 
                 <Button
                     android:id="@+id/AddProduktButton"

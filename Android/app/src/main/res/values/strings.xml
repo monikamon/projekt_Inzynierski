@@ -28,4 +28,12 @@
     <string name="no_category">Brak kategorii</string>
     <string name="nazwa_wydatku">Nazwa</string>
     <string name="stala_wplata_czas">Częstotliwość wpłaty</string>
+    <string name="everyday">Codziennie</string>
+    <string name="every_week">Co tydzień</string>
+    <string name="every_month">Co miesiąc</string>
+    <string name="every_two_months">Co dwa miesiące</string>
+    <string name="every_three_months">Co trzy miesiące</string>
+    <string name="every_six_months">Co pół roku</string>
+    <string name="every_year">Co rok</string>
+
 </resources>
