@@ -3,8 +3,11 @@ package com.example.monika.inzynierka
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import com.example.monika.inzynierka.DataStructure.tools.DatabaseRoom
 import com.example.monika.inzynierka.DataStructure.Expense
 import kotlinx.android.synthetic.main.activity_list_expense.*
@@ -51,16 +54,38 @@ class ListExpenseActivity : AppCompatActivity() {
         refresh()
     }
 
-    //jak naciśnięcie się na strzałkę u góry, to jest powrót
-    override fun onSupportNavigateUp():Boolean{
-        finish()
-        return true
-    }
-
     fun addExpense(view: View) {
 
         val intent = Intent(this, AddExpenseActivity::class.java)
         startActivity(intent)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+
+        menuInflater.inflate(R.menu.category_menu, menu)
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.itemId) {
+
+            R.id.chooseCategoryOption->{
+                Toast.makeText(this,"CATEGORY CLICKED", Toast.LENGTH_LONG).show()
+
+                val intent = Intent(this, KategoryActivity::class.java)
+                startActivity(intent)
+            }
+
+            //jak naciśnie się na strzałkę u góry, to jest powrót
+            android.R.id.home -> {
+                finish()
+            }
+
+        }
+
+        return true
     }
 
 }

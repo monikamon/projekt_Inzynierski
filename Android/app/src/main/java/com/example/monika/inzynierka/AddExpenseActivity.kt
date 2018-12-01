@@ -24,27 +24,6 @@ class AddExpenseActivity : AppCompatActivity(), returnPhotoInterface {
         refresh()
     }
 
-//    val spinnerList = ArrayList<String>()
-
-
-
-//    spinnerList.add(getString(R.string.name))
-//
-//    if(element != null) {
-//        spinnerTemplate.add(getString(R.string.rating_label))
-//
-//        for (i in element!!.list)
-//            spinnerTemplate.add(i.title)
-//
-//    }
-
-
-//
-//    val dataAdapter = ArrayAdapter(context, android.R.layout.simple_spinner_item, spinnerTemplate)
-//    dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//
-//    sortBy.adapter = dataAdapter
-//    sortBy.setSelection(0)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

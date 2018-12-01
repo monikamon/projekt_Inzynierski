@@ -7,6 +7,18 @@ import android.view.View
 import com.example.monika.inzynierka.DataStructure.*
 import com.example.monika.inzynierka.DataStructure.tools.DatabaseRoom
 
+
+//TODO
+//
+//kategorie - sprawdzać, czy kategoria już jest w bazie (żeby się nie powtarzały)
+//  - dla produktu zrobic spinner dla kategori - usuwanie kategori
+//wyświetlać duże zdjecie jako okno dialogowe
+//edycja
+//------
+//sortowanie
+//wyszukiwanie paragonu
+//wykresy
+
 class MainScreen : AppCompatActivity() {
 
 
