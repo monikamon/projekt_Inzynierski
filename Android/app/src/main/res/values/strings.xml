@@ -23,4 +23,9 @@
     <string name="anuluj">anuluj</string>
     <string name="edytuj">Edytuj</string>
     <string name="delete">Usuń</string>
+    <string name="allert_name">Nie podano nazwy</string>
+    <string name="category">Kategoria</string>
+    <string name="no_category">Brak kategorii</string>
+    <string name="nazwa_wydatku">Nazwa</string>
+    <string name="stala_wplata_czas">Częstotliwość wpłaty</string>
 </resources>

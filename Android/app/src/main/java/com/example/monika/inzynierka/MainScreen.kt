@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.monika.inzynierka.DataStructure.*
-import kotlinx.android.synthetic.main.activity_list_expense.*
+import com.example.monika.inzynierka.DataStructure.tools.DatabaseRoom
 
 class MainScreen : AppCompatActivity() {
 

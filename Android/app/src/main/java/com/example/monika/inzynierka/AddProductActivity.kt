@@ -6,16 +6,23 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.example.monika.inzynierka.DataStructure.DatabaseRoom
+import com.example.monika.inzynierka.DataStructure.tools.DatabaseRoom
 import com.example.monika.inzynierka.DataStructure.Expense
 import com.example.monika.inzynierka.DataStructure.Product
+import com.example.monika.inzynierka.DataStructure.tools.returnPhotoInterface
 import kotlinx.android.synthetic.main.activity_add_product.*
 
 
-class AddProductActivity : AppCompatActivity() {
+class AddProductActivity : AppCompatActivity(), returnPhotoInterface {
 
     var expense: Expense? = null
     var photo: Bitmap? =null
+
+    override fun returnPhoto(pictureBitmap: Bitmap) {
+
+        photo=pictureBitmap
+        refresh()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,12 +46,18 @@ class AddProductActivity : AppCompatActivity() {
 
         val dialog = PhotoDialog()
         dialog.pm=packageManager
+        dialog.activity = this
         dialog.show(supportFragmentManager, "dialog1")
 
     }
 
+    //ustawnienei na nowo zdjecia
     fun refresh(){
 
+        if(photo!=null){
+
+            imageView.setImageBitmap(photo)
+        }
 
     }
 
@@ -57,19 +70,22 @@ class AddProductActivity : AppCompatActivity() {
 
         if(ProductName.text.isEmpty()){
 
-            Toast.makeText(this, "Nie podano nazwy", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.allert_name), Toast.LENGTH_SHORT).show()
             return
         }
 
         var product = Product()
         product.name = ProductName.text.toString()
-        product.prise = ProductPrize.text.toString().toDouble()
+
+        if(!ProductPrize.text.isEmpty())
+            product.prise = ProductPrize.text.toString().toDouble()
+
         product.guarrantyDate = GuarrantyDate.text.toString()
         product.setBitmapPhoto(photo)
         product.expenseId = expense!!.id
 
         DatabaseRoom.getAppDataBase()!!.productDAO().insert(product)
-        
+
         finish()
     }
 

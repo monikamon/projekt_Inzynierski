@@ -1,15 +1,13 @@
 package com.example.monika.inzynierka
 
-import android.arch.persistence.room.RoomDatabase
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
-import com.example.monika.inzynierka.DataStructure.DatabaseRoom
+import com.example.monika.inzynierka.DataStructure.tools.DatabaseRoom
 import com.example.monika.inzynierka.DataStructure.Expense
 import kotlinx.android.synthetic.main.activity_list_expense.*
-import kotlin.math.exp
 
 class ListExpenseActivity : AppCompatActivity() {
 
@@ -61,7 +59,7 @@ class ListExpenseActivity : AppCompatActivity() {
 
     fun addExpense(view: View) {
 
-        val intent = Intent(this, ExpenseActivity::class.java)
+        val intent = Intent(this, AddExpenseActivity::class.java)
         startActivity(intent)
     }
 

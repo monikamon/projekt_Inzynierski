@@ -1,15 +1,18 @@
-package com.example.monika.inzynierka.DataStructure
+package com.example.monika.inzynierka.DataStructure.tools
 
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.arch.persistence.room.TypeConverters
 import android.content.Context
-import com.example.monika.inzynierka.DataStructure.DAOs.CategoryDAO
-import com.example.monika.inzynierka.DataStructure.DAOs.ConstrantExpenseDAO
-import com.example.monika.inzynierka.DataStructure.DAOs.ExpenseDAO
-import com.example.monika.inzynierka.DataStructure.DAOs.ProductDAO
-import com.example.monika.inzynierka.DataStructure.tools.Converter
+import com.example.monika.inzynierka.DataStructure.Category
+import com.example.monika.inzynierka.DataStructure.ConstrantExpense
+import com.example.monika.inzynierka.DataStructure.Expense
+import com.example.monika.inzynierka.DataStructure.Product
+import com.example.monika.inzynierka.DataStructure.dbDao.CategoryDAO
+import com.example.monika.inzynierka.DataStructure.dbDao.ConstrantExpenseDAO
+import com.example.monika.inzynierka.DataStructure.dbDao.ExpenseDAO
+import com.example.monika.inzynierka.DataStructure.dbDao.ProductDAO
 
 @Database(entities = arrayOf(Category::class, ConstrantExpense::class, Expense::class, Product::class), version=1)
 @TypeConverters(Converter::class)
@@ -34,6 +37,24 @@ abstract class DatabaseRoom:RoomDatabase(){
 
         fun destroyDataBase(){
             INSTANCE = null
+        }
+
+        fun deleteExpenseWithProducts(expense: Expense){
+
+
+
+            var getProducts = INSTANCE!!.productDAO().getProductFromExpense(expense.id!!)
+
+            for(element in getProducts){
+
+                INSTANCE!!.productDAO().delete(element)
+            }
+
+            if(expense is ConstrantExpense){
+                INSTANCE!!.constrantExpenseDAO().delete(expense)
+            }else {
+                INSTANCE!!.expenseDAO().delete(expense)
+            }
         }
     }
 

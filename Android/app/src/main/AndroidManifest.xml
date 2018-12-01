@@ -21,12 +21,11 @@
         <activity android:name=".StatisticsActivity"
             android:label="@string/app_stat_screem"></activity>
         <activity android:name=".ListExpenseActivity" />
-        <activity android:name=".ExpenseActivity" />
+        <activity android:name=".AddExpenseActivity" />
         <activity android:name=".AddProductActivity" />
         <activity android:name=".KategoryActivity" />
         <activity android:name=".ShowExpenseActivity" />
         <activity android:name=".ShowProductActivity" />
-        <activity android:name=".ChoosePhotoAction"></activity>
     </application>
 
 </manifest>

@@ -1,7 +1,6 @@
-package com.example.monika.inzynierka.DataStructure.DAOs
+package com.example.monika.inzynierka.DataStructure.dbDao
 
 import android.arch.persistence.room.*
-import com.example.monika.inzynierka.DataStructure.Expense
 import com.example.monika.inzynierka.DataStructure.Product
 
 @Dao

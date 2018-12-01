@@ -41,6 +41,26 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/textDataExpense2"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_weight="1"
+                    android:text="@string/category"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/categoryName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="@string/category"
+                    android:inputType="none"
+                    android:textColor="@android:color/black"
+                    tools:targetApi="o" />
+
+                <TextView
                     android:id="@+id/TextDataExpense"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
@@ -55,25 +75,6 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="@string/data_zakupu"
-                    android:inputType="none"
-                    android:textColor="@android:color/black"
-                    tools:targetApi="o" />
-
-                <TextView
-                    android:id="@+id/TextPrize"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_weight="1"
-                    android:text="@string/kwota"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/ShoppingPrize"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/kwota"
                     android:inputType="none"
                     android:textColor="@android:color/black"
                     tools:targetApi="o" />
@@ -96,8 +97,26 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/TextPrize"
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:text="@string/kwota"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/ShoppingPrize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/kwota"
+                    android:inputType="none"
+                    android:textColor="@android:color/black"
+                    tools:targetApi="o" />
+
                 <CheckBox
-                    android:id="@+id/ConstrantExpense"
+                    android:id="@+id/checkConstrantExpense"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/sta_y_wydatek" />

@@ -1,13 +1,12 @@
 package com.example.monika.inzynierka
 
 import com.example.monika.inzynierka.DataStructure.Product
-import com.example.monika.inzynierka.DataStructure.Expense
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import com.example.monika.inzynierka.DataStructure.DatabaseRoom
+import com.example.monika.inzynierka.DataStructure.tools.DatabaseRoom
 import kotlinx.android.synthetic.main.activity_show_product.*
 
 class ShowProductActivity : AppCompatActivity() {

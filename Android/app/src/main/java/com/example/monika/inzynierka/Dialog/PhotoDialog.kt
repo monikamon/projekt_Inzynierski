@@ -1,8 +1,11 @@
 package com.example.monika.inzynierka.Dialog
 
 import android.Manifest
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v4.app.DialogFragment
@@ -10,11 +13,13 @@ import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.monika.inzynierka.DataStructure.tools.returnPhotoInterface
 import com.example.monika.inzynierka.R
 import kotlinx.android.synthetic.main.activity_choose_photo_action.*
 
 class PhotoDialog : DialogFragment(){
 
+    var activity:Activity?=null
     var pm: PackageManager?=null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -38,7 +43,6 @@ class PhotoDialog : DialogFragment(){
 
                 //jeżeli nie, to proszę o dostęp do kamery(aparatu)
                 requestPermissions(arrayOf(Manifest.permission.CAMERA),1)
-                //REQUEST_TAKE_PHOTO=1 (zamiast 1 może być zmienna: REQUEST_TAKE_PHOTO)
 
             }else{
 
@@ -58,16 +62,34 @@ class PhotoDialog : DialogFragment(){
             if(ContextCompat.checkSelfPermission(context!!, Manifest.permission.READ_EXTERNAL_STORAGE ) != PackageManager.PERMISSION_GRANTED){
 
                 //jeżeli nie, to proszę o dostęp do pamięci
-                requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),1)
+                requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),2)
             }else{
 
                 //pobierz zdjecie z galerii
                 val choosePhoto = Intent(Intent.ACTION_PICK)
                 choosePhoto.type = "image/*"
-                startActivityForResult(choosePhoto, 1)
-                //RESULT_LOAD_IMG zostało zastąpione 1
+                startActivityForResult(choosePhoto, 2)
 
             }
+        }
+
+    }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
+        if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
+
+            val image = data!!.extras.get("data") as Bitmap
+            (activity!! as returnPhotoInterface).returnPhoto(image)
+            dismiss()
+
+        }else if (requestCode == 2 && resultCode == Activity.RESULT_OK) {
+
+            val stream = activity!!.contentResolver.openInputStream(data!!.data)
+            val image = BitmapFactory.decodeStream(stream)
+            (activity!! as returnPhotoInterface).returnPhoto(image)
+            dismiss()
         }
 
     }
