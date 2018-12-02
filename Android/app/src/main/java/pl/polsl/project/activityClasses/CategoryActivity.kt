@@ -12,6 +12,7 @@ import pl.polsl.project.databaseStructure.tools.DatabaseRoom
 import pl.polsl.project.dialogsFragments.AddCategoryDialog
 import pl.polsl.project.dialogsFragments.DeleteCategoryDialog
 import kotlinx.android.synthetic.main.activity_category.*
+import pl.polsl.project.dialogsFragments.EditCategoryDialog
 import kotlin.collections.ArrayList
 
 @Suppress("UNUSED_ANONYMOUS_PARAMETER", "UNUSED_PARAMETER")
@@ -41,6 +42,10 @@ class CategoryActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener 
         when (menuItem.itemId) {
             R.id.editButton ->{
 
+                val dialog = EditCategoryDialog()
+                dialog.activity = this
+                dialog.category = choosenElement
+                dialog.show(supportFragmentManager, "editCategory")
             }
 
             R.id.deleteButton ->{

@@ -26,21 +26,21 @@ abstract class DatabaseRoom:RoomDatabase(){
     companion object {
         private var INSTANCE: DatabaseRoom? = null
 
-        fun getAppDataBase(context: Context?=null): DatabaseRoom? {
-            if (INSTANCE == null){
-                synchronized(DatabaseRoom::class){
+        fun getAppDataBase(context: Context? = null): DatabaseRoom? {
+            if (INSTANCE == null) {
+                synchronized(DatabaseRoom::class) {
                     INSTANCE = Room.databaseBuilder(context!!.applicationContext, DatabaseRoom::class.java, "DatabaseRoom").allowMainThreadQueries().build()
                 }
             }
             return INSTANCE
         }
 
-        fun deleteCategory(categoryName: Category):Boolean{
+        fun deleteCategory(categoryName: Category): Boolean {
 
-            var listExpense:List<Expense> = INSTANCE!!.expenseDAO().getExpanseFromCategory(categoryName.id!!)
-            var listConstrantExpense:List<ConstrantExpense> = INSTANCE!!.constrantExpenseDAO().getExpanseFromCategory(categoryName.id!!)
+            var listExpense: List<Expense> = INSTANCE!!.expenseDAO().getExpanseFromCategory(categoryName.id!!)
+            var listConstrantExpense: List<ConstrantExpense> = INSTANCE!!.constrantExpenseDAO().getExpanseFromCategory(categoryName.id!!)
 
-            if(listExpense.isEmpty() && listConstrantExpense.isEmpty()){
+            if (listExpense.isEmpty() && listConstrantExpense.isEmpty()) {
 
                 INSTANCE!!.categoryDAO().delete(categoryName)
                 return true
@@ -49,14 +49,14 @@ abstract class DatabaseRoom:RoomDatabase(){
             return false
         }
 
-        fun addCategory(category: Category):Boolean{
+        fun addCategory(category: Category): Boolean {
 
             var list: List<Category>
             list = INSTANCE!!.categoryDAO().getAll()
 
-            for(element in list){
+            for (element in list) {
 
-                if(category.name.toUpperCase()==element.name.toUpperCase()){
+                if (category.name.toUpperCase() == element.name.toUpperCase()) {
 
                     return false
                 }
@@ -66,23 +66,23 @@ abstract class DatabaseRoom:RoomDatabase(){
             return true
         }
 
-        fun deleteExpenseWithProducts(expense: Expense){
-
+        fun deleteExpenseWithProducts(expense: Expense) {
 
 
             var getProducts = INSTANCE!!.productDAO().getProductFromExpense(expense.id!!)
 
-            for(element in getProducts){
+            for (element in getProducts) {
 
                 INSTANCE!!.productDAO().delete(element)
             }
 
-            if(expense is ConstrantExpense){
+            if (expense is ConstrantExpense) {
                 INSTANCE!!.constrantExpenseDAO().delete(expense)
-            }else {
+            } else {
                 INSTANCE!!.expenseDAO().delete(expense)
             }
         }
+
     }
 
 }

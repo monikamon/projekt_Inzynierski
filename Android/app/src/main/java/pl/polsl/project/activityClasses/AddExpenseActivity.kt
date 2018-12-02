@@ -17,7 +17,7 @@ import pl.polsl.project.databaseStructure.tools.interfaces.returnPhotoInterface
 import kotlinx.android.synthetic.main.activity_add_expense.*
 
 @Suppress("UNUSED_PARAMETER")
-class AddExpenseActivity : AppCompatActivity(), returnPhotoInterface {
+open class AddExpenseActivity : AppCompatActivity(), returnPhotoInterface {
 
     var photo: Bitmap?=null
     var nameOfCategoryList: List<Category>?=null
@@ -102,7 +102,7 @@ class AddExpenseActivity : AppCompatActivity(), returnPhotoInterface {
         dialog.show(supportFragmentManager, "dialog1")
     }
 
-    fun refresh(){
+    open fun refresh(){
 
         if(photo!=null){
 
@@ -111,7 +111,7 @@ class AddExpenseActivity : AppCompatActivity(), returnPhotoInterface {
 
     }
 
-    fun AcceptExpense(view: View){
+    open fun AcceptExpense(view: View){
 
         if(ExpenseName.text.isEmpty()){
 

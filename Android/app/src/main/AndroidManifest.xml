@@ -26,6 +26,8 @@
         <activity android:name="pl.polsl.project.activityClasses.CategoryActivity" />
         <activity android:name="pl.polsl.project.activityClasses.ShowExpenseActivity" />
         <activity android:name="pl.polsl.project.activityClasses.ShowProductActivity" />
+        <activity android:name="pl.polsl.project.activityClasses.EditProductActivity" />
+        <activity android:name="pl.polsl.project.activityClasses.EditExpenseActivity" />
     </application>
 
 </manifest>

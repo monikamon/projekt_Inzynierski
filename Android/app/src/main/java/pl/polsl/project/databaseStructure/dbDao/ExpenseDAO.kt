@@ -9,6 +9,9 @@ interface ExpenseDAO {
     @Query("SELECT * FROM expenses")
     fun getAll(): List<Expense>
 
+    @Query("SELECT * FROM expenses WHERE id=:id")
+    fun getExpense(id:Int): List<Expense>
+
     @Query("SELECT * FROM expenses WHERE categoryId=:categoryId")
     fun getExpanseFromCategory(categoryId: Int): List<Expense>
 

@@ -1,5 +1,7 @@
 package pl.polsl.project.activityClasses
 
+import android.content.Intent
+import android.graphics.Point
 import pl.polsl.project.databaseStructure.dataStructure.Product
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -7,8 +9,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import com.example.monika.inzynierka.R
-import pl.polsl.project.databaseStructure.tools.DatabaseRoom
 import kotlinx.android.synthetic.main.activity_show_product.*
+import pl.polsl.project.databaseStructure.tools.DatabaseRoom
+import pl.polsl.project.dialogsFragments.DisplayBigPhotoDialog
 
 class ShowProductActivity : AppCompatActivity() {
 
@@ -31,7 +34,25 @@ class ShowProductActivity : AppCompatActivity() {
         ProductGuarrantyDate.isEnabled=false
 
 
+        //-------------------------------------------------------------------------------
+
+        ProductPhoto.setOnClickListener {
+
+            val dialog = DisplayBigPhotoDialog()
+            dialog.photo = writeProduct.getBitmapPhoto()
+            var screenSize = Point()
+            windowManager!!.getDefaultDisplay().getSize(screenSize)
+            dialog.xSize = screenSize.x
+            dialog.ySize = screenSize.y
+            dialog.show(supportFragmentManager, "photoBigDialog")
+        }
+
+    }
+
+    fun refresh(){
         //wypisywanie na danej pozycji tego tego
+
+        writeProduct = DatabaseRoom.getAppDataBase()!!.productDAO().getProduct(writeProduct!!.id!!).get(0)
 
         if(writeProduct.getBitmapPhoto()!=null){
 
@@ -41,11 +62,11 @@ class ShowProductActivity : AppCompatActivity() {
         ProductPrize.setText(writeProduct.prise.toString())
         ProductName.setText(writeProduct.name)
         ProductGuarrantyDate.setText(writeProduct.guarrantyDate)
+    }
 
-
-
-        //-------------------------------------------------------------------------------
-
+    override fun onResume(){
+        super.onResume()
+        refresh()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -60,13 +81,16 @@ class ShowProductActivity : AppCompatActivity() {
         when (item.itemId) {
 
             R.id.editButton ->{
-                Toast.makeText(this,"EDIT CLICKED",Toast.LENGTH_LONG).show()
+
+                val intent = Intent(this, EditProductActivity::class.java)
+                intent.putExtra("ProductName", writeProduct)
+                startActivity(intent)
             }
 
             R.id.deleteButton ->{
                 DatabaseRoom.getAppDataBase()!!.productDAO().delete(writeProduct)
                 finish()
-                Toast.makeText(this,"DELETE CLICKED",Toast.LENGTH_LONG).show()
+
             }
 
             //jak naciśnie się na strzałkę u góry, to jest powrót

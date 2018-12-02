@@ -13,25 +13,13 @@ import com.example.monika.inzynierka.R
 import kotlinx.android.synthetic.main.activity_add_category.*
 
 @Suppress("UNUSED_ANONYMOUS_PARAMETER", "NAME_SHADOWING")
-open class AddCategoryDialog : DialogFragment(){
+class EditCategoryDialog : AddCategoryDialog(){
 
-    var activity: CategoryActivity?=null
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-
-        return inflater.inflate(R.layout.activity_add_category, container)
-
-    }
+    var category: Category? = null
 
     //wybranie co ma się stać po otwarciu dialogu na podstawie wybranego guzika
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        //zamknięcie dialogu
-        cancelButton.setOnClickListener{
-            view -> dismiss()
-        }
 
         acceptButton.setOnClickListener{
             view ->
@@ -39,12 +27,14 @@ open class AddCategoryDialog : DialogFragment(){
             if(nameOfCategory.text.isEmpty()){
                 Toast.makeText(getContext(),getString(R.string.allert_name), Toast.LENGTH_LONG).show()
             }else{
-                var newCategory: Category = Category(nameOfCategory.text.toString())
+                var oldName = category!!.name
+                category!!.name = nameOfCategory.text.toString()
 
-                if(DatabaseRoom.addCategory(newCategory)) {
+                if(DatabaseRoom.addCategory(category!!)) {
                     activity!!.refresh()
                     dismiss()
                 }else{
+                    category!!.name = oldName
                     Toast.makeText(getContext(),getString(R.string.allert_category), Toast.LENGTH_LONG).show()
                 }
             }

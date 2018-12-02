@@ -9,6 +9,9 @@ interface ConstrantExpenseDAO {
     @Query("SELECT * FROM constrantExpenses")
     fun getAll(): List<ConstrantExpense>
 
+    @Query("SELECT * FROM constrantExpenses WHERE id=:id")
+    fun getConstrantExpense(id:Int): List<ConstrantExpense>
+
     @Query("SELECT * FROM constrantExpenses WHERE categoryId=:categoryId")
     fun getExpanseFromCategory(categoryId: Int): List<ConstrantExpense>
 

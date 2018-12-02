@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_add_product.*
 
 
 @Suppress("UNUSED_PARAMETER")
-class AddProductActivity : AppCompatActivity(), returnPhotoInterface {
+open class AddProductActivity : AppCompatActivity(), returnPhotoInterface {
 
     var expense: Expense? = null
     var photo: Bitmap? =null
@@ -33,7 +33,11 @@ class AddProductActivity : AppCompatActivity(), returnPhotoInterface {
         //ustawienie strzałki u góry, aby była znakiem na powrót
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        expense=intent.getSerializableExtra("ExpanseName") as Expense
+
+        var serial = intent.getSerializableExtra("ExpanseName")
+
+        if(serial!= null)
+            expense= serial as Expense
 
     }
 
@@ -54,7 +58,7 @@ class AddProductActivity : AppCompatActivity(), returnPhotoInterface {
     }
 
     //ustawnienei na nowo zdjecia
-    fun refresh(){
+    open fun refresh(){
 
         if(photo!=null){
 
@@ -68,7 +72,7 @@ class AddProductActivity : AppCompatActivity(), returnPhotoInterface {
         refresh()
     }
 
-    fun AcceptProductButton(view: View){
+    open fun AcceptProductButton(view: View){
 
         if(ProductName.text.isEmpty()){
 

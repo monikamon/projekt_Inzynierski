@@ -10,6 +10,9 @@ interface ProductDAO {
     @Query("SELECT * FROM products")
     fun getAll(): List<Product>
 
+    @Query("SELECT * FROM products WHERE id=:id")
+    fun getProduct(id:Int): List<Product>
+
     @Query("SELECT * FROM products WHERE expenseId=:expenseId")
     fun getProductFromExpense(expenseId: Int): List<Product>
 

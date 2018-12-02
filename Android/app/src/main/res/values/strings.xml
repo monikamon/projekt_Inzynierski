@@ -39,5 +39,9 @@
     <string name="allert_category">Podana kategoria już istnieje!</string>
     <string name="czy_chcesz_usun_kategori">Czy chcesz usunąć kategorię:</string>
     <string name="cannot_delete_category">Nie można usunąć kategorii</string>
+    <string name="bills">Rachunki</string>
+    <string name="home">Dom</string>
+    <string name="travel">Podróże</string>
+    <string name="entertainment">Rozrywka</string>
 
 </resources>

@@ -10,10 +10,6 @@ import pl.polsl.project.databaseStructure.tools.DatabaseRoom
 
 
 //TODO
-
-//wyświetlać duże zdjecie jako okno dialogowe
-//edycja
-//------
 //sortowanie
 //wyszukiwanie paragonu
 //wykresy
@@ -29,8 +25,12 @@ class MainScreenActivity : AppCompatActivity() {
 
         if(DatabaseRoom.getAppDataBase()!!.categoryDAO().getAll().isEmpty()){
 
-            var noCategory= Category(getString(R.string.no_category))
-            DatabaseRoom.getAppDataBase()!!.categoryDAO().insert(noCategory)
+            DatabaseRoom.getAppDataBase()!!.categoryDAO().insert(Category(getString(R.string.no_category)))
+            DatabaseRoom.getAppDataBase()!!.categoryDAO().insert(Category(getString(R.string.bills)))
+            DatabaseRoom.getAppDataBase()!!.categoryDAO().insert(Category(getString(R.string.home)))
+            DatabaseRoom.getAppDataBase()!!.categoryDAO().insert(Category(getString(R.string.travel)))
+            DatabaseRoom.getAppDataBase()!!.categoryDAO().insert(Category(getString(R.string.entertainment)))
+
         }
 
     }
