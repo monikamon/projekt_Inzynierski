@@ -11,21 +11,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainScreenActivity">
+        <activity android:name="pl.polsl.project.activityClasses.MainScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StatisticsActivity"
+        <activity android:name="pl.polsl.project.activityClasses.StatisticsActivity"
             android:label="@string/app_stat_screem"></activity>
-        <activity android:name=".ListExpenseActivity" />
-        <activity android:name=".AddExpenseActivity" />
-        <activity android:name=".AddProductActivity" />
-        <activity android:name=".CategoryActivity" />
-        <activity android:name=".ShowExpenseActivity" />
-        <activity android:name=".ShowProductActivity" />
+        <activity android:name="pl.polsl.project.activityClasses.ListExpenseActivity" />
+        <activity android:name="pl.polsl.project.activityClasses.AddExpenseActivity" />
+        <activity android:name="pl.polsl.project.activityClasses.AddProductActivity" />
+        <activity android:name="pl.polsl.project.activityClasses.CategoryActivity" />
+        <activity android:name="pl.polsl.project.activityClasses.ShowExpenseActivity" />
+        <activity android:name="pl.polsl.project.activityClasses.ShowProductActivity" />
     </application>
 
 </manifest>
