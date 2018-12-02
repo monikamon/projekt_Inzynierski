@@ -7,16 +7,19 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import com.example.monika.inzynierka.DataStructure.Category
 import com.example.monika.inzynierka.DataStructure.ConstrantExpense
-import com.example.monika.inzynierka.DataStructure.ConstrantExpenseTime
+import com.example.monika.inzynierka.DataStructure.tools.ConstrantExpenseTime
 import com.example.monika.inzynierka.DataStructure.Expense
 import com.example.monika.inzynierka.DataStructure.tools.DatabaseRoom
-import com.example.monika.inzynierka.DataStructure.tools.returnPhotoInterface
+import com.example.monika.inzynierka.DataStructure.tools.interfaces.returnPhotoInterface
 import kotlinx.android.synthetic.main.activity_add_expense.*
 
+@Suppress("UNUSED_PARAMETER")
 class AddExpenseActivity : AppCompatActivity(), returnPhotoInterface {
 
     var photo: Bitmap?=null
+    var nameOfCategoryList: List<Category>?=null
 
     override fun returnPhoto(pictureBitmap: Bitmap) {
 
@@ -32,6 +35,25 @@ class AddExpenseActivity : AppCompatActivity(), returnPhotoInterface {
         howOftenToPay.visibility=View.GONE
         constrantExpenseSpinner.visibility= View.GONE
 
+
+
+        //uzupelnienie spinera dla kategorii
+        val listCategory = ArrayList<String>()
+        nameOfCategoryList = DatabaseRoom.getAppDataBase()!!.categoryDAO().getAll()
+
+        for(element in nameOfCategoryList!!){
+
+            listCategory.add(element.name)
+        }
+
+        val adapterCategory = ArrayAdapter(this, android.R.layout.simple_spinner_item, listCategory)
+        adapterCategory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        categorySpinner.adapter = adapterCategory
+        categorySpinner.setSelection(0)
+
+
+        //uzupelnienie spinnera dla stalego wydatku (czestotliwosc placenia)
         val listElements = ArrayList<String>()
 
         listElements.add(getString(R.string.everyday))
@@ -51,7 +73,7 @@ class AddExpenseActivity : AppCompatActivity(), returnPhotoInterface {
         //ustawienie strzałki u góry, aby była znakiem na powrót
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        checkConstrantExpense.setOnCheckedChangeListener { compoundButton, b ->
+        checkConstrantExpense.setOnCheckedChangeListener { _, b ->
             if(b){
 
                 howOftenToPay.visibility=View.VISIBLE
@@ -106,7 +128,7 @@ class AddExpenseActivity : AppCompatActivity(), returnPhotoInterface {
 
             constrantExpense.shoppingDate = ShoppingDate.text.toString()
             constrantExpense.setBitmapPhoto(photo)
-            constrantExpense.id = constrantExpense!!.id
+            constrantExpense.categoryId= nameOfCategoryList!!.get(categorySpinner.selectedItemPosition).id
 
             constrantExpense.timeToPayExpense = ConstrantExpenseTime.values().first { it.value == constrantExpenseSpinner.selectedItemPosition }
 
@@ -121,7 +143,7 @@ class AddExpenseActivity : AppCompatActivity(), returnPhotoInterface {
 
             expense.shoppingDate = ShoppingDate.text.toString()
             expense.setBitmapPhoto(photo)
-            expense.id = expense!!.id
+            expense.categoryId= nameOfCategoryList!!.get(categorySpinner.selectedItemPosition).id
 
             DatabaseRoom.getAppDataBase()!!.expenseDAO().insert(expense)
 

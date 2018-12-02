@@ -2,11 +2,11 @@ package com.example.monika.inzynierka.DataStructure
 
 import android.arch.persistence.room.*
 import android.graphics.Bitmap
-import com.example.monika.inzynierka.DataStructure.tools.BitMapChanger
+import com.example.monika.inzynierka.DataStructure.tools.interfaces.BitMapChanger
 import java.io.Serializable
 
 @Entity(tableName = "expenses")
-open class Expense: Serializable,BitMapChanger{
+open class Expense: Serializable, BitMapChanger {
 
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null
@@ -20,9 +20,6 @@ open class Expense: Serializable,BitMapChanger{
 
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
     override var photoByteArray:ByteArray? = null
-
-    @Ignore
-    override var photo:Bitmap?=null
 
     var price:Double
 

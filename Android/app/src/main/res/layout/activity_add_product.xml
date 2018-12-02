@@ -45,7 +45,7 @@
                     android:ems="10"
                     android:enabled="true"
                     android:hint="@string/nazwa_produktu"
-                    android:inputType="textMultiLine"
+                    android:inputType="text"
                     tools:targetApi="o" />
 
                 <EditText

@@ -36,5 +36,8 @@
     <string name="every_six_months">Co pół roku</string>
     <string name="every_year">Co rok</string>
     <string name="choose_category">Zarządzaj kategoriami</string>
+    <string name="allert_category">Podana kategoria już istnieje!</string>
+    <string name="czy_chcesz_usun_kategori">Czy chcesz usunąć kategorię:</string>
+    <string name="cannot_delete_category">Nie można usunąć kategorii</string>
 
 </resources>

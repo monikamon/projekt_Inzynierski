@@ -35,8 +35,35 @@ abstract class DatabaseRoom:RoomDatabase(){
             return INSTANCE
         }
 
-        fun destroyDataBase(){
-            INSTANCE = null
+        fun deleteCategory(categoryName:Category):Boolean{
+
+            var listExpense:List<Expense> = INSTANCE!!.expenseDAO().getExpanseFromCategory(categoryName.id!!)
+            var listConstrantExpense:List<ConstrantExpense> = INSTANCE!!.constrantExpenseDAO().getExpanseFromCategory(categoryName.id!!)
+
+            if(listExpense.isEmpty() && listConstrantExpense.isEmpty()){
+
+                INSTANCE!!.categoryDAO().delete(categoryName)
+                return true
+            }
+
+            return false
+        }
+
+        fun addCategory(category:Category):Boolean{
+
+            var list: List<Category>
+            list = INSTANCE!!.categoryDAO().getAll()
+
+            for(element in list){
+
+                if(category.name.toUpperCase()==element.name.toUpperCase()){
+
+                    return false
+                }
+            }
+
+            category.id = INSTANCE!!.categoryDAO().insert(category).toInt()
+            return true
         }
 
         fun deleteExpenseWithProducts(expense: Expense){

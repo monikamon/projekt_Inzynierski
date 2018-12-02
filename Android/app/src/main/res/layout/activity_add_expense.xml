@@ -79,13 +79,18 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <ListView
-                android:layout_width="179dp"
-                android:layout_height="match_parent" />
+            <Button
+                android:id="@+id/AddReceiptPhotoButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="addPhotoReceipt"
+                android:text="@string/dodaj_zdj_cie_paragonu" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <EditText
@@ -115,13 +120,6 @@
                     android:id="@+id/constrantExpenseSpinner"
                     android:layout_width="match_parent"
                     android:layout_height="40dp" />
-
-                <Button
-                    android:id="@+id/AddReceiptPhotoButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="addPhotoReceipt"
-                    android:text="@string/dodaj_zdj_cie_paragonu" />
 
             </LinearLayout>
 

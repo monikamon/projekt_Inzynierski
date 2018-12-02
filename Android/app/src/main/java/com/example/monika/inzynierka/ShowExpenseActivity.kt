@@ -11,10 +11,11 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import com.example.monika.inzynierka.DataStructure.ConstrantExpenseTime
+import com.example.monika.inzynierka.DataStructure.tools.ConstrantExpenseTime
 import com.example.monika.inzynierka.DataStructure.tools.DatabaseRoom
 import kotlinx.android.synthetic.main.activity_show_expense.*
 
+@Suppress("UNUSED_ANONYMOUS_PARAMETER", "UNUSED_PARAMETER")
 class ShowExpenseActivity : AppCompatActivity() {
 
 
@@ -125,6 +126,7 @@ class ShowExpenseActivity : AppCompatActivity() {
     fun addProduct(view: View){
 
         val intent = Intent(this, AddProductActivity::class.java)
+
         intent.putExtra("ExpanseName", showExpense)
         startActivity(intent)
     }

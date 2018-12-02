@@ -1,7 +1,6 @@
 package com.example.monika.inzynierka.DataStructure.tools
 
 import android.arch.persistence.room.TypeConverter
-import com.example.monika.inzynierka.DataStructure.ConstrantExpenseTime
 
 class Converter {
 

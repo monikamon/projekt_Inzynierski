@@ -10,23 +10,26 @@ import com.example.monika.inzynierka.CategoryActivity
 import com.example.monika.inzynierka.DataStructure.Category
 import com.example.monika.inzynierka.DataStructure.tools.DatabaseRoom
 import com.example.monika.inzynierka.R
-import kotlinx.android.synthetic.main.activity_add_category.*
+import kotlinx.android.synthetic.main.activity_delete_category.*
 
 @Suppress("UNUSED_ANONYMOUS_PARAMETER", "NAME_SHADOWING")
-class AddCategoryDialog : DialogFragment(){
+class DeleteCategoryDialog : DialogFragment(){
 
+    var categoryToDelete: Category?=null
     var activity: CategoryActivity?=null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        return inflater.inflate(R.layout.activity_add_category, container)
+        return inflater.inflate(R.layout.activity_delete_category, container)
 
     }
 
     //wybranie co ma się stać po otwarciu dialogu na podstawie wybranego guzika
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        categoryTitleName.setText(categoryToDelete!!.name)
 
         //zamknięcie dialogu
         cancelButton.setOnClickListener{
@@ -35,19 +38,14 @@ class AddCategoryDialog : DialogFragment(){
 
         acceptButton.setOnClickListener{
             view ->
+           if( DatabaseRoom.deleteCategory(categoryToDelete!!)){
+               activity!!.refresh()
+               dismiss()
+           }else{
 
-            if(nameOfCategory.text.isEmpty()){
-                Toast.makeText(getContext(),getString(R.string.allert_name), Toast.LENGTH_LONG).show()
-            }else{
-                var newCategory: Category = Category(nameOfCategory.text.toString())
-
-                if(DatabaseRoom.addCategory(newCategory)) {
-                    activity!!.refresh()
-                    dismiss()
-                }else{
-                    Toast.makeText(getContext(),getString(R.string.allert_category), Toast.LENGTH_LONG).show()
-                }
-            }
+               Toast.makeText(context,getString(R.string.cannot_delete_category),Toast.LENGTH_LONG).show()
+               dismiss()
+           }
 
 
         }

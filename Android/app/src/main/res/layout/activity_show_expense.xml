@@ -12,14 +12,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="9dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginBottom="9dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/AcceptButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,7 +43,6 @@
                     android:id="@+id/textDataExpense2"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:layout_weight="1"
                     android:text="@string/category"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -53,9 +51,9 @@
                     android:id="@+id/categoryName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:ems="10"
                     android:hint="@string/category"
+                    android:importantForAutofill="no"
                     android:inputType="none"
                     android:textColor="@android:color/black"
                     tools:targetApi="o" />
@@ -64,7 +62,6 @@
                     android:id="@+id/TextDataExpense"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:layout_weight="1"
                     android:text="@string/data_zakupu"
                     android:textAlignment="viewStart"
                     android:textSize="18sp"
@@ -74,10 +71,10 @@
                     android:id="@+id/ShoppingDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:autofillHints=""
                     android:ems="10"
                     android:hint="@string/data_zakupu"
-                    android:inputType="none"
+                    android:inputType="date"
                     android:textColor="@android:color/black"
                     tools:targetApi="o" />
 
@@ -87,13 +84,27 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:baselineAligned="false">
 
-            <ListView
-                android:id="@+id/ListOfProducts"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/AddProduktButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="addProduct"
+                    android:text="@string/dodaj_produkt" />
+
+                <ListView
+                    android:id="@+id/ListOfProducts"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -117,7 +128,8 @@
                     android:hint="@string/kwota"
                     android:inputType="none"
                     android:textColor="@android:color/black"
-                    tools:targetApi="o" />
+                    tools:targetApi="o"
+                    android:importantForAutofill="no" />
 
                 <CheckBox
                     android:id="@+id/checkConstrantExpense"
@@ -139,29 +151,17 @@
                     android:id="@+id/displayEnum"
                     android:layout_width="match_parent"
                     android:layout_height="42dp"
-                    android:textColor="@android:color/black" />
+                    android:hint="@string/stala_wplata_czas"
+                    android:importantForAutofill="no"
+                    android:inputType="none"
+                    android:textColor="@android:color/black"
+                    tools:targetApi="o" />
 
-                <Button
-                    android:id="@+id/AddProduktButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="addProduct"
-                    android:text="@string/dodaj_produkt" />
 
             </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/AcceptButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/zatwierd"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

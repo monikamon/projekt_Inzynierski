@@ -12,6 +12,7 @@ import com.example.monika.inzynierka.DataStructure.tools.DatabaseRoom
 import com.example.monika.inzynierka.DataStructure.Expense
 import kotlinx.android.synthetic.main.activity_list_expense.*
 
+@Suppress("UNUSED_ANONYMOUS_PARAMETER", "UNUSED_PARAMETER")
 class ListExpenseActivity : AppCompatActivity() {
 
     var db : DatabaseRoom = DatabaseRoom.getAppDataBase()!!
@@ -74,7 +75,7 @@ class ListExpenseActivity : AppCompatActivity() {
             R.id.chooseCategoryOption->{
                 Toast.makeText(this,"CATEGORY CLICKED", Toast.LENGTH_LONG).show()
 
-                val intent = Intent(this, KategoryActivity::class.java)
+                val intent = Intent(this, CategoryActivity::class.java)
                 startActivity(intent)
             }
 

@@ -13,10 +13,11 @@ import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.monika.inzynierka.DataStructure.tools.returnPhotoInterface
+import com.example.monika.inzynierka.DataStructure.tools.interfaces.returnPhotoInterface
 import com.example.monika.inzynierka.R
 import kotlinx.android.synthetic.main.activity_choose_photo_action.*
 
+@Suppress("UNUSED_ANONYMOUS_PARAMETER", "NAME_SHADOWING")
 class PhotoDialog : DialogFragment(){
 
     var activity:Activity?=null

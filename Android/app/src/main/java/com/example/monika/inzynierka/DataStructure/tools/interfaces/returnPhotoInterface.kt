@@ -1,4 +1,4 @@
-package com.example.monika.inzynierka.DataStructure.tools
+package com.example.monika.inzynierka.DataStructure.tools.interfaces
 
 import android.graphics.Bitmap
 

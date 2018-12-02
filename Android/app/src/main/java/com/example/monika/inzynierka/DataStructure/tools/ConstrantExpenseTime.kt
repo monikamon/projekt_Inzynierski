@@ -1,4 +1,4 @@
-package com.example.monika.inzynierka.DataStructure
+package com.example.monika.inzynierka.DataStructure.tools
 
 enum class ConstrantExpenseTime(val value:Int){
 

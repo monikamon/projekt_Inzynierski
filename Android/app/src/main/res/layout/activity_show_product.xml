@@ -100,7 +100,7 @@
                 android:ems="10"
                 android:hint="@string/data_gwarancji"
                 android:importantForAutofill="no"
-                android:inputType="textPersonName|date" />
+                android:inputType="textPersonName|date" tools:targetApi="o"/>
         </LinearLayout>
 
     </LinearLayout>

@@ -9,10 +9,11 @@ import android.widget.Toast
 import com.example.monika.inzynierka.DataStructure.tools.DatabaseRoom
 import com.example.monika.inzynierka.DataStructure.Expense
 import com.example.monika.inzynierka.DataStructure.Product
-import com.example.monika.inzynierka.DataStructure.tools.returnPhotoInterface
+import com.example.monika.inzynierka.DataStructure.tools.interfaces.returnPhotoInterface
 import kotlinx.android.synthetic.main.activity_add_product.*
 
 
+@Suppress("UNUSED_PARAMETER")
 class AddProductActivity : AppCompatActivity(), returnPhotoInterface {
 
     var expense: Expense? = null
