@@ -12,8 +12,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import android.widget.ArrayAdapter
-import android.widget.Toast
-import com.example.monika.inzynierka.R
+import pl.polsl.project.R
 import pl.polsl.project.databaseStructure.tools.ConstrantExpenseTime
 import pl.polsl.project.databaseStructure.tools.DatabaseRoom
 import kotlinx.android.synthetic.main.activity_show_expense.*
@@ -76,9 +75,9 @@ class ShowExpenseActivity : AppCompatActivity() {
     fun refresh(){
 
         if(showExpense is ConstrantExpense)
-            showExpense = DatabaseRoom.getAppDataBase()!!.constrantExpenseDAO().getConstrantExpense(showExpense!!.id!!).get(0)
+            showExpense = DatabaseRoom.getAppDataBase()!!.constrantExpenseDAO().getConstrantExpense(showExpense.id!!).get(0)
         else
-            showExpense = DatabaseRoom.getAppDataBase()!!.expenseDAO().getExpense(showExpense!!.id!!).get(0)
+            showExpense = DatabaseRoom.getAppDataBase()!!.expenseDAO().getExpense(showExpense.id!!).get(0)
 
         supportActionBar!!.title =showExpense.expenseName
 

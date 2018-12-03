@@ -6,7 +6,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.PopupMenu
-import com.example.monika.inzynierka.R
+import pl.polsl.project.R
 import pl.polsl.project.databaseStructure.dataStructure.Category
 import pl.polsl.project.databaseStructure.tools.DatabaseRoom
 import pl.polsl.project.dialogsFragments.AddCategoryDialog

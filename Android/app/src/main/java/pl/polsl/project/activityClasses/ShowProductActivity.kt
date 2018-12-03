@@ -7,8 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
-import com.example.monika.inzynierka.R
+import pl.polsl.project.R
 import kotlinx.android.synthetic.main.activity_show_product.*
 import pl.polsl.project.databaseStructure.tools.DatabaseRoom
 import pl.polsl.project.dialogsFragments.DisplayBigPhotoDialog
@@ -52,7 +51,9 @@ class ShowProductActivity : AppCompatActivity() {
     fun refresh(){
         //wypisywanie na danej pozycji tego tego
 
-        writeProduct = DatabaseRoom.getAppDataBase()!!.productDAO().getProduct(writeProduct!!.id!!).get(0)
+        writeProduct = DatabaseRoom.getAppDataBase()!!.productDAO().getProduct(writeProduct.id!!).get(0)
+
+        supportActionBar!!.title =writeProduct.name
 
         if(writeProduct.getBitmapPhoto()!=null){
 

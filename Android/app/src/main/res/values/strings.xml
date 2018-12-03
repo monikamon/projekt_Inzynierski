@@ -43,5 +43,25 @@
     <string name="home">Dom</string>
     <string name="travel">Podróże</string>
     <string name="entertainment">Rozrywka</string>
+    <string name="title_activity_list_expenses_tabbed">Lista wydatków</string>
+    <string name="tab_text_1">Wszystkie Wydatki</string>
+    <string name="tab_text_2">Szukaj</string>
+    <string name="search">Szukaj</string>
+    <string name="no_date">Nie podano daty</string>
+    <string name="invalid_date">Niepoprawna data (Format: dd/mm/yyyy)</string>
+    <string name="sortuj">Sortuj</string>
+    <string name="search_option_1">po kategorii</string>
+    <string name="search_option_2">po dacie</string>
+    <string name="search_option_3">po kwocie</string>
+    <string name="search_option_4">po nazwie</string>
+    <string name="sort_option_1">po kategorii rosnąco</string>
+    <string name="sort_option_2">po kategorii malejąco</string>
+    <string name="sort_option_3">po cenie rosnąco</string>
+    <string name="sort_option_4">po cenie malejąco</string>
+    <string name="sort_option_5">po dacie rosnąco</string>
+    <string name="sort_option_6">po dacie malejąco</string>
+    <string name="tryb_wyszukiwania">Tryb wyszukiwania:</string>
+    <string name="tryb_sortowania">Tryb sortowania:</string>
+
 
 </resources>

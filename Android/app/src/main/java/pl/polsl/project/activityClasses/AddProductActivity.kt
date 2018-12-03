@@ -6,12 +6,15 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.example.monika.inzynierka.R
+import pl.polsl.project.R
 import pl.polsl.project.databaseStructure.tools.DatabaseRoom
 import pl.polsl.project.databaseStructure.dataStructure.Expense
 import pl.polsl.project.databaseStructure.dataStructure.Product
 import pl.polsl.project.databaseStructure.tools.interfaces.returnPhotoInterface
 import kotlinx.android.synthetic.main.activity_add_product.*
+import java.lang.Exception
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 @Suppress("UNUSED_PARAMETER")
@@ -80,6 +83,11 @@ open class AddProductActivity : AppCompatActivity(), returnPhotoInterface {
             return
         }
 
+        if(!isValidDate(GuarrantyDate.text.toString())){
+            Toast.makeText(this, getString(R.string.invalid_date), Toast.LENGTH_SHORT).show()
+            return
+        }
+
         var product = Product()
         product.name = ProductName.text.toString()
 
@@ -95,4 +103,20 @@ open class AddProductActivity : AppCompatActivity(), returnPhotoInterface {
         finish()
     }
 
+    fun isValidDate(text:String): Boolean {
+
+        if(!text.matches("^[0-9]{2}[/][0-9]{2}[/][0-9]{4}$".toRegex())){
+            return false
+        }
+
+        val df = SimpleDateFormat("dd/MM/yy")
+        df.isLenient = false
+        try {
+            val date: Date = df.parse(text)
+            return true
+        } catch (e: Exception){
+            return false
+        }
+        return false
+    }
 }

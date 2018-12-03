@@ -4,18 +4,20 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.monika.inzynierka.R
+import kotlinx.android.synthetic.main.activity_add_expense.*
+import pl.polsl.project.R
 import pl.polsl.project.databaseStructure.dataStructure.Category
 import pl.polsl.project.databaseStructure.tools.DatabaseRoom
+import pl.polsl.project.databaseStructure.tools.interfaces.ConstraintExpenseAdder
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 //TODO
-//sortowanie
-//wyszukiwanie paragonu
 //wykresy
 
 @Suppress("UNUSED_ANONYMOUS_PARAMETER", "UNUSED_PARAMETER")
-class MainScreenActivity : AppCompatActivity() {
+class MainScreenActivity : AppCompatActivity(), ConstraintExpenseAdder {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,8 +35,10 @@ class MainScreenActivity : AppCompatActivity() {
 
         }
 
-    }
 
+        checkConstraintExpense()
+
+    }
 
     fun showStatistics(view: View){
 
@@ -45,7 +49,7 @@ class MainScreenActivity : AppCompatActivity() {
 
     fun showExpense(view: View){
 
-        val intent=Intent(this, ListExpenseActivity::class.java)
+        val intent=Intent(this, ListExpensesTabbedActivity::class.java)
         startActivity(intent)
     }
 }

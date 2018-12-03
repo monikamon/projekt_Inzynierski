@@ -4,7 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.monika.inzynierka.R
+import pl.polsl.project.R
 
 @Suppress("UNUSED_PARAMETER")
 class StatisticsActivity : AppCompatActivity() {

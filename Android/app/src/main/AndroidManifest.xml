@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.monika.inzynierka">
+    package="pl.polsl.project">
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
@@ -11,23 +12,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="pl.polsl.project.activityClasses.MainScreenActivity">
+        <activity android:name=".activityClasses.MainScreenActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="pl.polsl.project.activityClasses.StatisticsActivity"
-            android:label="@string/app_stat_screem"></activity>
-        <activity android:name="pl.polsl.project.activityClasses.ListExpenseActivity" />
-        <activity android:name="pl.polsl.project.activityClasses.AddExpenseActivity" />
-        <activity android:name="pl.polsl.project.activityClasses.AddProductActivity" />
-        <activity android:name="pl.polsl.project.activityClasses.CategoryActivity" />
-        <activity android:name="pl.polsl.project.activityClasses.ShowExpenseActivity" />
-        <activity android:name="pl.polsl.project.activityClasses.ShowProductActivity" />
-        <activity android:name="pl.polsl.project.activityClasses.EditProductActivity" />
-        <activity android:name="pl.polsl.project.activityClasses.EditExpenseActivity" />
+        <activity
+            android:name=".activityClasses.StatisticsActivity"
+            android:label="@string/app_stat_screem" />
+        <activity android:name=".activityClasses.AddExpenseActivity" />
+        <activity android:name=".activityClasses.AddProductActivity" />
+        <activity android:name=".activityClasses.CategoryActivity" />
+        <activity android:name=".activityClasses.ShowExpenseActivity" />
+        <activity android:name=".activityClasses.ShowProductActivity" />
+        <activity android:name=".activityClasses.EditProductActivity" />
+        <activity android:name=".activityClasses.EditExpenseActivity" />
+        <activity
+            android:name=".activityClasses.ListExpensesTabbedActivity"
+            android:label="@string/title_activity_list_expenses_tabbed"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan"></activity>
     </application>
 
 </manifest>

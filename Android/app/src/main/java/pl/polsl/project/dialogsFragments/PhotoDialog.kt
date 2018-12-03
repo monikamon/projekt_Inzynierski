@@ -14,7 +14,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import pl.polsl.project.databaseStructure.tools.interfaces.returnPhotoInterface
-import com.example.monika.inzynierka.R
+import pl.polsl.project.R
 import kotlinx.android.synthetic.main.activity_choose_photo_action.*
 
 @Suppress("UNUSED_ANONYMOUS_PARAMETER", "NAME_SHADOWING")

@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import com.example.monika.inzynierka.R
+import pl.polsl.project.R
 import pl.polsl.project.databaseStructure.dataStructure.Category
 import pl.polsl.project.databaseStructure.dataStructure.ConstrantExpense
 import pl.polsl.project.databaseStructure.tools.ConstrantExpenseTime
@@ -15,9 +15,13 @@ import pl.polsl.project.databaseStructure.dataStructure.Expense
 import pl.polsl.project.databaseStructure.tools.DatabaseRoom
 import pl.polsl.project.databaseStructure.tools.interfaces.returnPhotoInterface
 import kotlinx.android.synthetic.main.activity_add_expense.*
+import pl.polsl.project.databaseStructure.tools.interfaces.ConstraintExpenseAdder
+import java.lang.Exception
+import java.text.SimpleDateFormat
+import java.util.*
 
 @Suppress("UNUSED_PARAMETER")
-open class AddExpenseActivity : AppCompatActivity(), returnPhotoInterface {
+open class AddExpenseActivity : AppCompatActivity(), returnPhotoInterface, ConstraintExpenseAdder {
 
     var photo: Bitmap?=null
     var nameOfCategoryList: List<Category>?=null
@@ -85,6 +89,11 @@ open class AddExpenseActivity : AppCompatActivity(), returnPhotoInterface {
 
             }
         }
+
+        val sdf = SimpleDateFormat("dd/M/yyyy")
+        val currentDate = sdf.format(Date())
+        ShoppingDate.setText(currentDate)
+
     }
 
     //jak naciśnie się na strzałkę u góry, to jest powrót
@@ -119,6 +128,17 @@ open class AddExpenseActivity : AppCompatActivity(), returnPhotoInterface {
             return
         }
 
+        if(ShoppingDate.text.isEmpty()){
+
+            Toast.makeText(this, getString(R.string.no_date), Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if(!isValidDate(ShoppingDate.text.toString())){
+            Toast.makeText(this, getString(R.string.invalid_date), Toast.LENGTH_SHORT).show()
+            return
+        }
+
         if(checkConstrantExpense.isChecked==true){
 
             var constrantExpense = ConstrantExpense()
@@ -134,6 +154,8 @@ open class AddExpenseActivity : AppCompatActivity(), returnPhotoInterface {
             constrantExpense.timeToPayExpense = ConstrantExpenseTime.values().first { it.value == constrantExpenseSpinner.selectedItemPosition }
 
             DatabaseRoom.getAppDataBase()!!.constrantExpenseDAO().insert(constrantExpense)
+
+            checkConstraintExpense()
         }else {
 
             var expense = Expense()
@@ -151,6 +173,23 @@ open class AddExpenseActivity : AppCompatActivity(), returnPhotoInterface {
         }
 
         finish()
+    }
+
+    fun isValidDate(text:String): Boolean {
+
+        if(!text.matches("^[0-9]{2}[/][0-9]{2}[/][0-9]{4}$".toRegex())){
+            return false
+        }
+
+        val df = SimpleDateFormat("dd/MM/yy")
+        df.isLenient = false
+        try {
+            val date:Date = df.parse(text)
+            return true
+        } catch (e: Exception){
+            return false
+        }
+        return false
     }
 
 

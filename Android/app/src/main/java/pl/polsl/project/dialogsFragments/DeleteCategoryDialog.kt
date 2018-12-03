@@ -9,7 +9,7 @@ import android.widget.Toast
 import pl.polsl.project.activityClasses.CategoryActivity
 import pl.polsl.project.databaseStructure.dataStructure.Category
 import pl.polsl.project.databaseStructure.tools.DatabaseRoom
-import com.example.monika.inzynierka.R
+import pl.polsl.project.R
 import kotlinx.android.synthetic.main.activity_delete_category.*
 
 @Suppress("UNUSED_ANONYMOUS_PARAMETER", "NAME_SHADOWING")

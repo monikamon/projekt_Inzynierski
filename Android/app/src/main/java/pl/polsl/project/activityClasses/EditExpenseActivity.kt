@@ -3,7 +3,7 @@ package pl.polsl.project.activityClasses
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.example.monika.inzynierka.R
+import pl.polsl.project.R
 import kotlinx.android.synthetic.main.activity_add_expense.*
 import pl.polsl.project.databaseStructure.dataStructure.ConstrantExpense
 import pl.polsl.project.databaseStructure.dataStructure.Expense
@@ -69,6 +69,17 @@ open class EditExpenseActivity : AddExpenseActivity() {
             return
         }
 
+        if(ShoppingDate.text.isEmpty()){
+
+            Toast.makeText(this, getString(R.string.no_date), Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if(!isValidDate(ShoppingDate.text.toString())){
+            Toast.makeText(this, getString(R.string.invalid_date), Toast.LENGTH_SHORT).show()
+            return
+        }
+
         if(checkConstrantExpense.isChecked==true){
 
             var constrantExpense = expense as ConstrantExpense
@@ -84,6 +95,8 @@ open class EditExpenseActivity : AddExpenseActivity() {
             constrantExpense.timeToPayExpense = ConstrantExpenseTime.values().first { it.value == constrantExpenseSpinner.selectedItemPosition }
 
             DatabaseRoom.getAppDataBase()!!.constrantExpenseDAO().insert(constrantExpense)
+
+            checkConstraintExpense()
         }else {
 
 

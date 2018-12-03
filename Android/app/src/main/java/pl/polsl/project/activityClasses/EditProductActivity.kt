@@ -3,7 +3,8 @@ package pl.polsl.project.activityClasses
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.example.monika.inzynierka.R
+import kotlinx.android.synthetic.main.activity_add_expense.*
+import pl.polsl.project.R
 import pl.polsl.project.databaseStructure.tools.DatabaseRoom
 import pl.polsl.project.databaseStructure.dataStructure.Product
 import kotlinx.android.synthetic.main.activity_add_product.*
@@ -38,6 +39,11 @@ class EditProductActivity : AddProductActivity(){
         if(ProductName.text.isEmpty()){
 
             Toast.makeText(this, getString(R.string.allert_name), Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if(!isValidDate(GuarrantyDate.text.toString())){
+            Toast.makeText(this, getString(R.string.invalid_date), Toast.LENGTH_SHORT).show()
             return
         }
 
