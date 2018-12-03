@@ -17,9 +17,12 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 import kotlinx.android.synthetic.main.activity_statistics.*
 import pl.polsl.project.R
+import pl.polsl.project.databaseStructure.dataStructure.Expense
 import pl.polsl.project.databaseStructure.tools.DatabaseRoom
+import pl.polsl.project.listsViews.listClasses.ListElement
 import java.lang.Exception
 import java.text.SimpleDateFormat
+import java.util.*
 
 @Suppress("UNUSED_PARAMETER")
 class StatisticsActivity : AppCompatActivity() {
@@ -68,39 +71,43 @@ class StatisticsActivity : AppCompatActivity() {
 
         }
 
-    }
-
-
-    fun chartType1(){
-
+        chartType4()
+        barChart("")
 
     }
 
-    fun chartType2(){
 
-    }
-
-    fun chartType3(){
+    fun chartType1(dzien:String){
 
         var labels = ArrayList<String>()
+        labels.add(dzien)
 
-        var category = DatabaseRoom.getAppDataBase()!!.categoryDAO().getAll()
+
+
+        var expanses = java.util.ArrayList(DatabaseRoom.getAppDataBase()!!.expenseDAO().getAll())
+        expanses.addAll(java.util.ArrayList<Expense>(DatabaseRoom.getAppDataBase()!!.constrantExpenseDAO().getAll()))
+
         val entries = ArrayList<BarEntry>()
 
-        var index = 0
-        for (data in category) {
 
+        var sum: Double = 0.0
 
-            var ile = DatabaseRoom.getAppDataBase()!!.expenseDAO().getExpanseFromCategory(data.id!!).size
+        for (data in expanses) {
+            if(data.shoppingDate == dzien){
 
-            entries.add(BarEntry(index.toFloat(), ile.toFloat()))
-            labels.add(data.name)
-            index+=1
+                sum += data.price
+            }
+
         }
 
-        chartCategory.xAxis.setLabelCount(category.size)
-        chartCategory.xAxis.labelRotationAngle = 45.0f
-        chartCategory.xAxis.valueFormatter = object: IndexAxisValueFormatter(){
+        entries.add(BarEntry(0.0f, sum.toFloat()))
+
+
+
+
+        chartExpense.xAxis.setLabelCount(labels.size)
+        chartExpense.xAxis.labelRotationAngle = 45.0f
+        chartExpense.xAxis.valueFormatter = object: IndexAxisValueFormatter(){
 
             override fun getFormattedValue( value: Float,  axis: AxisBase):String {
                 val index = Math.round(value)
@@ -122,22 +129,33 @@ class StatisticsActivity : AppCompatActivity() {
         data.barWidth = 0.9f
 
 
-        chartCategory.data = data
+        chartExpense.data = data
 
-        chartCategory.setPinchZoom(false)
-        chartCategory.setScaleEnabled(false)
+        chartExpense.setPinchZoom(false)
+        chartExpense.setScaleEnabled(false)
 
-        chartCategory.axisLeft.axisMinimum = 0.0f
-        chartCategory.axisRight.isEnabled = false
+        chartExpense.axisLeft.axisMinimum = 0.0f
+        chartExpense.axisRight.isEnabled = false
 
-        chartCategory.xAxis.position = XAxis.XAxisPosition.BOTTOM
-        chartCategory.xAxis.setDrawGridLines(false)
-        chartCategory.legend.isEnabled = false
-        chartCategory.description.isEnabled = false
+        chartExpense.xAxis.position = XAxis.XAxisPosition.BOTTOM
+        chartExpense.xAxis.setDrawGridLines(false)
+        chartExpense.legend.isEnabled = false
+        chartExpense.description.isEnabled = false
 
-        chartCategory.animateY(2000)
+        chartExpense.animateY(2000)
 
-        chartCategory.invalidate() // refresh
+        chartExpense.invalidate() // refresh
+
+
+    }
+
+    fun chartType2(miesiac:String){
+
+
+    }
+
+    fun chartType3(rok:String){
+
 
     }
 
@@ -145,16 +163,118 @@ class StatisticsActivity : AppCompatActivity() {
 
         var labels = ArrayList<String>()
 
+
+
+
+        var expanses = java.util.ArrayList(DatabaseRoom.getAppDataBase()!!.expenseDAO().getAll())
+        expanses.addAll(java.util.ArrayList<Expense>(DatabaseRoom.getAppDataBase()!!.constrantExpenseDAO().getAll()))
+
+        expanses.sortWith(object: Comparator<Expense> {
+            override fun compare(p1: Expense, p2: Expense): Int {
+                val df = SimpleDateFormat("dd/MM/yy")
+                df.isLenient = false
+                val date1: Date = df.parse(p1.shoppingDate)
+                val date2: Date = df.parse(p2.shoppingDate)
+                return date1.compareTo(date2)
+            }
+        })
+
+        val entries = ArrayList<BarEntry>()
+
+        if(expanses.size > 0) {
+            var dateLastYear = expanses.get(0).shoppingDate.substring(6)
+            var dateFirstYear = expanses.get(expanses.size - 1).shoppingDate.substring(6)
+
+
+
+
+//            var sum: Double = 0.0
+//
+//            for (data in expanses) {
+//                if(data.shoppingDate == dzien){
+//
+//                    sum += data.price
+//                }
+//
+//            }
+
+//            entries.add(BarEntry(0.0f, sum.toFloat()))
+        }
+
+
+
+
+
+
+
+
+        chartExpense.xAxis.setLabelCount(labels.size)
+        chartExpense.xAxis.labelRotationAngle = 45.0f
+        chartExpense.xAxis.valueFormatter = object: IndexAxisValueFormatter(){
+
+            override fun getFormattedValue( value: Float,  axis: AxisBase):String {
+                val index = Math.round(value)
+
+                return if (index < 0 || index >= labels.size || index != value.toInt()) "" else labels[index]
+
+            }
+
+        }
+
+
+        var dataSet = BarDataSet (entries, "")
+        dataSet.colors = ColorTemplate.COLORFUL_COLORS.asList()
+
+
+        val data = BarData(dataSet)
+
+        data.setValueTextSize(10f)
+        data.barWidth = 0.9f
+
+
+        chartExpense.data = data
+
+        chartExpense.setPinchZoom(false)
+        chartExpense.setScaleEnabled(false)
+
+        chartExpense.axisLeft.axisMinimum = 0.0f
+        chartExpense.axisRight.isEnabled = false
+
+        chartExpense.xAxis.position = XAxis.XAxisPosition.BOTTOM
+        chartExpense.xAxis.setDrawGridLines(false)
+        chartExpense.legend.isEnabled = false
+        chartExpense.description.isEnabled = false
+
+        chartExpense.animateY(2000)
+
+        chartExpense.invalidate() // refresh
+
+    }
+
+    fun barChart(date:String){
+
+        //region Wykres kategorie
+        var labels = ArrayList<String>()
+
         var category = DatabaseRoom.getAppDataBase()!!.categoryDAO().getAll()
         val entries = ArrayList<BarEntry>()
 
         var index = 0
         for (data in category) {
 
+            var sum: Double = 0.0
+            var expanses = java.util.ArrayList(DatabaseRoom.getAppDataBase()!!.expenseDAO().getExpanseFromCategory(data.id!!))
+            expanses.addAll(java.util.ArrayList<Expense>(DatabaseRoom.getAppDataBase()!!.constrantExpenseDAO().getExpanseFromCategory(data.id!!)))
 
-            var ile = DatabaseRoom.getAppDataBase()!!.expenseDAO().getExpanseFromCategory(data.id!!).size
+            for(elementExpense in expanses){
 
-            entries.add(BarEntry(index.toFloat(), ile.toFloat()))
+                if(elementExpense.shoppingDate.endsWith(date) || date=="") {
+
+                    sum += elementExpense.price
+                }
+            }
+
+            entries.add(BarEntry(index.toFloat(), sum.toFloat()))
             labels.add(data.name)
             index+=1
         }
@@ -200,8 +320,8 @@ class StatisticsActivity : AppCompatActivity() {
 
         chartCategory.invalidate() // refresh
 
+        //endregion
     }
-
 
 
     fun onClickOk(view: View){
@@ -210,7 +330,8 @@ class StatisticsActivity : AppCompatActivity() {
                 Toast.makeText(this, getString(R.string.invalid_date_statistics), Toast.LENGTH_SHORT).show()
                 return
             }else{
-                chartType1()
+                chartType1(dateText.text.toString())
+                barChart(dateText.text.toString())
             }
 
         } else if(spinnerType.selectedItemPosition == 1){
@@ -219,7 +340,8 @@ class StatisticsActivity : AppCompatActivity() {
                 Toast.makeText(this, getString(R.string.invalid_date_statistics), Toast.LENGTH_SHORT).show()
                 return
             }else{
-                chartType2()
+                chartType2(dateText.text.toString())
+                barChart(dateText.text.toString())
             }
         } else if(spinnerType.selectedItemPosition == 2){
 
@@ -227,10 +349,12 @@ class StatisticsActivity : AppCompatActivity() {
                 Toast.makeText(this, getString(R.string.invalid_date_statistics), Toast.LENGTH_SHORT).show()
                 return
             }else{
-                chartType3()
+                chartType3(dateText.text.toString())
+                barChart(dateText.text.toString())
             }
         } else{
             chartType4()
+            barChart("")
         }
 
     }
