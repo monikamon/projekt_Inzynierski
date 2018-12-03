@@ -73,6 +73,20 @@
     <string name="chart_option4">Wszystkie lata</string>
     <string name="ok">OK</string>
     <string name="invalid_date_statistics">Niepoprawna data</string>
+    <string name="month1">Styczeń</string>
+    <string name="month2">Luty</string>
+    <string name="month3">Marzec</string>
+    <string name="month4">Kwiecień</string>
+    <string name="month5">Maj</string>
+    <string name="month6">Czerwiec</string>
+    <string name="month7">Lipiec</string>
+    <string name="month8">Sierpień</string>
+    <string name="month9">Wrzesień</string>
+    <string name="month10">Październik</string>
+    <string name="month11">Listopad</string>
+    <string name="month12">Grudzień</string>
+    <string name="day">Dzień</string>
+    <string name="spend">Wydano:</string>
 
 
 </resources>

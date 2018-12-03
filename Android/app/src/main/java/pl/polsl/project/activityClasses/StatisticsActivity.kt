@@ -13,7 +13,10 @@ import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.github.mikephil.charting.highlight.Highlight
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import com.github.mikephil.charting.utils.ColorTemplate
 import kotlinx.android.synthetic.main.activity_statistics.*
 import pl.polsl.project.R
@@ -71,6 +74,32 @@ class StatisticsActivity : AppCompatActivity() {
 
         }
 
+
+        chartExpense.setOnChartValueSelectedListener(object: OnChartValueSelectedListener {
+            override fun onNothingSelected() {
+
+            }
+
+            override fun onValueSelected(e: Entry?, h: Highlight?) {
+                Toast.makeText(applicationContext,getString(R.string.day)+ ": " + e!!.x.toInt().toString()+" " + getString(R.string.spend) + ": " + e!!.y.toString(),Toast.LENGTH_SHORT).show()
+
+            }
+
+        })
+
+
+        chartCategory.setOnChartValueSelectedListener(object: OnChartValueSelectedListener {
+            override fun onNothingSelected() {
+
+            }
+
+            override fun onValueSelected(e: Entry?, h: Highlight?) {
+                Toast.makeText(applicationContext,getString(R.string.day)+ ": " +  e!!.x.toInt().toString() +" " + getString(R.string.spend) + ": " + e!!.y.toString(),Toast.LENGTH_SHORT).show()
+
+            }
+
+        })
+
         chartType4()
         barChart("")
 
@@ -80,6 +109,8 @@ class StatisticsActivity : AppCompatActivity() {
     fun chartType1(dzien:String){
 
         var labels = ArrayList<String>()
+
+        labels.add("")
         labels.add(dzien)
 
 
@@ -100,8 +131,200 @@ class StatisticsActivity : AppCompatActivity() {
 
         }
 
-        entries.add(BarEntry(0.0f, sum.toFloat()))
+        entries.add(BarEntry(1.0f, sum.toFloat()))
 
+
+
+
+        chartExpense.xAxis.setLabelCount(labels.size)
+        chartExpense.xAxis.labelRotationAngle = 45.0f
+        chartExpense.xAxis.valueFormatter = object: IndexAxisValueFormatter(){
+
+            override fun getFormattedValue( value: Float,  axis: AxisBase):String {
+                val index = Math.round(value)
+
+                return if (index < 0 || index >= labels.size || index != value.toInt()) "" else labels[index]
+
+            }
+
+        }
+
+
+        var dataSet = BarDataSet (entries, "")
+        dataSet.colors = ColorTemplate.COLORFUL_COLORS.asList()
+
+
+        val data = BarData(dataSet)
+
+        data.setValueTextSize(10f)
+        data.barWidth = 0.3f
+
+
+        chartExpense.data = data
+
+        chartExpense.setPinchZoom(false)
+        chartExpense.setScaleEnabled(false)
+
+        chartExpense.axisLeft.axisMinimum = 0.0f
+        chartExpense.axisRight.isEnabled = false
+
+        chartExpense.xAxis.position = XAxis.XAxisPosition.BOTTOM
+        chartExpense.xAxis.setDrawGridLines(false)
+        chartExpense.legend.isEnabled = false
+        chartExpense.description.isEnabled = false
+
+        chartExpense.animateY(2000)
+
+        chartExpense.invalidate() // refresh
+
+
+    }
+
+    fun chartType2(miesiac:String){
+
+        var labels = ArrayList<String>()
+        labels.add("")
+
+        var expanses = java.util.ArrayList(DatabaseRoom.getAppDataBase()!!.expenseDAO().getAll())
+        expanses.addAll(java.util.ArrayList<Expense>(DatabaseRoom.getAppDataBase()!!.constrantExpenseDAO().getAll()))
+
+        val entries = ArrayList<BarEntry>()
+
+        if(expanses.size > 0) {
+
+            val df = SimpleDateFormat("dd/MM/yy")
+            df.isLenient = false
+            val date1: Date = df.parse("01/"+miesiac)
+
+            val calendar = Calendar.getInstance()
+            calendar.time = date1
+
+            calendar.add(Calendar.MONTH,1)
+            calendar.add(Calendar.DAY_OF_YEAR,-1)
+
+            var firstday = 1
+            var lastday= calendar.get(Calendar.DAY_OF_MONTH)
+
+            for(i in firstday until lastday+1){
+
+                var sum: Double = 0.0
+
+                for (data in expanses) {
+
+                    var  str= ""
+                    if(i < 10)
+                        str = "0" + (i).toString() + "/" + miesiac
+                    else
+                        str = (i).toString()+"/"+miesiac
+
+
+                    if (data.shoppingDate.endsWith(str)) {
+                        sum += data.price
+                    }
+
+                }
+
+                entries.add(BarEntry(i.toFloat(), sum.toFloat()))
+                labels.add(i.toString())
+
+            }
+
+        }
+
+
+
+        chartExpense.xAxis.setLabelCount(labels.size)
+        chartExpense.xAxis.labelRotationAngle = 90.0f
+        chartExpense.xAxis.valueFormatter = object: IndexAxisValueFormatter(){
+
+            override fun getFormattedValue( value: Float,  axis: AxisBase):String {
+                val index = Math.round(value)
+
+                return if (index < 0 || index >= labels.size || index != value.toInt()) "" else labels[index]
+
+            }
+
+        }
+
+
+        var dataSet = BarDataSet (entries, "")
+        dataSet.colors = ColorTemplate.COLORFUL_COLORS.asList()
+
+
+        val data = BarData(dataSet)
+
+        data.setValueTextSize(0.0f)
+
+        data.barWidth = 0.8f
+
+
+        chartExpense.data = data
+
+        chartExpense.setPinchZoom(false)
+        chartExpense.setScaleEnabled(false)
+
+        chartExpense.axisLeft.axisMinimum = 0.0f
+        chartExpense.axisRight.isEnabled = false
+
+        chartExpense.xAxis.position = XAxis.XAxisPosition.BOTTOM
+        chartExpense.xAxis.setDrawGridLines(false)
+        chartExpense.legend.isEnabled = false
+        chartExpense.description.isEnabled = false
+
+        chartExpense.animateY(2000)
+
+        chartExpense.invalidate() // refresh
+
+    }
+
+    fun chartType3(rok:String){
+
+        var labels = ArrayList<String>()
+        labels.add(getString(R.string.month1))
+        labels.add(getString(R.string.month2))
+        labels.add(getString(R.string.month3))
+        labels.add(getString(R.string.month4))
+        labels.add(getString(R.string.month5))
+        labels.add(getString(R.string.month6))
+        labels.add(getString(R.string.month7))
+        labels.add(getString(R.string.month8))
+        labels.add(getString(R.string.month9))
+        labels.add(getString(R.string.month10))
+        labels.add(getString(R.string.month11))
+        labels.add(getString(R.string.month12))
+
+        var expanses = java.util.ArrayList(DatabaseRoom.getAppDataBase()!!.expenseDAO().getAll())
+        expanses.addAll(java.util.ArrayList<Expense>(DatabaseRoom.getAppDataBase()!!.constrantExpenseDAO().getAll()))
+
+        val entries = ArrayList<BarEntry>()
+
+        if(expanses.size > 0) {
+
+            var index = 0
+            for(i in 0 until 12){
+
+                var sum: Double = 0.0
+
+                for (data in expanses) {
+
+                    var  str= ""
+                    if(i+1 < 10)
+                        str = "0" + (i + 1).toString() + "/" + rok
+                    else
+                        str = (i+1).toString()+"/"+rok
+
+
+                    if (data.shoppingDate.endsWith(str)) {
+                        sum += data.price
+                    }
+                }
+
+                entries.add(BarEntry(index.toFloat(), sum.toFloat()))
+                index+=1
+
+            }
+
+        }
 
 
 
@@ -146,17 +369,6 @@ class StatisticsActivity : AppCompatActivity() {
 
         chartExpense.invalidate() // refresh
 
-
-    }
-
-    fun chartType2(miesiac:String){
-
-
-    }
-
-    fun chartType3(rok:String){
-
-
     }
 
     fun chartType4(){
@@ -182,29 +394,29 @@ class StatisticsActivity : AppCompatActivity() {
         val entries = ArrayList<BarEntry>()
 
         if(expanses.size > 0) {
-            var dateLastYear = expanses.get(0).shoppingDate.substring(6)
-            var dateFirstYear = expanses.get(expanses.size - 1).shoppingDate.substring(6)
+            var dateFirstYear = expanses.get(0).shoppingDate.substring(6).toInt()
+            var dateLastYear = expanses.get(expanses.size - 1).shoppingDate.substring(6).toInt()
 
 
+            var index = 0
+            for(i in dateFirstYear until dateLastYear+1){
 
+                var sum: Double = 0.0
 
-//            var sum: Double = 0.0
-//
-//            for (data in expanses) {
-//                if(data.shoppingDate == dzien){
-//
-//                    sum += data.price
-//                }
-//
-//            }
+                for (data in expanses) {
+                    if(data.shoppingDate.endsWith(i.toString())){
 
-//            entries.add(BarEntry(0.0f, sum.toFloat()))
+                        sum += data.price
+                    }
+
+                }
+
+                entries.add(BarEntry(index.toFloat(), sum.toFloat()))
+                labels.add(i.toString())
+                index+=1
+            }
+
         }
-
-
-
-
-
 
 
 
