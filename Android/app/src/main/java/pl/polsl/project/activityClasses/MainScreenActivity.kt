@@ -14,7 +14,9 @@ import java.util.*
 
 
 //TODO
-//wykresy
+//1. Kategorie na dni / miesiace / lata / wszystko (po latach)
+//2. Wydatki na dni / miesiace / lata / wszystko (po latach)
+
 
 @Suppress("UNUSED_ANONYMOUS_PARAMETER", "UNUSED_PARAMETER")
 class MainScreenActivity : AppCompatActivity(), ConstraintExpenseAdder {

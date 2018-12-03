@@ -62,6 +62,17 @@
     <string name="sort_option_6">po dacie malejąco</string>
     <string name="tryb_wyszukiwania">Tryb wyszukiwania:</string>
     <string name="tryb_sortowania">Tryb sortowania:</string>
+    <string name="wybierz_rodzaj_wykresu">Wybierz rodzaj wykresu</string>
+    <string name="hint_option1">DD/MM/YYYY</string>
+    <string name="hint_option2">MM/YYYY</string>
+    <string name="hint_option3">YYYY</string>
+    <string name="hint_option4">Wszystkie lata</string>
+    <string name="chart_option1">Wybrany dzień</string>
+    <string name="chart_option2">Wybrany miesiąc</string>
+    <string name="chart_option3">Wybrany rok</string>
+    <string name="chart_option4">Wszystkie lata</string>
+    <string name="ok">OK</string>
+    <string name="invalid_date_statistics">Niepoprawna data</string>
 
 
 </resources>

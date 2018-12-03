@@ -15,7 +15,7 @@ interface ConstraintExpenseAdder {
     fun checkConstraintExpense() {
         var listOfConstrantExpense = DatabaseRoom.getAppDataBase()!!.constrantExpenseDAO().getAll()
 
-        val df = SimpleDateFormat("dd/M/yyyy")
+        val df = SimpleDateFormat("dd/MM/yyyy")
         df.isLenient = false
 
         for (expense in listOfConstrantExpense) {

@@ -14,6 +14,7 @@ import pl.polsl.project.R
 import pl.polsl.project.activityClasses.ShowExpenseActivity
 import pl.polsl.project.listsViews.listClasses.ListElement
 
+@Suppress("UNUSED_ANONYMOUS_PARAMETER")
 class ListElementAdapter : BaseAdapter{
 
     private var elementList : ArrayList<ListElement> = arrayListOf()

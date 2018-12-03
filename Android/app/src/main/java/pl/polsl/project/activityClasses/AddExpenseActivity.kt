@@ -184,12 +184,12 @@ open class AddExpenseActivity : AppCompatActivity(), returnPhotoInterface, Const
         val df = SimpleDateFormat("dd/MM/yy")
         df.isLenient = false
         try {
-            val date:Date = df.parse(text)
+            df.parse(text)
             return true
         } catch (e: Exception){
             return false
         }
-        return false
+
     }
 
 
