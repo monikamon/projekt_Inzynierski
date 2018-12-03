@@ -54,6 +54,7 @@
                     android:ems="10"
                     android:hint="@string/nazwa_produktu"
                     android:inputType="textMultiLine"
+                    android:textColor="@android:color/black"
                     tools:targetApi="o" />
 
                 <TextView
@@ -72,8 +73,10 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="@string/cena"
+                    android:importantForAutofill="no"
                     android:inputType="numberDecimal"
-                    android:importantForAutofill="no" tools:targetApi="o"/>
+                    android:textColor="@android:color/black"
+                    tools:targetApi="o" />
 
             </LinearLayout>
         </LinearLayout>
@@ -100,7 +103,9 @@
                 android:ems="10"
                 android:hint="@string/data_gwarancji"
                 android:importantForAutofill="no"
-                android:inputType="textPersonName|date" tools:targetApi="o"/>
+                android:inputType="textPersonName|date"
+                android:textColor="@android:color/black"
+                tools:targetApi="o" />
         </LinearLayout>
 
     </LinearLayout>

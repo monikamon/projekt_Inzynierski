@@ -22,14 +22,21 @@
         </activity>
         <activity
             android:name=".activityClasses.StatisticsActivity"
-            android:label="@string/app_stat_screem" />
-        <activity android:name=".activityClasses.AddExpenseActivity" />
-        <activity android:name=".activityClasses.AddProductActivity" />
+            android:label="@string/app_stat_screem"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activityClasses.AddExpenseActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activityClasses.AddProductActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".activityClasses.CategoryActivity" />
-        <activity android:name=".activityClasses.ShowExpenseActivity" />
-        <activity android:name=".activityClasses.ShowProductActivity" />
-        <activity android:name=".activityClasses.EditProductActivity" />
-        <activity android:name=".activityClasses.EditExpenseActivity" />
+        <activity android:name=".activityClasses.ShowExpenseActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activityClasses.ShowProductActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activityClasses.EditProductActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activityClasses.EditExpenseActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activityClasses.ListExpensesTabbedActivity"
             android:label="@string/title_activity_list_expenses_tabbed"
