@@ -88,6 +88,12 @@ open class AddProductActivity : AppCompatActivity(), returnPhotoInterface {
             return
         }
 
+        if(!checkPrice(ProductPrize.text.toString())){
+
+            Toast.makeText(this, getString(R.string.moneyFormat), Toast.LENGTH_SHORT).show()
+            return
+        }
+
         var product = Product()
         product.name = ProductName.text.toString()
 
@@ -101,6 +107,14 @@ open class AddProductActivity : AppCompatActivity(), returnPhotoInterface {
         DatabaseRoom.getAppDataBase()!!.productDAO().insert(product)
 
         finish()
+    }
+
+    fun checkPrice(text:String):Boolean{
+
+        if(!text.matches("^[0-9]+([.][0-9]{1,2}){0,1}$".toRegex())){
+            return false
+        }
+        return true
     }
 
     fun isValidDate(text:String): Boolean {

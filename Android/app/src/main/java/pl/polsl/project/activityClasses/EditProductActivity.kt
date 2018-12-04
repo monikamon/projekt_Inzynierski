@@ -47,6 +47,12 @@ class EditProductActivity : AddProductActivity(){
             return
         }
 
+        if(!checkPrice(ProductPrize.text.toString())){
+
+            Toast.makeText(this, getString(R.string.moneyFormat), Toast.LENGTH_SHORT).show()
+            return
+        }
+
         product!!.name = ProductName.text.toString()
 
         if(!ProductPrize.text.isEmpty())

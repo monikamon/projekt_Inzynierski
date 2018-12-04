@@ -9,7 +9,6 @@ import pl.polsl.project.databaseStructure.dataStructure.ConstrantExpense
 import pl.polsl.project.databaseStructure.dataStructure.Expense
 import pl.polsl.project.databaseStructure.tools.ConstrantExpenseTime
 import pl.polsl.project.databaseStructure.tools.DatabaseRoom
-import java.lang.Exception
 
 
 @Suppress("UNUSED_PARAMETER")
@@ -80,6 +79,12 @@ open class EditExpenseActivity : AddExpenseActivity() {
             return
         }
 
+        if(!checkPrice(ShoppingPrice.text.toString())){
+
+            Toast.makeText(this, getString(R.string.moneyFormat), Toast.LENGTH_SHORT).show()
+            return
+        }
+
         if(checkConstrantExpense.isChecked==true){
 
             var constrantExpense = expense as ConstrantExpense
@@ -115,5 +120,9 @@ open class EditExpenseActivity : AddExpenseActivity() {
 
         finish()
     }
+
+
+
+
 
 }

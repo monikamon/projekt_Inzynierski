@@ -139,13 +139,24 @@ open class AddExpenseActivity : AppCompatActivity(), returnPhotoInterface, Const
             return
         }
 
+        if(!checkPrice(ShoppingPrice.text.toString())){
+
+            Toast.makeText(this, getString(R.string.moneyFormat), Toast.LENGTH_SHORT).show()
+            return
+        }
+
+
+
         if(checkConstrantExpense.isChecked==true){
 
             var constrantExpense = ConstrantExpense()
             constrantExpense.expenseName = ExpenseName.text.toString()
 
-            if (!ShoppingPrice.text.isEmpty())
+            if (!ShoppingPrice.text.isEmpty()) {
+
+
                 constrantExpense.price = ShoppingPrice.text.toString().toDouble()
+            }
 
             constrantExpense.shoppingDate = ShoppingDate.text.toString()
             constrantExpense.setBitmapPhoto(photo)
@@ -173,6 +184,14 @@ open class AddExpenseActivity : AppCompatActivity(), returnPhotoInterface, Const
         }
 
         finish()
+    }
+
+    fun checkPrice(text:String):Boolean{
+
+        if(!text.matches("^[0-9]+([.][0-9]{1,2}){0,1}$".toRegex())){
+            return false
+        }
+        return true
     }
 
     fun isValidDate(text:String): Boolean {

@@ -87,6 +87,7 @@
     <string name="month12">Grudzień</string>
     <string name="day">Dzień</string>
     <string name="spend">Wydano:</string>
+    <string name="moneyFormat">Niepoprawny format kwoty!</string>
 
 
 </resources>
