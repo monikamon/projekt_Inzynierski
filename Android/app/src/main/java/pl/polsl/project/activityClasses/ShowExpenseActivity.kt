@@ -127,7 +127,11 @@ class ShowExpenseActivity : AppCompatActivity() {
         //zainicjowanie listy mniej dupiatymi elementami
         val listItems = ArrayList<String>()
         list.clear()
-        list.addAll(db.productDAO().getProductFromExpense(showExpense.id!!))
+
+        if(showExpense is ConstrantExpense)
+            list.addAll(db.productDAO().getProductFromConstraintExpense(showExpense.id!!))
+        else
+            list.addAll(db.productDAO().getProductFromExpense(showExpense.id!!))
 
         for (element in list) {
             listItems.add(element.name)

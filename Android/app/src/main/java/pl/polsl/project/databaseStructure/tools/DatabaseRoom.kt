@@ -29,7 +29,7 @@ abstract class DatabaseRoom:RoomDatabase(){
         fun getAppDataBase(context: Context? = null): DatabaseRoom? {
             if (INSTANCE == null) {
                 synchronized(DatabaseRoom::class) {
-                    INSTANCE = Room.databaseBuilder(context!!.applicationContext, DatabaseRoom::class.java, "Domostwo_Room").allowMainThreadQueries().build()
+                    INSTANCE = Room.databaseBuilder(context!!.applicationContext, DatabaseRoom::class.java, "Domostwo_Room_v1").allowMainThreadQueries().build()
                 }
             }
             return INSTANCE
@@ -70,6 +70,9 @@ abstract class DatabaseRoom:RoomDatabase(){
 
 
             var getProducts = INSTANCE!!.productDAO().getProductFromExpense(expense.id!!)
+
+            if(expense is ConstrantExpense)
+                getProducts = INSTANCE!!.productDAO().getProductFromConstraintExpense(expense.id!!)
 
             for (element in getProducts) {
 

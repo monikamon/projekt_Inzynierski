@@ -35,7 +35,7 @@ interface ConstraintExpenseAdder {
 
                         expenseToInsert.id = DatabaseRoom.getAppDataBase()!!.expenseDAO().insert(expenseToInsert).toInt()
 
-                        var listOfproducts = DatabaseRoom.getAppDataBase()!!.productDAO().getProductFromExpense(expense.id!!)
+                        var listOfproducts = DatabaseRoom.getAppDataBase()!!.productDAO().getProductFromConstraintExpense(expense.id!!)
 
                         for(prod in listOfproducts){
                             prod.id=null

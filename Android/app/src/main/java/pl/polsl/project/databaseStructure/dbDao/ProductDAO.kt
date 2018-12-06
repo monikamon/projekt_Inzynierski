@@ -16,6 +16,9 @@ interface ProductDAO {
     @Query("SELECT * FROM products WHERE expenseId=:expenseId")
     fun getProductFromExpense(expenseId: Int): List<Product>
 
+    @Query("SELECT * FROM products WHERE expenseConstraintId=:expenseConstraintId")
+    fun getProductFromConstraintExpense(expenseConstraintId: Int): List<Product>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(product: Product) : Long
 

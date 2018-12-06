@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.activity_list_expenses_tabbed.*
 import pl.polsl.project.R
 import pl.polsl.project.activityClasses.fragmentsClasses.AllElementsFragment
 import pl.polsl.project.activityClasses.fragmentsClasses.SearchFragment
+import pl.polsl.project.dialogsFragments.DeletePeriodOfExpenseDialog
 import pl.polsl.project.dialogsFragments.SortingDialog
 
 class ListExpensesTabbedActivity : AppCompatActivity() {
@@ -57,6 +58,13 @@ class ListExpensesTabbedActivity : AppCompatActivity() {
 
                 val intent = Intent(this, CategoryActivity::class.java)
                 startActivity(intent)
+            }
+
+            R.id.deleteOption ->{
+
+                val dialog = DeletePeriodOfExpenseDialog()
+                dialog.activity = this
+                dialog.show(supportFragmentManager, "delete")
             }
 
             R.id.sortButton ->{

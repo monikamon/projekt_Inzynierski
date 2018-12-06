@@ -16,6 +16,11 @@ class Product: Serializable, BitMapChanger {
             childColumns = arrayOf("expenseId"))
     var expenseId :Int? = null
 
+    @ForeignKey(entity = Expense::class,
+            parentColumns = arrayOf("id"),
+            childColumns = arrayOf("expenseConstraintId"))
+    var expenseConstraintId :Int? = null
+
     var guarrantyDate:String?
     var name:String
     var prise:Double

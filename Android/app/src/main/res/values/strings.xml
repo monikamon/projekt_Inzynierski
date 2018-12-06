@@ -88,6 +88,10 @@
     <string name="day">Dzień</string>
     <string name="spend">Wydano:</string>
     <string name="moneyFormat">Niepoprawny format kwoty!</string>
+    <string name="periodTime">Wpisz zakres dat do usunięcia:</string>
+    <string name="od">Od</string>
+    <string name="data_do">Do</string>
+    <string name="wrongDate">Data Od powinna być mniejsza od daty Do</string>
 
 
 </resources>

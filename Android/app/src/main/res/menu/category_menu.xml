@@ -7,6 +7,10 @@
         android:title="@string/dodaj_wydatek" />
 
     <item
+        android:id="@+id/deleteOption"
+        android:title="@string/delete" />
+
+    <item
         android:id="@+id/sortButton"
         android:title="@string/sortuj" />
 

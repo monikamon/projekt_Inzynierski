@@ -12,6 +12,7 @@ import pl.polsl.project.databaseStructure.dataStructure.Expense
 import pl.polsl.project.databaseStructure.dataStructure.Product
 import pl.polsl.project.databaseStructure.tools.interfaces.returnPhotoInterface
 import kotlinx.android.synthetic.main.activity_add_product.*
+import pl.polsl.project.databaseStructure.dataStructure.ConstrantExpense
 import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
@@ -102,7 +103,11 @@ open class AddProductActivity : AppCompatActivity(), returnPhotoInterface {
 
         product.guarrantyDate = GuarrantyDate.text.toString()
         product.setBitmapPhoto(photo)
-        product.expenseId = expense!!.id
+
+        if(expense is ConstrantExpense)
+            product.expenseConstraintId = expense!!.id
+        else
+            product.expenseId = expense!!.id
 
         DatabaseRoom.getAppDataBase()!!.productDAO().insert(product)
 
