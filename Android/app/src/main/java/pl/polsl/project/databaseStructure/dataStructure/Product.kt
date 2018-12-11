@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import pl.polsl.project.databaseStructure.tools.interfaces.BitMapChanger
 import java.io.Serializable
 
+@Suppress("unused")
 @Entity(tableName = "products")
 class Product: Serializable, BitMapChanger {
 
@@ -12,13 +13,13 @@ class Product: Serializable, BitMapChanger {
     var id: Int? = null
 
     @ForeignKey(entity = Expense::class,
-            parentColumns = arrayOf("id"),
-            childColumns = arrayOf("expenseId"))
+            parentColumns = ["id"],
+            childColumns = ["expenseId"])
     var expenseId :Int? = null
 
     @ForeignKey(entity = Expense::class,
-            parentColumns = arrayOf("id"),
-            childColumns = arrayOf("expenseConstraintId"))
+            parentColumns = ["id"],
+            childColumns = ["expenseConstraintId"])
     var expenseConstraintId :Int? = null
 
     var guarrantyDate:String?

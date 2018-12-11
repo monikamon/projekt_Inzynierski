@@ -13,7 +13,7 @@ import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import pl.polsl.project.databaseStructure.tools.interfaces.returnPhotoInterface
+import pl.polsl.project.databaseStructure.tools.interfaces.ReturnPhotoInterface
 import pl.polsl.project.R
 import kotlinx.android.synthetic.main.activity_choose_photo_action.*
 
@@ -82,14 +82,14 @@ class PhotoDialog : DialogFragment(){
         if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
 
             val image = data!!.extras.get("data") as Bitmap
-            (activity!! as returnPhotoInterface).returnPhoto(image)
+            (activity!! as ReturnPhotoInterface).returnPhoto(image)
             dismiss()
 
         }else if (requestCode == 2 && resultCode == Activity.RESULT_OK) {
 
             val stream = activity!!.contentResolver.openInputStream(data!!.data)
             val image = BitmapFactory.decodeStream(stream)
-            (activity!! as returnPhotoInterface).returnPhoto(image)
+            (activity!! as ReturnPhotoInterface).returnPhoto(image)
             dismiss()
         }
 

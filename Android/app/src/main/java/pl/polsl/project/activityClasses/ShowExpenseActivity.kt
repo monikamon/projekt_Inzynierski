@@ -18,12 +18,12 @@ import pl.polsl.project.databaseStructure.tools.DatabaseRoom
 import kotlinx.android.synthetic.main.activity_show_expense.*
 import pl.polsl.project.dialogsFragments.DisplayBigPhotoDialog
 
-@Suppress("UNUSED_ANONYMOUS_PARAMETER", "UNUSED_PARAMETER")
+@Suppress("UNUSED_ANONYMOUS_PARAMETER", "UNUSED_PARAMETER", "LiftReturnOrAssignment")
 class ShowExpenseActivity : AppCompatActivity() {
 
 
     var db : DatabaseRoom = DatabaseRoom.getAppDataBase()!!
-    var showExpense: Expense = Expense()
+    private var showExpense: Expense = Expense()
     var list:ArrayList<Product> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +47,7 @@ class ShowExpenseActivity : AppCompatActivity() {
 
         ListOfProducts.setOnItemClickListener{ adapterView, view, i, l ->
             val intent = Intent(this, ShowProductActivity::class.java)
+            list.get(i).photoByteArray = null
             intent.putExtra("product", list.get(i))
             startActivity(intent)
         }
@@ -55,8 +56,8 @@ class ShowExpenseActivity : AppCompatActivity() {
 
             val dialog = DisplayBigPhotoDialog()
             dialog.photo = showExpense.getBitmapPhoto()
-            var screenSize = Point()
-            windowManager!!.getDefaultDisplay().getSize(screenSize)
+            val screenSize = Point()
+            windowManager!!.defaultDisplay.getSize(screenSize)
             dialog.xSize = screenSize.x
             dialog.ySize = screenSize.y
             dialog.show(supportFragmentManager, "photoBigDialog")
@@ -91,7 +92,7 @@ class ShowExpenseActivity : AppCompatActivity() {
             categoryName.setText(getString(R.string.no_category))
         }else{
 
-            var category = DatabaseRoom.getAppDataBase()!!.categoryDAO().getCategory(showExpense.categoryId!!)
+            val category = DatabaseRoom.getAppDataBase()!!.categoryDAO().getCategory(showExpense.categoryId!!)
             categoryName.setText(category.get(0).name)
         }
 
@@ -124,7 +125,7 @@ class ShowExpenseActivity : AppCompatActivity() {
         }
 
 
-        //zainicjowanie listy mniej dupiatymi elementami
+        //zainicjowanie listy mniej elementami
         val listItems = ArrayList<String>()
         list.clear()
 
@@ -154,6 +155,7 @@ class ShowExpenseActivity : AppCompatActivity() {
 
         val intent = Intent(this, AddProductActivity::class.java)
 
+        showExpense.photoByteArray=null
         intent.putExtra("ExpanseName", showExpense)
         startActivity(intent)
     }
@@ -164,6 +166,7 @@ class ShowExpenseActivity : AppCompatActivity() {
 
             R.id.editButton ->{
                 val intent = Intent(this, EditExpenseActivity::class.java)
+                showExpense.photoByteArray=null
                 intent.putExtra("ExpenseName", showExpense)
                 startActivity(intent)
             }

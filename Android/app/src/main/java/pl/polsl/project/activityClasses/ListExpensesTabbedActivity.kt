@@ -16,6 +16,7 @@ import pl.polsl.project.activityClasses.fragmentsClasses.SearchFragment
 import pl.polsl.project.dialogsFragments.DeletePeriodOfExpenseDialog
 import pl.polsl.project.dialogsFragments.SortingDialog
 
+@Suppress("LiftReturnOrAssignment")
 class ListExpensesTabbedActivity : AppCompatActivity() {
 
     private var mSectionsPagerAdapter: SectionsPagerAdapter? = null

@@ -19,7 +19,7 @@ import kotlin.collections.ArrayList
 class CategoryActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
 
     var list:ArrayList<Category>?=null
-    var choosenElement: Category?=null
+    private var choosenElement: Category?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +60,7 @@ class CategoryActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener 
         return true
     }
 
-    fun AddCategory(view: View){
+    fun addCategory(view: View){
 
         val dialog = AddCategoryDialog()
         dialog.activity = this
@@ -92,7 +92,7 @@ class CategoryActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener 
         }
         list!!.remove(noCategory)
 
-        //zainicjowanie listy dupiatymi elementami
+        //zainicjowanie listy elementami
         val listItems = ArrayList<String>(0)
 
         for (element in list!!) {

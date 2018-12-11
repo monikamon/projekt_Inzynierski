@@ -21,9 +21,9 @@ class EditCategoryDialog : AddCategoryDialog(){
             view ->
 
             if(nameOfCategory.text.isEmpty()){
-                Toast.makeText(getContext(),getString(R.string.allert_name), Toast.LENGTH_LONG).show()
+                Toast.makeText(context,getString(R.string.allert_name), Toast.LENGTH_LONG).show()
             }else{
-                var oldName = category!!.name
+                val oldName = category!!.name
                 category!!.name = nameOfCategory.text.toString()
 
                 if(DatabaseRoom.addCategory(category!!)) {
@@ -31,7 +31,7 @@ class EditCategoryDialog : AddCategoryDialog(){
                     dismiss()
                 }else{
                     category!!.name = oldName
-                    Toast.makeText(getContext(),getString(R.string.allert_category), Toast.LENGTH_LONG).show()
+                    Toast.makeText(context,getString(R.string.allert_category), Toast.LENGTH_LONG).show()
                 }
             }
 

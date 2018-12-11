@@ -2,18 +2,19 @@
 
 package pl.polsl.project.databaseStructure.tools.interfaces
 
+import android.annotation.SuppressLint
 import pl.polsl.project.databaseStructure.dataStructure.ConstrantExpense
 import pl.polsl.project.databaseStructure.dataStructure.Expense
 import pl.polsl.project.databaseStructure.tools.ConstrantExpenseTime
 import pl.polsl.project.databaseStructure.tools.DatabaseRoom
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.math.exp
 
 interface ConstraintExpenseAdder {
 
+    @SuppressLint("SimpleDateFormat")
     fun checkConstraintExpense() {
-        var listOfConstrantExpense = DatabaseRoom.getAppDataBase()!!.constrantExpenseDAO().getAll()
+        val listOfConstrantExpense = DatabaseRoom.getAppDataBase()!!.constrantExpenseDAO().getAll()
 
         val df = SimpleDateFormat("dd/MM/yyyy")
         df.isLenient = false
@@ -25,7 +26,7 @@ interface ConstraintExpenseAdder {
 
                     while(date.compareTo(Date()) != 1){
 
-                        var expenseToInsert = Expense()
+                        val expenseToInsert = Expense()
 
                         expenseToInsert.categoryId = expense.categoryId
                         expenseToInsert.shoppingDate = df.format(date)
@@ -35,7 +36,7 @@ interface ConstraintExpenseAdder {
 
                         expenseToInsert.id = DatabaseRoom.getAppDataBase()!!.expenseDAO().insert(expenseToInsert).toInt()
 
-                        var listOfproducts = DatabaseRoom.getAppDataBase()!!.productDAO().getProductFromConstraintExpense(expense.id!!)
+                        val listOfproducts = DatabaseRoom.getAppDataBase()!!.productDAO().getProductFromConstraintExpense(expense.id!!)
 
                         for(prod in listOfproducts){
                             prod.id=null

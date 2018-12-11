@@ -1,5 +1,6 @@
 package pl.polsl.project.dialogsFragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.view.LayoutInflater
@@ -15,7 +16,7 @@ import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
 
-@Suppress("UNUSED_ANONYMOUS_PARAMETER", "NAME_SHADOWING")
+@Suppress("UNUSED_ANONYMOUS_PARAMETER", "NAME_SHADOWING", "LocalVariableName", "LiftReturnOrAssignment")
 class DeletePeriodOfExpenseDialog : DialogFragment(){
 
     var db : DatabaseRoom = DatabaseRoom.getAppDataBase()!!
@@ -40,19 +41,19 @@ class DeletePeriodOfExpenseDialog : DialogFragment(){
         acceptButtonDel.setOnClickListener{
             view ->
 
-            var date_from = isValidDate(fromDate.text.toString())
-            var date_to = isValidDate(toDate.text.toString())
+            val date_from = isValidDate(fromDate.text.toString())
+            val date_to = isValidDate(toDate.text.toString())
 
             if(date_from != null && date_to != null){
 
                 if(date_from.compareTo(date_to) != 1){
 
-                    var expanses = ArrayList(db.expenseDAO().getAll())
-                    expanses.addAll(ArrayList<Expense>(db.constrantExpenseDAO().getAll()))
+                    val expanses = ArrayList(db.expenseDAO().getAllWithoutPhoto())
+                    expanses.addAll(ArrayList<Expense>(db.constrantExpenseDAO().getAllWithoutPhoto()))
 
                     for(element in expanses){
 
-                        var date = isValidDate(element.shoppingDate)
+                        val date = isValidDate(element.shoppingDate)
                         if(date!!.compareTo(date_from) != -1 && date.compareTo(date_to) != 1){
 
                             DatabaseRoom.deleteExpenseWithProducts(element)
@@ -76,6 +77,7 @@ class DeletePeriodOfExpenseDialog : DialogFragment(){
 
     }
 
+    @SuppressLint("SimpleDateFormat")
     private fun isValidDate(text:String): Date? {
 
         if(!text.matches("^[0-9]{2}[/][0-9]{2}[/][0-9]{4}$".toRegex())){

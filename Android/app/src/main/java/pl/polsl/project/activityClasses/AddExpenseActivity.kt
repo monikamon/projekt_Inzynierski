@@ -1,5 +1,6 @@
 package pl.polsl.project.activityClasses
 
+import android.annotation.SuppressLint
 import pl.polsl.project.dialogsFragments.PhotoDialog
 import android.graphics.Bitmap
 import android.support.v7.app.AppCompatActivity
@@ -13,26 +14,27 @@ import pl.polsl.project.databaseStructure.dataStructure.ConstrantExpense
 import pl.polsl.project.databaseStructure.tools.ConstrantExpenseTime
 import pl.polsl.project.databaseStructure.dataStructure.Expense
 import pl.polsl.project.databaseStructure.tools.DatabaseRoom
-import pl.polsl.project.databaseStructure.tools.interfaces.returnPhotoInterface
+import pl.polsl.project.databaseStructure.tools.interfaces.ReturnPhotoInterface
 import kotlinx.android.synthetic.main.activity_add_expense.*
 import pl.polsl.project.databaseStructure.tools.interfaces.ConstraintExpenseAdder
 import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
 
-@Suppress("UNUSED_PARAMETER")
-open class AddExpenseActivity : AppCompatActivity(), returnPhotoInterface, ConstraintExpenseAdder {
+
+@Suppress("UNUSED_PARAMETER", "LiftReturnOrAssignment")
+open class AddExpenseActivity : AppCompatActivity(), ReturnPhotoInterface, ConstraintExpenseAdder {
 
     var photo: Bitmap?=null
     var nameOfCategoryList: List<Category>?=null
 
     override fun returnPhoto(pictureBitmap: Bitmap) {
-
-        photo=pictureBitmap
+        photo = scalePhoto(pictureBitmap)
         refresh()
     }
 
 
+    @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_expense)
@@ -120,7 +122,7 @@ open class AddExpenseActivity : AppCompatActivity(), returnPhotoInterface, Const
 
     }
 
-    open fun AcceptExpense(view: View){
+    open fun acceptExpense(view: View){
 
         if(ExpenseName.text.isEmpty()){
 
@@ -147,9 +149,9 @@ open class AddExpenseActivity : AppCompatActivity(), returnPhotoInterface, Const
 
 
 
-        if(checkConstrantExpense.isChecked==true){
+        if(checkConstrantExpense.isChecked){
 
-            var constrantExpense = ConstrantExpense()
+            val constrantExpense = ConstrantExpense()
             constrantExpense.expenseName = ExpenseName.text.toString()
 
             if (!ShoppingPrice.text.isEmpty()) {
@@ -169,7 +171,7 @@ open class AddExpenseActivity : AppCompatActivity(), returnPhotoInterface, Const
             checkConstraintExpense()
         }else {
 
-            var expense = Expense()
+            val expense = Expense()
             expense.expenseName = ExpenseName.text.toString()
 
             if (!ShoppingPrice.text.isEmpty())
@@ -188,12 +190,13 @@ open class AddExpenseActivity : AppCompatActivity(), returnPhotoInterface, Const
 
     fun checkPrice(text:String):Boolean{
 
-        if(!text.matches("^[0-9]+([.][0-9]{1,2}){0,1}$".toRegex())){
+        if(!text.matches("^[0-9]+([.][0-9]{1,2})?$".toRegex())){
             return false
         }
         return true
     }
 
+    @SuppressLint("SimpleDateFormat")
     fun isValidDate(text:String): Boolean {
 
         if(!text.matches("^[0-9]{2}[/][0-9]{2}[/][0-9]{4}$".toRegex())){

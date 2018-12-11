@@ -14,7 +14,7 @@ import pl.polsl.project.databaseStructure.dbDao.ConstrantExpenseDAO
 import pl.polsl.project.databaseStructure.dbDao.ExpenseDAO
 import pl.polsl.project.databaseStructure.dbDao.ProductDAO
 
-@Database(entities = arrayOf(Category::class, ConstrantExpense::class, Expense::class, Product::class), version=1)
+@Database(entities = [Category::class, ConstrantExpense::class, Expense::class, Product::class], version=1, exportSchema = false)
 @TypeConverters(Converter::class)
 abstract class DatabaseRoom:RoomDatabase(){
 
@@ -29,7 +29,7 @@ abstract class DatabaseRoom:RoomDatabase(){
         fun getAppDataBase(context: Context? = null): DatabaseRoom? {
             if (INSTANCE == null) {
                 synchronized(DatabaseRoom::class) {
-                    INSTANCE = Room.databaseBuilder(context!!.applicationContext, DatabaseRoom::class.java, "Domostwo_Room_v1").allowMainThreadQueries().build()
+                    INSTANCE = Room.databaseBuilder(context!!.applicationContext, DatabaseRoom::class.java, "Domostwo_Room_Database").allowMainThreadQueries().build()
                 }
             }
             return INSTANCE
@@ -37,8 +37,8 @@ abstract class DatabaseRoom:RoomDatabase(){
 
         fun deleteCategory(categoryName: Category): Boolean {
 
-            var listExpense: List<Expense> = INSTANCE!!.expenseDAO().getExpanseFromCategory(categoryName.id!!)
-            var listConstrantExpense: List<ConstrantExpense> = INSTANCE!!.constrantExpenseDAO().getExpanseFromCategory(categoryName.id!!)
+            val listExpense: List<Expense> = INSTANCE!!.expenseDAO().getExpanseFromCategory(categoryName.id!!)
+            val listConstrantExpense: List<ConstrantExpense> = INSTANCE!!.constrantExpenseDAO().getExpanseFromCategory(categoryName.id!!)
 
             if (listExpense.isEmpty() && listConstrantExpense.isEmpty()) {
 
@@ -51,8 +51,7 @@ abstract class DatabaseRoom:RoomDatabase(){
 
         fun addCategory(category: Category): Boolean {
 
-            var list: List<Category>
-            list = INSTANCE!!.categoryDAO().getAll()
+            val list: List<Category> = INSTANCE!!.categoryDAO().getAll()
 
             for (element in list) {
 

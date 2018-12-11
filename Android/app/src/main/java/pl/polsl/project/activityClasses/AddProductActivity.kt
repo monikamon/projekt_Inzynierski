@@ -1,32 +1,31 @@
 package pl.polsl.project.activityClasses
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
-import pl.polsl.project.dialogsFragments.PhotoDialog
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_add_product.*
 import pl.polsl.project.R
-import pl.polsl.project.databaseStructure.tools.DatabaseRoom
+import pl.polsl.project.databaseStructure.dataStructure.ConstrantExpense
 import pl.polsl.project.databaseStructure.dataStructure.Expense
 import pl.polsl.project.databaseStructure.dataStructure.Product
-import pl.polsl.project.databaseStructure.tools.interfaces.returnPhotoInterface
-import kotlinx.android.synthetic.main.activity_add_product.*
-import pl.polsl.project.databaseStructure.dataStructure.ConstrantExpense
-import java.lang.Exception
+import pl.polsl.project.databaseStructure.tools.DatabaseRoom
+import pl.polsl.project.databaseStructure.tools.interfaces.ReturnPhotoInterface
+import pl.polsl.project.dialogsFragments.PhotoDialog
 import java.text.SimpleDateFormat
-import java.util.*
 
 
-@Suppress("UNUSED_PARAMETER")
-open class AddProductActivity : AppCompatActivity(), returnPhotoInterface {
+
+@Suppress("UNUSED_PARAMETER", "LiftReturnOrAssignment")
+open class AddProductActivity : AppCompatActivity(), ReturnPhotoInterface {
 
     var expense: Expense? = null
     var photo: Bitmap? =null
 
     override fun returnPhoto(pictureBitmap: Bitmap) {
-
-        photo=pictureBitmap
+        photo = scalePhoto(pictureBitmap)
         refresh()
     }
 
@@ -38,7 +37,7 @@ open class AddProductActivity : AppCompatActivity(), returnPhotoInterface {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
 
-        var serial = intent.getSerializableExtra("ExpanseName")
+        val serial = intent.getSerializableExtra("ExpanseName")
 
         if(serial!= null)
             expense= serial as Expense
@@ -76,7 +75,7 @@ open class AddProductActivity : AppCompatActivity(), returnPhotoInterface {
         refresh()
     }
 
-    open fun AcceptProductButton(view: View){
+    open fun acceptProductButton(view: View){
 
         if(ProductName.text.isEmpty()){
 
@@ -84,7 +83,7 @@ open class AddProductActivity : AppCompatActivity(), returnPhotoInterface {
             return
         }
 
-        if(!isValidDate(GuarrantyDate.text.toString())){
+        if(!GuarrantyDate.text.isEmpty() && !isValidDate(GuarrantyDate.text.toString())){
             Toast.makeText(this, getString(R.string.invalid_date), Toast.LENGTH_SHORT).show()
             return
         }
@@ -95,7 +94,7 @@ open class AddProductActivity : AppCompatActivity(), returnPhotoInterface {
             return
         }
 
-        var product = Product()
+        val product = Product()
         product.name = ProductName.text.toString()
 
         if(!ProductPrize.text.isEmpty())
@@ -116,12 +115,13 @@ open class AddProductActivity : AppCompatActivity(), returnPhotoInterface {
 
     fun checkPrice(text:String):Boolean{
 
-        if(!text.matches("^[0-9]+([.][0-9]{1,2}){0,1}$".toRegex())){
+        if(!text.matches("^[0-9]+([.][0-9]{1,2})?$".toRegex())){
             return false
         }
         return true
     }
 
+    @SuppressLint("SimpleDateFormat")
     fun isValidDate(text:String): Boolean {
 
         if(!text.matches("^[0-9]{2}[/][0-9]{2}[/][0-9]{4}$".toRegex())){

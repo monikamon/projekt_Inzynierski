@@ -29,7 +29,7 @@ class DeleteCategoryDialog : DialogFragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        categoryTitleName.setText(categoryToDelete!!.name)
+        categoryTitleName.text = categoryToDelete!!.name
 
         //zamknięcie dialogu
         cancelButton.setOnClickListener{

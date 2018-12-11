@@ -9,10 +9,13 @@ interface ConstrantExpenseDAO {
     @Query("SELECT * FROM constrantExpenses")
     fun getAll(): List<ConstrantExpense>
 
+    @Query("SELECT id,categoryId,shoppingDate,price,expenseName,timeToPayExpense FROM constrantExpenses")
+    fun getAllWithoutPhoto(): List<ConstrantExpense>
+
     @Query("SELECT * FROM constrantExpenses WHERE id=:id")
     fun getConstrantExpense(id:Int): List<ConstrantExpense>
 
-    @Query("SELECT * FROM constrantExpenses WHERE categoryId=:categoryId")
+    @Query("SELECT id,categoryId,shoppingDate,price,expenseName,timeToPayExpense FROM constrantExpenses WHERE categoryId=:categoryId")
     fun getExpanseFromCategory(categoryId: Int): List<ConstrantExpense>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

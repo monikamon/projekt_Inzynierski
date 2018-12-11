@@ -70,8 +70,10 @@
         android:layout_width="48dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:layout_marginEnd="8dp"
         android:onClick="onClickOk"
         android:text="@string/ok"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/dateText"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -60,7 +60,7 @@ open class EditExpenseActivity : AddExpenseActivity() {
 
     }
 
-    override fun AcceptExpense(view: View){
+    override fun acceptExpense(view: View){
 
         if(ExpenseName.text.isEmpty()){
 
@@ -85,9 +85,9 @@ open class EditExpenseActivity : AddExpenseActivity() {
             return
         }
 
-        if(checkConstrantExpense.isChecked==true){
+        if(checkConstrantExpense.isChecked){
 
-            var constrantExpense = expense as ConstrantExpense
+            val constrantExpense = expense as ConstrantExpense
             constrantExpense.expenseName = ExpenseName.text.toString()
 
             if (!ShoppingPrice.text.isEmpty())

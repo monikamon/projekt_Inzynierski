@@ -12,8 +12,8 @@ open class Expense: Serializable, BitMapChanger {
     var id: Int? = null
 
     @ForeignKey(entity = Category::class,
-            parentColumns = arrayOf("id"),
-            childColumns = arrayOf("categoryId"))
+            parentColumns = ["id"],
+            childColumns = ["categoryId"])
     var categoryId :Int? = null
 
     var shoppingDate:String

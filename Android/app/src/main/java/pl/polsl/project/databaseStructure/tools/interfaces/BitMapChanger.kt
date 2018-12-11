@@ -1,3 +1,5 @@
+@file:Suppress("LiftReturnOrAssignment")
+
 package pl.polsl.project.databaseStructure.tools.interfaces
 
 import android.graphics.Bitmap

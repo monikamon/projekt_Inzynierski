@@ -1,5 +1,6 @@
 package pl.polsl.project.activityClasses.fragmentsClasses
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -12,35 +13,34 @@ import pl.polsl.project.databaseStructure.dataStructure.Expense
 import pl.polsl.project.databaseStructure.tools.DatabaseRoom
 import pl.polsl.project.listsViews.ListElementAdapter
 import pl.polsl.project.listsViews.listClasses.ListElement
-import java.lang.Math.exp
 import java.lang.Math.floor
 import java.text.SimpleDateFormat
 import java.util.*
 
+@Suppress("ObjectLiteralToLambda")
 class AllElementsFragment : Fragment() {
 
 
     var db : DatabaseRoom = DatabaseRoom.getAppDataBase()!!
-    var expanses:ArrayList<Expense> = arrayListOf()
+    private var expanses:ArrayList<Expense> = arrayListOf()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         super.onCreate(savedInstanceState)
-        var rootView = inflater.inflate(R.layout.fragment_list_expenses_all, container, false)
+        return inflater.inflate(R.layout.fragment_list_expenses_all, container, false)
 
-        return rootView
     }
 
     fun refresh(){
 
-        var sortType = floor(ListExpensesTabbedActivity.sortType/2.0).toInt()
+        val sortType = floor(ListExpensesTabbedActivity.sortType/2.0).toInt()
 
-        //zainicjowanie listy dupiatymi elementami
+        //zainicjowanie listy elementami
         val listItems = ArrayList<ListElement>(0)
 
         expanses.clear()
-        expanses = ArrayList(db.expenseDAO().getAll())
-        expanses.addAll(ArrayList<Expense>(db.constrantExpenseDAO().getAll()))
+        expanses = ArrayList(db.expenseDAO().getAllWithoutPhoto())
+        expanses.addAll(ArrayList<Expense>(db.constrantExpenseDAO().getAllWithoutPhoto()))
 
         for(expense in expanses){
 
@@ -50,7 +50,7 @@ class AllElementsFragment : Fragment() {
 
             when(sortType){
                 0 ->{
-                    var category = DatabaseRoom.getAppDataBase()!!.categoryDAO().getCategory(expense.categoryId!!)
+                    val category = DatabaseRoom.getAppDataBase()!!.categoryDAO().getCategory(expense.categoryId!!)
                     sortText = category.get(0).name
                 }
 
@@ -63,7 +63,7 @@ class AllElementsFragment : Fragment() {
                 }
             }
 
-            var founded: Boolean = false
+            var founded = false
             for(elementItems in listItems){
 
                 if(elementItems.title == sortText){
@@ -74,9 +74,9 @@ class AllElementsFragment : Fragment() {
                 }
             }
 
-            if(founded == false){
+            if(!founded){
 
-                var elementInList: ListElement = ListElement()
+                val elementInList = ListElement()
                 elementInList.title = sortText
                 elementInList.expenseList.add(expense)
                 listItems.add(elementInList)
@@ -102,6 +102,7 @@ class AllElementsFragment : Fragment() {
 
             2 -> {
                 listItems.sortWith(object: Comparator<ListElement> {
+                    @SuppressLint("SimpleDateFormat")
                     override fun compare(p1: ListElement, p2: ListElement): Int {
                         val df = SimpleDateFormat("dd/MM/yy")
                         df.isLenient = false

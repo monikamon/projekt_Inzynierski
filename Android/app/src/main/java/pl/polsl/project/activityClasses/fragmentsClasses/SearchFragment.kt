@@ -1,6 +1,7 @@
 package pl.polsl.project.activityClasses.fragmentsClasses
 
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.text.Editable
@@ -21,16 +22,17 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
+@Suppress("ObjectLiteralToLambda")
 class SearchFragment: Fragment(){
 
     var db : DatabaseRoom = DatabaseRoom.getAppDataBase()!!
-    var expanses:ArrayList<Expense> = arrayListOf()
+    private var expanses:ArrayList<Expense> = arrayListOf()
     var searchString:String = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        var rootView = inflater.inflate(R.layout.fragment_list_expenses_search, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_list_expenses_search, container, false)
 
         rootView.searchText.addTextChangedListener(
                 object: TextWatcher {
@@ -75,17 +77,17 @@ class SearchFragment: Fragment(){
 
     fun refresh(){
 
-        var sortType = Math.floor(ListExpensesTabbedActivity.sortType / 2.0).toInt()
+        val sortType = Math.floor(ListExpensesTabbedActivity.sortType / 2.0).toInt()
 
         val listItems = ArrayList<ListElement>(0)
 
         expanses.clear()
-        expanses = ArrayList(db.expenseDAO().getAll())
-        expanses.addAll(ArrayList<Expense>(db.constrantExpenseDAO().getAll()))
+        expanses = ArrayList(db.expenseDAO().getAllWithoutPhoto())
+        expanses.addAll(ArrayList<Expense>(db.constrantExpenseDAO().getAllWithoutPhoto()))
 
         for(expense in expanses){
 
-            var category = DatabaseRoom.getAppDataBase()!!.categoryDAO().getCategory(expense.categoryId!!)
+            val category = DatabaseRoom.getAppDataBase()!!.categoryDAO().getCategory(expense.categoryId!!)
             if( searchString== ""
                     || (searchOptions.selectedItemPosition==0 && category.get(0).name.toUpperCase().contains(searchString.toUpperCase()))
                     || (searchOptions.selectedItemPosition==1 && expense.shoppingDate.toUpperCase().contains(searchString.toUpperCase()))
@@ -112,7 +114,7 @@ class SearchFragment: Fragment(){
                     }
                 }
 
-                var founded: Boolean = false
+                var founded = false
                 for (elementItems in listItems) {
 
                     if (elementItems.title == sortText) {
@@ -123,9 +125,9 @@ class SearchFragment: Fragment(){
                     }
                 }
 
-                if (founded == false) {
+                if (!founded) {
 
-                    var elementInList: ListElement = ListElement()
+                    val elementInList = ListElement()
                     elementInList.title = sortText
                     elementInList.expenseList.add(expense)
                     listItems.add(elementInList)
@@ -152,6 +154,7 @@ class SearchFragment: Fragment(){
 
             2 -> {
                 listItems.sortWith(object: Comparator<ListElement>{
+                    @SuppressLint("SimpleDateFormat")
                     override fun compare(p1: ListElement, p2: ListElement): Int {
                         val df = SimpleDateFormat("dd/MM/yy")
                         df.isLenient = false

@@ -15,7 +15,7 @@ import pl.polsl.project.dialogsFragments.DisplayBigPhotoDialog
 class ShowProductActivity : AppCompatActivity() {
 
 
-    var writeProduct: Product = Product()
+    private var writeProduct: Product = Product()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,8 +39,8 @@ class ShowProductActivity : AppCompatActivity() {
 
             val dialog = DisplayBigPhotoDialog()
             dialog.photo = writeProduct.getBitmapPhoto()
-            var screenSize = Point()
-            windowManager!!.getDefaultDisplay().getSize(screenSize)
+            val screenSize = Point()
+            windowManager!!.defaultDisplay.getSize(screenSize)
             dialog.xSize = screenSize.x
             dialog.ySize = screenSize.y
             dialog.show(supportFragmentManager, "photoBigDialog")

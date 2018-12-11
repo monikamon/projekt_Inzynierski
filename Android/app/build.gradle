@@ -11,6 +11,7 @@ android {
     defaultConfig {
         applicationId "pl.polsl.project"
         minSdkVersion 17
+        //noinspection OldTargetApi
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -37,7 +38,9 @@ dependencies {
 
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
 
+    //noinspection GradleDependency
     implementation "android.arch.persistence.room:runtime:1.1.0-alpha2"
+    //noinspection GradleDependency
     kapt "android.arch.persistence.room:compiler:1.1.0-alpha2"
 
 }

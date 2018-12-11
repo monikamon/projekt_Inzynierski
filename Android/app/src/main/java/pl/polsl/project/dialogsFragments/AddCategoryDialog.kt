@@ -37,15 +37,15 @@ open class AddCategoryDialog : DialogFragment(){
             view ->
 
             if(nameOfCategory.text.isEmpty()){
-                Toast.makeText(getContext(),getString(R.string.allert_name), Toast.LENGTH_LONG).show()
+                Toast.makeText(context,getString(R.string.allert_name), Toast.LENGTH_LONG).show()
             }else{
-                var newCategory: Category = Category(nameOfCategory.text.toString())
+                val newCategory = Category(nameOfCategory.text.toString())
 
                 if(DatabaseRoom.addCategory(newCategory)) {
                     activity!!.refresh()
                     dismiss()
                 }else{
-                    Toast.makeText(getContext(),getString(R.string.allert_category), Toast.LENGTH_LONG).show()
+                    Toast.makeText(context,getString(R.string.allert_category), Toast.LENGTH_LONG).show()
                 }
             }
 

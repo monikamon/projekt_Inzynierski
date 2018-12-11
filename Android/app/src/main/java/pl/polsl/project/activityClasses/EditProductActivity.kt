@@ -3,17 +3,16 @@ package pl.polsl.project.activityClasses
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_add_expense.*
-import pl.polsl.project.R
-import pl.polsl.project.databaseStructure.tools.DatabaseRoom
-import pl.polsl.project.databaseStructure.dataStructure.Product
 import kotlinx.android.synthetic.main.activity_add_product.*
+import pl.polsl.project.R
+import pl.polsl.project.databaseStructure.dataStructure.Product
+import pl.polsl.project.databaseStructure.tools.DatabaseRoom
 
 
 @Suppress("UNUSED_PARAMETER")
 class EditProductActivity : AddProductActivity(){
 
-    var product:Product?=null
+    private var product:Product?=null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +33,7 @@ class EditProductActivity : AddProductActivity(){
 
     }
 
-    override fun AcceptProductButton(view: View){
+    override fun acceptProductButton(view: View){
 
         if(ProductName.text.isEmpty()){
 
@@ -42,7 +41,7 @@ class EditProductActivity : AddProductActivity(){
             return
         }
 
-        if(!isValidDate(GuarrantyDate.text.toString())){
+        if(!GuarrantyDate.text.isEmpty() && !isValidDate(GuarrantyDate.text.toString())){
             Toast.makeText(this, getString(R.string.invalid_date), Toast.LENGTH_SHORT).show()
             return
         }

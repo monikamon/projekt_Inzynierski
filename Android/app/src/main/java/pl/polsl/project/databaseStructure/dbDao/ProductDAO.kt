@@ -13,10 +13,10 @@ interface ProductDAO {
     @Query("SELECT * FROM products WHERE id=:id")
     fun getProduct(id:Int): List<Product>
 
-    @Query("SELECT * FROM products WHERE expenseId=:expenseId")
+    @Query("SELECT id,expenseId,expenseConstraintId,guarrantyDate,name,prise FROM products WHERE expenseId=:expenseId")
     fun getProductFromExpense(expenseId: Int): List<Product>
 
-    @Query("SELECT * FROM products WHERE expenseConstraintId=:expenseConstraintId")
+    @Query("SELECT id,expenseId,expenseConstraintId,guarrantyDate,name,prise FROM products WHERE expenseConstraintId=:expenseConstraintId")
     fun getProductFromConstraintExpense(expenseConstraintId: Int): List<Product>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
