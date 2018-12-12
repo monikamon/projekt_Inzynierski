@@ -11,7 +11,7 @@ import pl.polsl.project.databaseStructure.tools.ConstrantExpenseTime
 import pl.polsl.project.databaseStructure.tools.DatabaseRoom
 
 
-@Suppress("UNUSED_PARAMETER")
+@Suppress("UNUSED_PARAMETER", "LiftReturnOrAssignment")
 open class EditExpenseActivity : AddExpenseActivity() {
 
 
@@ -21,6 +21,11 @@ open class EditExpenseActivity : AddExpenseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         expense=intent.getSerializableExtra("ExpenseName") as Expense
+
+        if(expense is ConstrantExpense)
+            expense = DatabaseRoom.getAppDataBase()!!.constrantExpenseDAO().getConstrantExpense(expense!!.id!!).get(0)
+        else
+            expense = DatabaseRoom.getAppDataBase()!!.expenseDAO().getExpense(expense!!.id!!).get(0)
 
         checkConstrantExpense.isClickable = false
 

@@ -84,6 +84,7 @@ class ShowProductActivity : AppCompatActivity() {
             R.id.editButton ->{
 
                 val intent = Intent(this, EditProductActivity::class.java)
+                writeProduct.photoByteArray=null
                 intent.putExtra("ProductName", writeProduct)
                 startActivity(intent)
             }

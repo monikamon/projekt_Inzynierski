@@ -25,6 +25,7 @@ import java.util.*
 @Suppress("ObjectLiteralToLambda")
 class SearchFragment: Fragment(){
 
+    //klasa w której wyszukuje się informacji jest to okno wyszukaj (obok wszystkie wydatki)
     var db : DatabaseRoom = DatabaseRoom.getAppDataBase()!!
     private var expanses:ArrayList<Expense> = arrayListOf()
     var searchString:String = ""

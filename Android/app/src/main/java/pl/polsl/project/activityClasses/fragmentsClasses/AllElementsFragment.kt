@@ -21,6 +21,7 @@ import java.util.*
 class AllElementsFragment : Fragment() {
 
 
+    //klasa opisująca pirwsze okno, czyli listę wszystkich elementów
     var db : DatabaseRoom = DatabaseRoom.getAppDataBase()!!
     private var expanses:ArrayList<Expense> = arrayListOf()
 
@@ -35,7 +36,6 @@ class AllElementsFragment : Fragment() {
 
         val sortType = floor(ListExpensesTabbedActivity.sortType/2.0).toInt()
 
-        //zainicjowanie listy elementami
         val listItems = ArrayList<ListElement>(0)
 
         expanses.clear()

@@ -18,6 +18,7 @@ class EditProductActivity : AddProductActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         product=intent.getSerializableExtra("ProductName") as Product
+        product = DatabaseRoom.getAppDataBase()!!.productDAO().getProduct(product!!.id!!).get(0)
 
         photo = product!!.getBitmapPhoto()
         refresh()
