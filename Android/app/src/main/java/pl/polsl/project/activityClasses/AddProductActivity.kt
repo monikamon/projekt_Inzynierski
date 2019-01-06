@@ -21,14 +21,17 @@ import java.text.SimpleDateFormat
 @Suppress("UNUSED_PARAMETER", "LiftReturnOrAssignment")
 open class AddProductActivity : AppCompatActivity(), ReturnPhotoInterface {
 
+    //klasa odpowiadająca za dodawanie produktu przez użytkownika (wpisywanie informacji na ekranie)
     var expense: Expense? = null
     var photo: Bitmap? =null
 
+    //funkcja dodająca zdjęcie do bazy danych
     override fun returnPhoto(pictureBitmap: Bitmap) {
         photo = scalePhoto(pictureBitmap)
         refresh()
     }
 
+    //funkcja, która uruchamiana jest przy uruchomieniu ekranu
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_product)
@@ -44,13 +47,14 @@ open class AddProductActivity : AppCompatActivity(), ReturnPhotoInterface {
 
     }
 
-    //jak naciśnie się na strzałkę u góry, to jest powrót
+    //powrót do poprzedniego ekranu przez naciśniecie strzałki
     override fun onSupportNavigateUp():Boolean{
 
         finish()
         return true
     }
 
+    //dodanie zdjecia przez użytkownika, uruchomienie dialogu
     fun addPhoto(view: View){
 
         val dialog = PhotoDialog()
@@ -70,11 +74,13 @@ open class AddProductActivity : AppCompatActivity(), ReturnPhotoInterface {
 
     }
 
+    //wznowienie ekranu przy powrocie
     override fun onResume(){
         super.onResume()
         refresh()
     }
 
+    //zaakceptopwanie wprowadzonych informacji w produkcie
     open fun acceptProductButton(view: View){
 
         if(ProductName.text.isEmpty()){
@@ -113,6 +119,7 @@ open class AddProductActivity : AppCompatActivity(), ReturnPhotoInterface {
         finish()
     }
 
+    //sprawdzenie wpisanej ceny przez użytkownika, użycie wyrażenie regularnego
     fun checkPrice(text:String):Boolean{
 
         if(!text.matches("^[0-9]+([.][0-9]{1,2})?$".toRegex())){
@@ -121,6 +128,7 @@ open class AddProductActivity : AppCompatActivity(), ReturnPhotoInterface {
         return true
     }
 
+    //sprawdzenie poprawności daty gwarancji, przez użycie wyrażenia regularnego
     @SuppressLint("SimpleDateFormat")
     fun isValidDate(text:String): Boolean {
 

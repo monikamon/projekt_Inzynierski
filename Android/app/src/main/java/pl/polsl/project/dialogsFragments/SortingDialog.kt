@@ -13,6 +13,8 @@ import pl.polsl.project.activityClasses.ListExpensesTabbedActivity
 @Suppress("UNUSED_ANONYMOUS_PARAMETER", "NAME_SHADOWING")
 open class SortingDialog : DialogFragment(){
 
+    //klasa która odpowiada za sortowanie wydatków
+    //można sortować, po kategorii, cenie oraz dacie (wybór należy do użytkownika)
     var activity: ListExpensesTabbedActivity?=null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

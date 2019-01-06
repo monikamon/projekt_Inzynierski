@@ -13,10 +13,12 @@ import kotlinx.android.synthetic.main.activity_photo_screen.*
 
 class DisplayBigPhotoDialog : DialogFragment(){
 
+    //klasa, która odpowiada za wyświetlenie dużego zdjecia
     var photo: Bitmap?=null
     var xSize: Int=0
     var ySize: Int=0
 
+    //stworzenie widoku
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
@@ -25,6 +27,7 @@ class DisplayBigPhotoDialog : DialogFragment(){
     }
 
 
+    //wyświewieltenie zdjęcia, które jest zmniejszone
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

@@ -15,9 +15,11 @@ import pl.polsl.project.databaseStructure.tools.DatabaseRoom
 open class EditExpenseActivity : AddExpenseActivity() {
 
 
+    // klasa w której zaimplementowano edycję ekranu wydatku
     var expense: Expense?=null
 
 
+    // funkcja uruchamiana przy uruchomieniu ekranu
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         expense=intent.getSerializableExtra("ExpenseName") as Expense
@@ -43,6 +45,7 @@ open class EditExpenseActivity : AddExpenseActivity() {
         refresh()
     }
 
+    //funkcja, której zadaniem jest odświeżanie
     override fun refresh(){
         super.refresh()
 
@@ -65,6 +68,7 @@ open class EditExpenseActivity : AddExpenseActivity() {
 
     }
 
+    //funkcja, w której zostają zaakceptowane edytowane zmiany przez użytkownika
     override fun acceptExpense(view: View){
 
         if(ExpenseName.text.isEmpty()){

@@ -19,9 +19,12 @@ import java.util.*
 @Suppress("UNUSED_ANONYMOUS_PARAMETER", "NAME_SHADOWING", "LocalVariableName", "LiftReturnOrAssignment")
 class DeletePeriodOfExpenseDialog : DialogFragment(){
 
+    //Klasa, która usuwa wydatki w czasie od do zadanym przez użytkownika
+
     var db : DatabaseRoom = DatabaseRoom.getAppDataBase()!!
     var activity: ListExpensesTabbedActivity?=null
 
+    //tworzenie widoku
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
@@ -77,6 +80,7 @@ class DeletePeriodOfExpenseDialog : DialogFragment(){
 
     }
 
+    //sprawdzenie poprawności dat
     @SuppressLint("SimpleDateFormat")
     private fun isValidDate(text:String): Date? {
 

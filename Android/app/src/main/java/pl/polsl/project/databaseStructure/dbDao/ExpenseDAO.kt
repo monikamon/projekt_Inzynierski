@@ -6,6 +6,8 @@ import pl.polsl.project.databaseStructure.dataStructure.Expense
 @Dao
 interface ExpenseDAO {
 
+    //komunikacja z bazą danych z tabelą wydatku za pomoca zapytań SQL
+
     @Query("SELECT id,categoryId,shoppingDate,price,expenseName FROM expenses")
     fun getAllWithoutPhoto(): List<Expense>
 

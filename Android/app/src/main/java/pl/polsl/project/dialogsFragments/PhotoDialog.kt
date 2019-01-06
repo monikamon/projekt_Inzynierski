@@ -20,6 +20,7 @@ import kotlinx.android.synthetic.main.activity_choose_photo_action.*
 @Suppress("UNUSED_ANONYMOUS_PARAMETER", "NAME_SHADOWING")
 class PhotoDialog : DialogFragment(){
 
+    //klasa która odpowiada za zrobienie zdjecia, lub wybnania zdjecia z galerii
     var activity:Activity?=null
     var pm: PackageManager?=null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

@@ -2,7 +2,7 @@ package pl.polsl.project.databaseStructure.tools
 
 enum class ConstrantExpenseTime(val value:Int){
 
-    //enum, z któego wybiera się, co ile płaci się stały wydatek
+    //klasa enum, z której wybiera się, co ile płaci się stały wydatek
     EVERYDAY(0),
     EVERY_WEEK(1),
     EVERY_MONTH(2),

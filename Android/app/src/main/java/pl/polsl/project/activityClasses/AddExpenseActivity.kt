@@ -25,10 +25,12 @@ import java.util.*
 @Suppress("UNUSED_PARAMETER", "LiftReturnOrAssignment")
 open class AddExpenseActivity : AppCompatActivity(), ReturnPhotoInterface, ConstraintExpenseAdder {
 
+    //klasa która odpowiada za działania użytkownika na ekranie. Odpowiada za dodawanie wydatku (uzupełnianie informacji o wydatku)
     var photo: Bitmap?=null
     var nameOfCategoryList: List<Category>?=null
 
     override fun returnPhoto(pictureBitmap: Bitmap) {
+        //funkcja która pobiera zdjecie paragonu
         photo = scalePhoto(pictureBitmap)
         refresh()
     }
@@ -98,13 +100,14 @@ open class AddExpenseActivity : AppCompatActivity(), ReturnPhotoInterface, Const
 
     }
 
-    //jak naciśnie się na strzałkę u góry, to jest powrót
+    //powrót do ekranu po naciśnięciu strzałki
     override fun onSupportNavigateUp():Boolean{
 
         finish()
         return true
     }
 
+    //dodanie zdjecia paragonu
     fun addPhotoReceipt(view: View){
 
         val dialog = PhotoDialog()
@@ -113,6 +116,7 @@ open class AddExpenseActivity : AppCompatActivity(), ReturnPhotoInterface, Const
         dialog.show(supportFragmentManager, "dialog1")
     }
 
+    //odświeżenie ekranu przez ustawienie zdjęcia
     open fun refresh(){
 
         if(photo!=null){
@@ -122,6 +126,7 @@ open class AddExpenseActivity : AppCompatActivity(), ReturnPhotoInterface, Const
 
     }
 
+    //metoda uruchamiana podczas zaakceptowania wpisanych informacji o wydatku
     open fun acceptExpense(view: View){
 
         if(ExpenseName.text.isEmpty()){
@@ -188,6 +193,7 @@ open class AddExpenseActivity : AppCompatActivity(), ReturnPhotoInterface, Const
         finish()
     }
 
+    // funkcja, która sprawdza czy podana cena została wpisana poprawnie (zostało użyte wyrażenie regularne do tego)
     fun checkPrice(text:String):Boolean{
 
         if(!text.matches("^[0-9]+([.][0-9]{1,2})?$".toRegex())){
@@ -196,6 +202,7 @@ open class AddExpenseActivity : AppCompatActivity(), ReturnPhotoInterface, Const
         return true
     }
 
+    //funkcja, która sprawdza czy podana data została wpisana poprawnie (zostało użyte wyrażenie regularne do tego)
     @SuppressLint("SimpleDateFormat")
     fun isValidDate(text:String): Boolean {
 

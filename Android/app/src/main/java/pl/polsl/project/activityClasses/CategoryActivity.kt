@@ -18,9 +18,11 @@ import kotlin.collections.ArrayList
 @Suppress("UNUSED_ANONYMOUS_PARAMETER", "UNUSED_PARAMETER")
 class CategoryActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
 
+    //klasa, która odpowiada za informacje uzupełniane przez użytkownika na ekranie dotyczącym kategorii.
     var list:ArrayList<Category>?=null
     private var choosenElement: Category?=null
 
+    //funcka uruchamiana przy uruchomieniu ekranu dla kategorii
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)
@@ -38,6 +40,7 @@ class CategoryActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener 
 
     }
 
+    //wybranie opcji po naciśnięciu na wybraną kategorię z listy
     override fun onMenuItemClick(menuItem: MenuItem): Boolean {
         when (menuItem.itemId) {
             R.id.editButton ->{
@@ -60,6 +63,7 @@ class CategoryActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener 
         return true
     }
 
+    //dodanie kategorii do listy kategorii
     fun addCategory(view: View){
 
         val dialog = AddCategoryDialog()
@@ -67,12 +71,14 @@ class CategoryActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener 
         dialog.show(supportFragmentManager, "dialog1")
     }
 
+    //zatwierdzenie dodania kategorii
     override fun onSupportNavigateUp():Boolean{
 
         finish()
         return true
     }
 
+    //powrót do ekranu
     override fun onResume(){
         super.onResume()
         refresh()

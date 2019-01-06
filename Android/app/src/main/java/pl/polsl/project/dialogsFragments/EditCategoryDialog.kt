@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.activity_add_category.*
 @Suppress("UNUSED_ANONYMOUS_PARAMETER", "NAME_SHADOWING")
 class EditCategoryDialog : AddCategoryDialog(){
 
+    //klasa kóra odpowiada za edycję kategorii
     var category: Category? = null
 
     //wybranie co ma się stać po otwarciu dialogu na podstawie wybranego guzika

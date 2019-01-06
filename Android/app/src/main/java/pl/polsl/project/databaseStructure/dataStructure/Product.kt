@@ -9,6 +9,8 @@ import java.io.Serializable
 @Entity(tableName = "products")
 class Product: Serializable, BitMapChanger {
 
+    // klasa odpowiadająca za stworzenie tabeli produktu w bazie danych
+
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null
 

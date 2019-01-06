@@ -6,6 +6,8 @@ import android.graphics.Bitmap
 
 interface ReturnPhotoInterface {
 
+    //interfejs, który zwraca zdjecie i skaluje je
+    // aby zdjecie nie było za dużo, ponieważ wtedy wydłuża się działanie programu
     fun returnPhoto(pictureBitmap:Bitmap)
 
     fun scalePhoto(bitmap:Bitmap):Bitmap{

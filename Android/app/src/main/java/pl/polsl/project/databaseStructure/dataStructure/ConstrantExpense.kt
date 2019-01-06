@@ -8,6 +8,9 @@ import java.io.Serializable
 @Entity(tableName = "constrantExpenses")
 class ConstrantExpense: Expense,  Serializable{
 
+    // klasa odpowiadająca za stworzenie tabeli stałego wydatku w bazie danych
+
+
     //dziedziczy po receipt
     //data do której należy zapłacić dany wydatek (co ile się płaci)
     var timeToPayExpense: ConstrantExpenseTime

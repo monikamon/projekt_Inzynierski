@@ -25,7 +25,7 @@ import java.util.*
 @Suppress("ObjectLiteralToLambda")
 class SearchFragment: Fragment(){
 
-    //klasa w której wyszukuje się informacji jest to okno wyszukaj (obok wszystkie wydatki)
+    //klasa w której wyszukuje się informacje. Można wyszukać po czterech atrybutach
     var db : DatabaseRoom = DatabaseRoom.getAppDataBase()!!
     private var expanses:ArrayList<Expense> = arrayListOf()
     var searchString:String = ""
@@ -78,6 +78,7 @@ class SearchFragment: Fragment(){
 
     fun refresh(){
 
+        //funkcja uruchamiana podczas odświeżania ekranu. Dane zostają zainicjalizowane odpowiednimi elementami, po wyszukiwaniu obiektu
         val sortType = Math.floor(ListExpensesTabbedActivity.sortType / 2.0).toInt()
 
         val listItems = ArrayList<ListElement>(0)
@@ -178,6 +179,7 @@ class SearchFragment: Fragment(){
 
     }
 
+    //metoda uruchamiana podczas powrotu do ekranu
     override fun onResume() {
         super.onResume()
         refresh()

@@ -12,7 +12,9 @@ import pl.polsl.project.databaseStructure.tools.interfaces.ConstraintExpenseAdde
 @Suppress("UNUSED_ANONYMOUS_PARAMETER", "UNUSED_PARAMETER")
 class MainScreenActivity : AppCompatActivity(), ConstraintExpenseAdder {
 
+    //klasa która odpowiada za główny i pierwszy ekran w aplikacji
 
+    //metoda uruchamiana przy tworzeniu ekranu
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_screen)
@@ -33,6 +35,7 @@ class MainScreenActivity : AppCompatActivity(), ConstraintExpenseAdder {
 
     }
 
+    //przejście do ekranu ze statystyką
     fun showStatistics(view: View){
 
         val intent=Intent(this, StatisticsActivity::class.java)
@@ -40,6 +43,7 @@ class MainScreenActivity : AppCompatActivity(), ConstraintExpenseAdder {
 
     }
 
+    //przejście do ekranu z informacjami o wydatku
     fun showExpense(view: View){
 
         val intent=Intent(this, ListExpensesTabbedActivity::class.java)

@@ -4,6 +4,7 @@ import android.arch.persistence.room.TypeConverter
 
 class Converter {
 
+    //zamiana wartości enum na liczbę i odwrotnie
     @TypeConverter
     fun constrantExpenseTimeToTnt(enumCET: ConstrantExpenseTime) = enumCET.value
 

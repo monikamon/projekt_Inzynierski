@@ -6,6 +6,8 @@ import pl.polsl.project.databaseStructure.dataStructure.ConstrantExpense
 @Dao
 interface ConstrantExpenseDAO {
 
+    //komunikacja z bazą danych z tabelą stałego wydatku  za pomoca zapytań SQL
+
     @Query("SELECT * FROM constrantExpenses")
     fun getAll(): List<ConstrantExpense>
 

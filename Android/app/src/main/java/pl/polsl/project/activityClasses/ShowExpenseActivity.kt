@@ -21,11 +21,13 @@ import pl.polsl.project.dialogsFragments.DisplayBigPhotoDialog
 @Suppress("UNUSED_ANONYMOUS_PARAMETER", "UNUSED_PARAMETER", "LiftReturnOrAssignment")
 class ShowExpenseActivity : AppCompatActivity() {
 
+    //klasa wyświetlająca informacje o wydatku
 
     var db : DatabaseRoom = DatabaseRoom.getAppDataBase()!!
     private var showExpense: Expense = Expense()
     var list:ArrayList<Product> = arrayListOf()
 
+    //funkcja uruchamiana przy tworzeniu ekranu
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_expense)
@@ -73,6 +75,7 @@ class ShowExpenseActivity : AppCompatActivity() {
     }
 
 
+    //odświeżenie ekranu przy powrocie
     fun refresh(){
 
         if(showExpense is ConstrantExpense)
@@ -151,6 +154,7 @@ class ShowExpenseActivity : AppCompatActivity() {
         refresh()
     }
 
+    //dodanie produktu
     fun addProduct(view: View){
 
         val intent = Intent(this, AddProductActivity::class.java)
@@ -160,6 +164,7 @@ class ShowExpenseActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    //wybranie opcji, usunięcie albo edycja
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {

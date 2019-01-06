@@ -18,6 +18,8 @@ import pl.polsl.project.listsViews.listClasses.ListElement
 @Suppress("UNUSED_ANONYMOUS_PARAMETER", "ConvertSecondaryConstructorToPrimary")
 class ListElementAdapter : BaseAdapter{
 
+    //klasa która tworzy listę list
+    // pierwsza (głowna lista jest wydatków, a do każdego wydatku podczepiona jest lista z informacjami
     private var elementList : ArrayList<ListElement> = arrayListOf()
     private var inflater: LayoutInflater? = null
     private var activity: Activity? = null
@@ -28,6 +30,7 @@ class ListElementAdapter : BaseAdapter{
         this.elementList = elementList
     }
 
+    //pobranie danych z listy wydatków
     @SuppressLint("ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
 
@@ -69,14 +72,17 @@ class ListElementAdapter : BaseAdapter{
         return rowView
     }
 
+    //pobranie elementu
     override fun getItem(p0: Int): Any {
         return elementList[p0]
     }
 
+    //pobranie identyfikatora elementu
     override fun getItemId(p0: Int): Long {
         return p0.toLong()
     }
 
+    //policzenie liczby elementów
     override fun getCount(): Int {
         return elementList.size
     }

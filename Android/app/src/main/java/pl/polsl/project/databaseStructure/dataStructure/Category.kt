@@ -8,6 +8,7 @@ import java.io.Serializable
 @Entity(tableName = "categories")
 class Category: Serializable{
 
+    // klasa odpowiadająca za stworzenie tabeli kategorii w bazie danych
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null
 

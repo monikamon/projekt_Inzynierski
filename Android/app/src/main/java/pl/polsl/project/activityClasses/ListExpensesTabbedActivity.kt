@@ -19,6 +19,7 @@ import pl.polsl.project.dialogsFragments.SortingDialog
 @Suppress("LiftReturnOrAssignment")
 class ListExpensesTabbedActivity : AppCompatActivity() {
 
+    // klasa, która odpowiada za ekran z wyświetlaniem wydatków
     private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
     private var allelem = AllElementsFragment()
     private var searchelem = SearchFragment()
@@ -27,6 +28,7 @@ class ListExpensesTabbedActivity : AppCompatActivity() {
         var sortType: Int = 5
     }
 
+    //funkcja uruchamiana przy tworzeniu ekranu
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_expenses_tabbed)
@@ -46,11 +48,13 @@ class ListExpensesTabbedActivity : AppCompatActivity() {
     }
 
 
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.category_menu, menu)
         return true
     }
 
+    // funkcja uruchamiana przy wyborze opcji na ekranie z listą wydatków
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
@@ -90,6 +94,7 @@ class ListExpensesTabbedActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    //odświeżenie ekranu
     fun refresh(){
         searchelem.refresh()
         allelem.refresh()
@@ -98,6 +103,7 @@ class ListExpensesTabbedActivity : AppCompatActivity() {
 
     inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
+        //pobranie elementu z listy
         override fun getItem(position: Int): Fragment {
 
             if(position == 0 )

@@ -34,6 +34,7 @@ class AllElementsFragment : Fragment() {
 
     fun refresh(){
 
+        //metoda odświeżająca ekran, która aktualizuje wszystkei dane. Uzupełniana jest lista wydatków potrzebnymi informacjami
         val sortType = floor(ListExpensesTabbedActivity.sortType/2.0).toInt()
 
         val listItems = ArrayList<ListElement>(0)
@@ -123,6 +124,7 @@ class AllElementsFragment : Fragment() {
     }
 
 
+    //metoda uruchamiana przy powrocie do ekranu
     override fun onResume() {
         super.onResume()
         refresh()

@@ -12,8 +12,11 @@ import java.util.*
 
 interface ConstraintExpenseAdder {
 
+    // klasa, która sprawdza datę stałego wydatku. Jeżeli jest data w której stały wydatek ma zostać opłacany, jest przepisywany do listy wydatku
     @SuppressLint("SimpleDateFormat")
     fun checkConstraintExpense() {
+
+        // sprawdzenie, czy wydatek jest wydatkiem stałym
         val listOfConstrantExpense = DatabaseRoom.getAppDataBase()!!.constrantExpenseDAO().getAll()
 
         val df = SimpleDateFormat("dd/MM/yyyy")
@@ -55,6 +58,7 @@ interface ConstraintExpenseAdder {
 
     }
 
+    //funkcja, która sprawdza częstotliwość wydatku stałego
     fun addAmountToDate(date:Date,conExp:ConstrantExpense): Date{
         val calendar = Calendar.getInstance()
         calendar.time = date

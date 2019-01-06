@@ -12,9 +12,11 @@ import pl.polsl.project.databaseStructure.tools.DatabaseRoom
 @Suppress("UNUSED_PARAMETER")
 class EditProductActivity : AddProductActivity(){
 
+    //klasa, która odpowiada za edytowanie produktu
+
     private var product:Product?=null
 
-
+    //funkcja uruchamiana, przy tworzeniu ekranu
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         product=intent.getSerializableExtra("ProductName") as Product
@@ -25,6 +27,7 @@ class EditProductActivity : AddProductActivity(){
 
     }
 
+    //odświeżenie ekranu
     override fun refresh(){
         super.refresh()
 
@@ -34,6 +37,7 @@ class EditProductActivity : AddProductActivity(){
 
     }
 
+    //zaakceptopwanie wprowadzonych zmian
     override fun acceptProductButton(view: View){
 
         if(ProductName.text.isEmpty()){

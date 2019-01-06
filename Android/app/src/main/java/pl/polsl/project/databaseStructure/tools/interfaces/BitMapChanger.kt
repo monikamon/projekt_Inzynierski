@@ -8,8 +8,10 @@ import java.io.ByteArrayOutputStream
 
 interface BitMapChanger{
 
+    //interfejs zameniający zdjecie na bitmapę i odwrotnie
     var photoByteArray:ByteArray?
 
+    //funkcja, która ustawia zdjęcie (zamienia zdjecie na bitmapę)
     fun setBitmapPhoto(photoBitmap:Bitmap?){
         if(photoBitmap==null)
             return
@@ -19,6 +21,7 @@ interface BitMapChanger{
         this.photoByteArray = stream.toByteArray()
     }
 
+    //funkcja, która zamienia bitmapę na zdjecie
     fun getBitmapPhoto():Bitmap?{
 
         if(photoByteArray==null){

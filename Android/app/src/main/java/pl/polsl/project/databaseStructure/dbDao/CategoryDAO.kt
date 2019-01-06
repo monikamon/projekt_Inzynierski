@@ -6,6 +6,7 @@ import pl.polsl.project.databaseStructure.dataStructure.Category
 @Dao
 interface CategoryDAO {
 
+    //komunikacja z bazą danych z tabelą kategorii za pomoca zapytań SQL
     @Query("SELECT * FROM categories")
     fun getAll(): List<Category>
 

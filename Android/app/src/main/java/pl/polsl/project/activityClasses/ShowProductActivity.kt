@@ -14,10 +14,11 @@ import pl.polsl.project.dialogsFragments.DisplayBigPhotoDialog
 
 class ShowProductActivity : AppCompatActivity() {
 
+    //klasa, która odpowiada za pokazanie informacji o produkcie
 
     private var writeProduct: Product = Product()
 
-
+    //uruchomienie funkcji przy tworzeniu ekranu
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_product)
@@ -48,8 +49,9 @@ class ShowProductActivity : AppCompatActivity() {
 
     }
 
+    //odświeżenie ekranu
     fun refresh(){
-        //wypisywanie na danej pozycji tego tego
+        //wypisywanie na danej pozycji informacji
 
         writeProduct = DatabaseRoom.getAppDataBase()!!.productDAO().getProduct(writeProduct.id!!).get(0)
 
@@ -77,6 +79,7 @@ class ShowProductActivity : AppCompatActivity() {
         return true
     }
 
+    //wykonanie wybranej funkcji z podanych
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {

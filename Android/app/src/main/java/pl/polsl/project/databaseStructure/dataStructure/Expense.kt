@@ -8,6 +8,8 @@ import java.io.Serializable
 @Entity(tableName = "expenses")
 open class Expense: Serializable, BitMapChanger {
 
+// klasa odpowiadająca za stworzenie tabeli wydatku w bazie danych
+
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null
 

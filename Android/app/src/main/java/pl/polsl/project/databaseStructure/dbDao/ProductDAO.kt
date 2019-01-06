@@ -6,6 +6,7 @@ import pl.polsl.project.databaseStructure.dataStructure.Product
 @Dao
 interface ProductDAO {
 
+    //komunikacja z bazą danych z tabelą produktu za pomoca zapytań SQL
 
     @Query("SELECT * FROM products")
     fun getAll(): List<Product>

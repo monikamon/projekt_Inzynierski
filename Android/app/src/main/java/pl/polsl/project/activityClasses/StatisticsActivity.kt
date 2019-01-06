@@ -27,6 +27,9 @@ import java.util.*
 @Suppress("UNUSED_PARAMETER", "ObjectLiteralToLambda", "LiftReturnOrAssignment", "ConvertToStringTemplate")
 class StatisticsActivity : AppCompatActivity() {
 
+    //klasa wyświetlająca i wyliczająca statystyki
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_statistics)
@@ -51,6 +54,7 @@ class StatisticsActivity : AppCompatActivity() {
             override fun onNothingSelected(p0: AdapterView<*>?) {
             }
 
+            //wybanie typu daty
             override fun onItemSelected(parent: AdapterView<*>, view: View, pos: Int, id: Long) {
                 dateText.visibility = View.VISIBLE
                 when (pos) {

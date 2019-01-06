@@ -15,8 +15,10 @@ import kotlinx.android.synthetic.main.activity_add_category.*
 @Suppress("UNUSED_ANONYMOUS_PARAMETER", "NAME_SHADOWING")
 open class AddCategoryDialog : DialogFragment(){
 
+    //klasa odpowiadająca za dialog dla dodawania kategorii
     var activity: CategoryActivity?=null
 
+    //stworzenie okna przy uruchomieniu ekranu
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 

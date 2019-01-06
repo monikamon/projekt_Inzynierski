@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_delete_category.*
 @Suppress("UNUSED_ANONYMOUS_PARAMETER", "NAME_SHADOWING")
 class DeleteCategoryDialog : DialogFragment(){
 
+    //klasa która odpowiada za usunięcie kategorii
     var categoryToDelete: Category?=null
     var activity: CategoryActivity?=null
 

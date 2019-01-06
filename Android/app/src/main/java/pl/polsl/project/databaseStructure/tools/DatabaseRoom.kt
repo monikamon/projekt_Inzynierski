@@ -18,6 +18,7 @@ import pl.polsl.project.databaseStructure.dbDao.ProductDAO
 @TypeConverters(Converter::class)
 abstract class DatabaseRoom:RoomDatabase(){
 
+    //klasa abstrakcyjna, która odpowiada za komunikację użytkownika z baza danych
     abstract fun categoryDAO():CategoryDAO
     abstract fun constrantExpenseDAO(): ConstrantExpenseDAO
     abstract fun expenseDAO():ExpenseDAO
@@ -26,6 +27,7 @@ abstract class DatabaseRoom:RoomDatabase(){
     companion object {
         private var INSTANCE: DatabaseRoom? = null
 
+        //pobranie informacji zapisanych w bazie danych (wszystkich)
         fun getAppDataBase(context: Context? = null): DatabaseRoom? {
             if (INSTANCE == null) {
                 synchronized(DatabaseRoom::class) {
@@ -35,6 +37,7 @@ abstract class DatabaseRoom:RoomDatabase(){
             return INSTANCE
         }
 
+        //funckaj ktora usuwa kategorię z bazy danych i sprawdza, czy do danej kategorii, nie są przypisane wydatki
         fun deleteCategory(categoryName: Category): Boolean {
 
             val listExpense: List<Expense> = INSTANCE!!.expenseDAO().getExpanseFromCategory(categoryName.id!!)
@@ -49,6 +52,7 @@ abstract class DatabaseRoom:RoomDatabase(){
             return false
         }
 
+        //funckaj która dodaje kategorię do bazy danych
         fun addCategory(category: Category): Boolean {
 
             val list: List<Category> = INSTANCE!!.categoryDAO().getAll()
@@ -65,6 +69,7 @@ abstract class DatabaseRoom:RoomDatabase(){
             return true
         }
 
+        //usunięcie wydatku oraz wszystkich produktów z bazy danych
         fun deleteExpenseWithProducts(expense: Expense) {
 
 
