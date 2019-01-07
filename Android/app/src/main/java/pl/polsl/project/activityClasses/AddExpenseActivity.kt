@@ -94,7 +94,7 @@ open class AddExpenseActivity : AppCompatActivity(), ReturnPhotoInterface, Const
             }
         }
 
-        val sdf = SimpleDateFormat("dd/M/yyyy")
+        val sdf = SimpleDateFormat("dd/MM/yyyy")
         val currentDate = sdf.format(Date())
         ShoppingDate.setText(currentDate)
 
